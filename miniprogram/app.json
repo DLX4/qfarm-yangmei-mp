@@ -13,7 +13,6 @@
     "pages/wuliu/index",
     "pages/notice/show",
     "pages/recharge/index",
-    "pages/authorize/index",
     "pages/ucenter/location/location",
     
     
@@ -28,22 +27,24 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black",
+    "onReachBottomDistance":50,
     "navigationBarBackgroundColor": "#00afb4",
     "backgroundColor": "#00afb4"
   },
   "tabBar": {
-    "color": "#929292",
-    "selectedColor": "#00afb4",
-    "borderStyle": "black",
+    "color": "#6e6d6b",
+    "selectedColor": "#e64340",
+    "borderStyle": "white",
     "backgroundColor": "#fff",
     "box-shadow":"0 0 4px 0",
     "list": [{
       "pagePath": "pages/home/index",
       "iconPath": "images/nav/select-off.png",
       "selectedIconPath": "images/nav/select-on.png",
-      "text": "精选"
+      "text": "首页"
     },{
       "pagePath": "pages/shop-cart/index",
       "iconPath": "images/nav/cart-off.png",

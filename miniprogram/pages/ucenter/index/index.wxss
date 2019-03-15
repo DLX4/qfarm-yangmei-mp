@@ -192,6 +192,21 @@ page {
     padding-left: 100rpx;
 }
 
+.to-authorize{
+  border: none;
+  padding: 0rpx;
+  margin: 0rpx;
+  background: none;
+  border: none;
+  height: auto;
+  line-height: auto;
+}
+
+.bind-phone-number{
+  margin: 20rpx;
+  width: 100%;
+}
+
 .version {
   width:100%;
   height: 30rpx;

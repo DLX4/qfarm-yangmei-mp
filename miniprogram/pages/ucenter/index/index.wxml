@@ -17,45 +17,14 @@
 
     </view>
     <view wx:else class="userinfo">
-      <wxc-avatar class="userinfo-avatar-no" mold="square" src="https://cdn.it120.cc/apifactory/2018/06/10/527a0d6e3b3f1ffc32748193d743da26.jpg" bindtap="relogin"> </wxc-avatar>
+      <open-data class="userinfo-avatar-no" type="userAvatarUrl"></open-data>
       <view class='userinfo-text'>
-        <text class="userinfo-nickname"> 欢迎您 ，👆 点我登陆 </text>
+        <open-data class="userinfo-nickname" type="userNickName"></open-data>
         <view style='height:10rpx;'></view>
       </view>
     </view>
     <view class='userInfoMask'></view>
-    <wxc-button class='my-sign' wx:if="{{score_sign_continuous == 0}}" size="small" type="beauty" value="每日签到" bindclick="scoresign"></wxc-button>
-    <wxc-button class='my-sign' wx:if="{{score_sign_continuous > 0}}" size="small" type="secondary" value="已连续签到 {{score_sign_continuous}} 天" bindclick="scoresign"></wxc-button>
   </view>
-
-  <!-- <view class='h-contents'>
-    <view class='a-item'>
-      <wxc-icon type='purse' size='{{iconSize-10}}' color='#69C3AA' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
-      <view class='my'>
-        积分:
-        <view style='padding:0 10rpx;color: #69C3AA;font-weight: bold;'> {{score}} </view>
-      </view>
-    </view>
-    <view class='a-item'>
-      <wxc-icon type='yen' size='{{iconSize-10}}' color='#666666' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
-      <view class='my'>
-        余额:
-        <view style='padding: 0 10rpx;color: #666666;font-weight: bold;'> {{balance}} </view>
-      </view>
-    </view>
-    <view class='a-item'>
-      <wxc-icon type='after-sales' size='{{iconSize-10}}' color='#FF5777' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
-      <view class='my'>
-        提现中:
-        <view style='padding: 0 10rpx;color: #FF5777;font-weight: bold;'> {{freeze}} </view>
-      </view>
-    </view>
-    <view class='a-item-no-right-border'>
-      <wxc-button type="info" size="small" value="充值" bindclick="recharge"></wxc-button>
-      <view style='height:8rpx;'> </view>
-      <wxc-button type="beauty" size="small" value="提现" bindclick="withdraw"></wxc-button>
-    </view>
-  </view> -->
 
   <view class="user-menu">
     <view class="item">
@@ -99,6 +68,14 @@
   <view class="my-item" style='border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;'>
     <wxc-button type="danger" value="重新授权登录" bindclick="relogin"></wxc-button>
   </view>
+
+  <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <!--<view wx:if="{{!userMobile}}" class="bind-phone-number">-->
+    <!--<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号码</button>-->
+  <!--</view>-->
+  <!--<view class="my-item to-authorize">-->
+    <!--<button type="warn" bindtap="relogin">重新授权登录</button>-->
+  <!--</view>-->
 
   <view class="version" style='margin-top:10rpx;font-size:18rpx;'>Copyright © 2017-2018 qindiandadudu(GitHub ID)</view>
   <view class='version' style='height:20rpx;line-height:20rpx;font-size:16rpx;font-style: oblique;'>Powered by EastWorld v {{version}}</view>

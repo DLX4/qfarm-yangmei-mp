@@ -47,7 +47,7 @@ App({
           icon: 'loading',
           duration: 2000,
           complete: function() {
-            that.goStartIndexPage()
+            that.goStartPage()
           }
         })
       } else {
@@ -60,28 +60,7 @@ App({
     wx.cloud.init();
     that.globalData.db = wx.cloud.database();
     that.getProducts(0);
-
-
-
-  },
-  goLoginPageTimeOut: function() {
-    if (this.navigateToLogin){
-      return
-    }
-    wx.removeStorageSync('token')
-    this.navigateToLogin = true
-    setTimeout(function() {
-      wx.navigateTo({
-        url: "/pages/authorize/index"
-      })
-    }, 1000)
-  },
-  goStartIndexPage: function() {
-    setTimeout(function() {
-      wx.redirectTo({
-        url: "/pages/start/start"
-      })
-    }, 1000)
+    wx.setStorageSync('mallName', that.globalData.mallName);
   },
   onShow (e) {
     this.globalData.launchOption = e
@@ -90,6 +69,45 @@ App({
       wx.setStorageSync('referrer', e.query.inviter_id)
     }
   },
+  // 获取用户授权
+  userAuthorize: function() {
+    var that = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.record']) {
+          wx.authorize({
+            scope: 'scope.record',
+            success() {
+              console.log('用户授权成功', res);
+              //that.bindGetUserInfo();
+            }
+          })
+        } else {
+          console.log('用户已经授权过了', res);
+        }
+      }
+    });
+  },
+  // 用户登录（获取并保存用户openid）
+  userLogin: function() {
+    var that = this;
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        that.globalData.openid = res.result.openid
+      }
+    });
+  },
+  // 跳转到起始页
+  goStartPage: function() {
+    setTimeout(function() {
+      wx.redirectTo({
+        url: "/pages/start/start"
+      })
+    }, 1000)
+  },
+
   sendTempleMsg: function (orderId, trigger, template_id, form_id, page, postJsonString, emphasis_keyword){
     var that = this;
     //TODO-DLX
@@ -168,9 +186,11 @@ App({
     shareProfile: '   一流的服务，做超新鲜的水果', // 首页转发的时候术语
 
     db:{},
+    mallName:"杨梅小店",
     env: 'qfarm-mp-test',
     isConnected: true,
-    launchOption: undefined
+    launchOption: undefined,
+    openid: null
   }
   // 根据自己需要修改下单时候的模板消息内容设置，可增加关闭订单、收货时候模板消息提醒
 })
