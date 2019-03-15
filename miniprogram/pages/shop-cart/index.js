@@ -171,6 +171,7 @@ Page({
       tempNumber = tempNumber + list[i].number
     }
     shopCarInfo.shopNum = tempNumber;
+    console("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     wx.setStorage({
       key: "shopCarInfo",
       data: shopCarInfo

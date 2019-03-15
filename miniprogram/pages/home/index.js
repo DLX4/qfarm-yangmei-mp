@@ -43,17 +43,17 @@ Page({
       bgRed: app.globalData.bgRed,
       bgGreen: app.globalData.bgGreen,
       bgBlue: app.globalData.bgBlue
-    })
+    });
 
     wx.setNavigationBarTitle({
       title: '仙居杨梅',
-    })
+    });
+
     that.getBanners();
     that.getNotice();
     that.getRecommendTitlePicStr();
     that.getAppRecommendGoodsList();
     that.getRecommendGoodsShow();
-
 
     try {
       var res = wx.getSystemInfoSync()
@@ -120,11 +120,14 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
+  // 跳转到产品详情页
   toDetailsTap: function (e) {
+    //console.log(e)
     wx.navigateTo({
       url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
     })
   },
+  // 跳转到产品详情页
   tapBanner: function (e) {
     if (e.currentTarget.dataset.id != 0) {
       wx.navigateTo({

@@ -128,7 +128,7 @@ swiper-item image {
   font-size: 28rpx;
   line-height: 102rpx;
   margin-bottom: 28rpx;
-  background: #fff url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 697rpx center;
+  background: #fff url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/arrow-right.png?sign=d12c78439cc7bceeb06b3ae87b00befc&t=1552641414) no-repeat 697rpx center;
   background-size: 18rpx auto;
 }
 

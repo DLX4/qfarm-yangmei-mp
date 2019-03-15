@@ -165,6 +165,10 @@ App({
         }
       });
   },
+  // 按照一定的规则计算快递费用
+  getDeliveryPrice: function () {
+
+  },
   globalData:{
     page: 1, //初始加载商品时的页面号
     pageSize: 10000, //初始加载时的商品数，设置为10000保证小商户能加载完全部商品

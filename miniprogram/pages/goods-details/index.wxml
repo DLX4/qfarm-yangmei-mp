@@ -1,41 +1,37 @@
 <import src="../../templates/wxParse/wxParse.wxml" />
 <view class="container">
-  <view class="swiper-container" wx:if="{{!goodsDetail.basicInfo.videoId}}">
+  <view class="swiper-container" wx:if="{{!product.detail.video}}">
     <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-      <block wx:for="{{goodsDetail.pics}}" wx:key="id">
+      <block wx:for="{{product.detail.pics}}" wx:key="unique">
         <swiper-item>
-          <image src="{{item.pic}}_m" class="slide-image" width="355" height="150" mode="aspectFit" lazy-load="true" />
+          <image src="{{item}}" class="slide-image" width="355" height="150" mode="aspectFit" lazy-load="true" />
         </swiper-item>
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{goodsDetail.pics}}" wx:key="unique">
+      <block wx:for="{{product.detail.pics}}" wx:key="unique">
         <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
       </block>
     </view>
   </view>
-  <view class="swiper-container" wx:if="{{goodsDetail.basicInfo.videoId}}">
-    <video src="{{videoMp4Src}}" autoplay="true" loop="true" style='width:100%'></video>
+  <view class="swiper-container" wx:if="{{product.detail.video}}">
+    <video src="{{product.detail.video}}" autoplay="true" loop="true" style='width:100%'></video>
   </view>
   <view class="goods-info">
-    <view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
-    <view class="goods-share" wx:if="{{goodsDetail.basicInfo.commissionType == 1}}">分享有赏，好友下单后可得 {{goodsDetail.basicInfo.commission}} 积分奖励</view>
-    <view class="goods-share" wx:if="{{goodsDetail.basicInfo.commissionType == 2}}">分享有赏，好友下单后可得 {{goodsDetail.basicInfo.commission}}元 现金奖励</view>
-    <wxc-price style="padding-left:25rpx;color: #e64340;font-weight: bold;float: left;width: 20%;height:60rpx;line-height:40rpx;" value='{{selectSizePrice}}'></wxc-price>
-    <!--<view class="goods-price" style="padding-left:35rpx;">¥ {{selectSizePrice}}</view>-->
-    <view class="goods-price" style="color:#999;font-size:24rpx;">购买{{goodsDetail.basicInfo.numberOrders}}次</view>
-    <view class="goods-price" style="color:#999;font-size:24rpx;">共收到 {{goodsDetail.basicInfo.numberGoodReputation}} 次好评</view>
+    <view class="goods-title">{{product.title}}</view>
+    <wxc-price style="padding-left:25rpx;color: #e64340;font-weight: bold;float: left;width: 40%;height:50rpx;line-height:40rpx;" value='{{product.salePrice}}'></wxc-price>
+    <view style="color:#999;font-size:24rpx;box-sizing: border-box;float: left;">{{product.soldCnt}}人已购买</view>
     <view class="goods-info-fx" >
       <wxc-icon type='share' size='60' color='#e64340'></wxc-icon>
       <button open-type="share">分享</button>
       <text>分享有赏</text>
     </view>
   </view>
-  <view wx:if="{{curGoodsKanjia}}" class="row-arrow" bindtap="goKanjia">
-      邀请好友帮忙砍价 ( <text style='color:red'>底价 {{curGoodsKanjia.minPrice}} 元</text> )
-  </view>
-  <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="bindGuiGeTap">
-    {{selectSize}}
+  <!--<view wx:if="{{curGoodsKanjia}}" class="row-arrow" bindtap="goKanjia">-->
+      <!--邀请好友帮忙砍价 ( <text style='color:red'>底价 {{curGoodsKanjia.minPrice}} 元</text> )-->
+  <!--</view>-->
+  <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="selectPieceNum">
+    选择：  数量
   </view>
   <view class="goods-des-info">
     <view class="label-title">商品介绍</view>
@@ -64,7 +60,7 @@
       <view style='position:absolute;bottom:10rpx;'> 客服 </view>
     </view>
     <view class="shop-cart-btn" bindtap="goShopCar">
-      <view class="shop-num">({{shopNum}})</view>
+      <view class="shop-num">({{shopCarInfo.productList.length}})</view>
       <view style='position:absolute;bottom:10rpx;'> 购物车 </view>
     </view>
     <view class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>
@@ -75,25 +71,25 @@
     <view class="popup-contents">
       <view class="pop-goods-info">
         <view class="pop-img-box">
-          <image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail" />
+          <image src="{{product.pic}}" class="goods-thumbnail" />
         </view>
         <view class="pop-goods-des">
-          <view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
+          <view class="pop-goods-title">{{product.title}}</view>
           <view class="pop-goods-price">¥ {{selectSizePrice}}</view>
         </view>
         <view class="pop-goods-close" bindtap="closePopupTap"></view>
       </view>
-      <view class="size-label-box">
-        <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
-          <view class="label">{{property.name}}</view>
-          <view class="label-item-box">
-            <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}"
-              data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
-              {{item.name}}
-            </view>
-          </view>
-        </block>
-      </view>
+      <!--<view class="size-label-box">-->
+        <!--<block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">-->
+          <!--<view class="label">{{property.name}}</view>-->
+          <!--<view class="label-item-box">-->
+            <!--<view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}"-->
+              <!--data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">-->
+              <!--{{item.name}}-->
+            <!--</view>-->
+          <!--</view>-->
+        <!--</block>-->
+      <!--</view>-->
       <view class="buy-num-box">
         <view class="num-label">购买数量</view>
         <view class="num-box">

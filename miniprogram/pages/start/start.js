@@ -1,5 +1,5 @@
 //const WXAPI = require('../../wxapi/main')
-//const CONFIG = require('../../config.js')
+const CONFIG = require('../../config.js')
 //获取应用实例
 var app = getApp();
 Page({
@@ -14,7 +14,8 @@ Page({
     wx.setNavigationBarTitle({
       title: wx.getStorageSync('mallName')
     })
-    const app_show_pic_version = wx.getStorageSync('app_show_pic_version')
+    const app_show_pic_version = wx.getStorageSync('app_show_pic_version');
+    console.log('[当前版本]', app_show_pic_version);
     if (app_show_pic_version && app_show_pic_version == CONFIG.version) {
       wx.switchTab({
         url: '/pages/home/index',
@@ -28,7 +29,8 @@ Page({
           {id:3, picUrl: "http://iph.href.lu/1080x1920"}
           ]
       });
-
+      wx.setStorageSync('app_show_pic_version', CONFIG.version);
+      console.log('[当前版本]', app_show_pic_version);
     }
   },
   onShow:function(){

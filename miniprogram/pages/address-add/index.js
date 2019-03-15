@@ -25,7 +25,7 @@ Page({
     var linkMan = e.detail.value.linkMan;
     var address = e.detail.value.address;
     var mobile = e.detail.value.mobile;
-    var code = e.detail.value.code;
+    var postalCode = e.detail.value.code;
 
     if (linkMan == "") {
       wx.showModal({
@@ -60,11 +60,15 @@ Page({
       return
     }
     var cityId = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].id;
+    var cityName = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].name;
     var districtId;
+    var districtName;
     if (this.data.selDistrict == "请选择" || !this.data.selDistrict) {
       districtId = '';
+      districtName = '';
     } else {
       districtId = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList[this.data.selDistrictIndex].id;
+      districtName = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList[this.data.selDistrictIndex].name;
     }
     if (address == "") {
       wx.showModal({
@@ -74,7 +78,7 @@ Page({
       })
       return
     }
-    if (code == "") {
+    if (postalCode == "") {
       wx.showModal({
         title: '提示',
         content: '请填写邮编',
@@ -89,36 +93,38 @@ Page({
     } else {
       apiAddid = 0;
     }
-    // TODO-DLX
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/user/shipping-address/' + apiAddoRuPDATE,
-    //   data: {
-    //     token: wx.getStorageSync('token'),
-    //     id: apiAddid,
-    //     provinceId: commonCityData.cityData[this.data.selProvinceIndex].id,
-    //     cityId: cityId,
-    //     districtId: districtId,
-    //     linkMan: linkMan,
-    //     address: address,
-    //     mobile: mobile,
-    //     code: code,
-    //     isDefault: 'true'
-    //   },
-    //   success: function (res) {
-    //     if (res.data.code != 0) {
-    //       // 登录错误
-    //       wx.hideLoading();
-    //       wx.showModal({
-    //         title: '失败',
-    //         content: res.data.msg,
-    //         showCancel: false
-    //       })
-    //       return;
-    //     }
-    //     // 跳转到结算页面
-    //     wx.navigateBack({})
-    //   }
-    // })
+    let db = app.globalData.db;
+    db.collection('user_address').add({
+      data: {
+        provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
+        cityId: cityName,
+        districtId: districtName,
+        linkMan: linkMan,
+        address: address,
+        mobile: mobile,
+        code: postalCode,
+        isDefault: 'true'
+      },
+      success: res => {
+        // 在返回结果中会包含新创建的记录的 _id
+        // this.setData({
+        // });
+        wx.showToast({
+          title: '新增记录成功',
+        });
+        console.log('[数据库] [新增记录] [用户地址] 成功', res);
+        // 跳转到结算页面
+        wx.navigateBack({});
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '新增记录失败'
+        })
+        console.error('[数据库] [新增记录] 失败：', err)
+      }
+    });
+
   },
   initCityData: function (level, obj) {
     if (level == 1) {
