@@ -22,12 +22,12 @@ Page({
   },
   bindSave: function (e) {
     var that = this;
-    var linkMan = e.detail.value.linkMan;
+    var name = e.detail.value.name;
     var address = e.detail.value.address;
     var mobile = e.detail.value.mobile;
     var postalCode = e.detail.value.code;
 
-    if (linkMan == "") {
+    if (name == "") {
       wx.showModal({
         title: '提示',
         content: '请填写联系人姓名',
@@ -99,11 +99,11 @@ Page({
         provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
         cityId: cityName,
         districtId: districtName,
-        linkMan: linkMan,
+        name: name,
         address: address,
         mobile: mobile,
         code: postalCode,
-        isDefault: 'true'
+        isDefault: true
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id

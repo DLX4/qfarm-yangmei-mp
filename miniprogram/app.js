@@ -59,8 +59,8 @@ App({
     // 获取商城数据（关键，配置相关，如商品价格，优惠信息）
     wx.cloud.init();
     that.globalData.db = wx.cloud.database();
+    that.userLogin();
     that.getProducts(0);
-    wx.setStorageSync('mallName', that.globalData.mallName);
   },
   onShow (e) {
     this.globalData.launchOption = e
@@ -91,11 +91,17 @@ App({
   // 用户登录（获取并保存用户openid）
   userLogin: function() {
     var that = this;
+
+    let openid = wx.getStorageSync('openid');
+    if (openid) {
+      return;
+    }
     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
-        that.globalData.openid = res.result.openid
+        that.globalData.openid = res.result.openid;
+        wx.setStorageSync('openid', that.globalData.openid);
       }
     });
   },

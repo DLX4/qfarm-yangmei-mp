@@ -98,7 +98,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: wx.getStorageSync('mallName') + '——' + app.globalData.shareProfile,
+      title: app.globalData.mallName + '——' + app.globalData.shareProfile,
       path: '/pages/finder/index',
       success: function (res) {
         // 转发成功

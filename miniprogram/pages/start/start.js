@@ -12,7 +12,7 @@ Page({
   onLoad:function(){
     const _this = this
     wx.setNavigationBarTitle({
-      title: wx.getStorageSync('mallName')
+      title: app.globalData.mallName
     })
     const app_show_pic_version = wx.getStorageSync('app_show_pic_version');
     console.log('[当前版本]', app_show_pic_version);

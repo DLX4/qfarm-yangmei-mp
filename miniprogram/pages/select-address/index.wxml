@@ -3,7 +3,7 @@
     <view class="a-address" wx:for-items="{{addressList}}" wx:key="{{index}}">
       <view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.id}}">
         <view class="name-tel">
-          {{item.linkMan}} {{item.mobile}}
+          {{item.name}} {{item.mobile}}
         </view>
         <view class="address-box">
           {{item.address}}

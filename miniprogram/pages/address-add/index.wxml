@@ -4,7 +4,7 @@
         <view class="row-wrap">
             <view class="label">联系人</view>
             <view class="label-right">
-                <input name="linkMan" class="input" type="text" placeholder="姓名" value="{{addressData.linkMan}}{{wxaddress.userName}}"/>
+                <input name="name" class="input" type="text" placeholder="姓名" value="{{addressData.name}}{{wxaddress.userName}}"/>
             </view>
         </view>
         <view class="row-wrap">

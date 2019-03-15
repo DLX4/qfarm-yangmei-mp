@@ -40,10 +40,28 @@ Page({
    
   },
   onShow : function () {
-    this.initShippingAddress();
+    this.getUserAddress();
   },
-  initShippingAddress: function () {
+  getUserAddress: function () {
     var that = this;
+    let db = app.globalData.db;
+    db.collection('user_address').where({
+      _openid: app.globalData.openid
+    }).get({
+      success: res => {
+        this.setData({
+          addressList: res.data
+        })
+        console.log('[数据库] [查询记录] 成功: ', res)
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        })
+        console.error('[数据库] [查询记录] 失败：', err)
+      }
+    });
       //TODO-DLX
     // wx.request({
     //   url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/user/shipping-address/list',
