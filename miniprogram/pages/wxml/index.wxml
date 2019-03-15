@@ -1,0 +1,22 @@
+<!--pages/wxml/index.wxml-->
+<text>pages/wxml/index.wxml</text>
+<text>当前时间：{{time}}</text>
+
+<!-- array 是一个数组 -->
+<switch wx:for="{{objectArray}}" wx:key="unique" > {{item.id}} </switch>
+<button bindtap="switch"> Switch </button>
+<button bindtap="addToFront"> Add to the front </button>
+
+
+<switch wx:for="{{numberArray}}" wx:key="*this" > {{item}} </switch>
+<button bindtap="addNumberToFront"> Add to the front </button>
+
+<template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+<template is="msgItem" data="{{...item}}"/>
+

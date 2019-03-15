@@ -1,5 +1,23 @@
 {
   "pages": [
+    "pages/start/start",
+    "pages/home/index",
+    "pages/ucenter/index/index",
+    "pages/goods-details/index",
+    "pages/shop-cart/index",
+    "pages/to-pay-order/index",
+    "pages/select-address/index",
+    "pages/address-add/index",
+    "pages/ucenter/order-list/index",
+    "pages/order-details/index",
+    "pages/wuliu/index",
+    "pages/notice/show",
+    "pages/recharge/index",
+    "pages/authorize/index",
+    "pages/ucenter/location/location",
+    
+    
+    "pages/wxml/index",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -8,11 +26,41 @@
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib"
   ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "navigationBarBackgroundColor": "#00afb4",
+    "backgroundColor": "#00afb4"
+  },
+  "tabBar": {
+    "color": "#929292",
+    "selectedColor": "#00afb4",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "box-shadow":"0 0 4px 0",
+    "list": [{
+      "pagePath": "pages/home/index",
+      "iconPath": "images/nav/select-off.png",
+      "selectedIconPath": "images/nav/select-on.png",
+      "text": "精选"
+    },{
+      "pagePath": "pages/shop-cart/index",
+      "iconPath": "images/nav/cart-off.png",
+      "selectedIconPath": "images/nav/cart-on.png",
+      "text": "购物车"
+    },
+    {
+      "pagePath": "pages/ucenter/index/index",
+      "iconPath": "images/nav/my-off.png",
+      "selectedIconPath": "images/nav/my-on.png",
+      "text": "我的"
+    }]
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
   }
 }
