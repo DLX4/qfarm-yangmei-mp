@@ -97,12 +97,12 @@ Page({
     db.collection('user_address').add({
       data: {
         provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
-        cityId: cityName,
-        districtId: districtName,
+        cityName: cityName,
+        districtName: districtName,
         name: name,
         address: address,
         mobile: mobile,
-        code: postalCode,
+        postalCode: postalCode,
         isDefault: true
       },
       success: res => {

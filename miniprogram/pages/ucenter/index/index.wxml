@@ -65,9 +65,9 @@
     </view>
   </view>
   <view style="height:20rpx;width:100%;"></view>
-  <view class="my-item" style='border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;'>
-    <wxc-button type="danger" value="重新授权登录" bindclick="relogin"></wxc-button>
-  </view>
+  <!--<view class="my-item" style='border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;'>-->
+    <!--<wxc-button type="danger" value="重新授权登录" bindclick="relogin"></wxc-button>-->
+  <!--</view>-->
 
   <view style="height:20rpx;background: #eee;width:100%;"></view>
   <!--<view wx:if="{{!userMobile}}" class="bind-phone-number">-->
@@ -77,7 +77,6 @@
     <!--<button type="warn" bindtap="relogin">重新授权登录</button>-->
   <!--</view>-->
 
-  <view class="version" style='margin-top:10rpx;font-size:18rpx;'>Copyright © 2017-2018 qindiandadudu(GitHub ID)</view>
-  <view class='version' style='height:20rpx;line-height:20rpx;font-size:16rpx;font-style: oblique;'>Powered by EastWorld v {{version}}</view>
+  <!--<view class="version" style='margin-top:10rpx;font-size:18rpx;'>Copyright © 2018-2019 仙居勤富农场</view>-->
   <view style="height:12rpx;width:100%;"></view>
 </view>

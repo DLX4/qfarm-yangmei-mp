@@ -1,4 +1,5 @@
 var wxpay = require('../../../utils/pay.js')
+var dateUtil = require('../../../utils/date.js')
 var app = getApp()
 Page({
   data: {
@@ -20,118 +21,71 @@ Page({
       this.windowWidth = res.windowWidth;
       this.data.stv.lineWidth = this.windowWidth / this.data.tabs.length;
       this.data.stv.windowWidth = res.windowWidth;
-      this.setData({ stv: this.data.stv })
       this.tabsCount = tabs.length;
     } catch (e) {
     }
-  },
-  onShow: function () {
     // 获取订单列表
     this.setData({
+      stv: this.data.stv,
       loadingStatus: true
-    })
-    this.getOrderStatistics();
-    this.getOrderList()
+    });
+    this.getOrderList();
   },
-  getOrderStatistics: function () {
-    var that = this;
-    //TODO-DLX
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/statistics',
-    //   data: {
-    //     token: wx.getStorageSync('token')
-    //   },
-    //   success: (res) => {
-    //     wx.hideLoading();
-    //     if (res.data.code == 0) {
-    //       var tabClass = that.data.tabClass;
-    //       if (res.data.data.count_id_no_pay > 0) {
-    //         tabClass[0] = "red-dot"
-    //       } else {
-    //         tabClass[0] = ""
-    //       }
-    //       if (res.data.data.count_id_no_transfer > 0) {
-    //         tabClass[1] = "red-dot"
-    //       } else {
-    //         tabClass[1] = ""
-    //       }
-    //       if (res.data.data.count_id_no_confirm > 0) {
-    //         tabClass[2] = "red-dot"
-    //       } else {
-    //         tabClass[2] = ""
-    //       }
-    //       if (res.data.data.count_id_no_reputation > 0) {
-    //         tabClass[3] = "red-dot"
-    //       } else {
-    //         tabClass[3] = ""
-    //       }
-    //       if (res.data.data.count_id_success > 0) {
-    //         //tabClass[4] = "red-dot"
-    //       } else {
-    //         //tabClass[4] = ""
-    //       }
-    //
-    //       console.log(tabClass)
-    //       that.setData({
-    //         tabClass: tabClass,
-    //       });
-    //     }
-    //   }
-    // })
+  onReady: function () {
+    let that = this;
+    setTimeout(function() {
+      that.setData({
+        orderList: that.data.orderList,
+        loadingStatus: false
+      });
+      //that._updateSelectedPage(0);
+    }, 400);
+
   },
+  onShow: function () {
+  },
+  // 获取订单列表
   getOrderList: function () {
-    var that = this;
-    var postData = {
-      token: wx.getStorageSync('token'),
-      pageSize: app.globalData.pageSize,
-      page: app.globalData.page
-    };
-    console.log('getting orderList');
-    //TODO-DLX
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/list',
-    //   data: postData,
-    //   success: (res) => {
-    //     if (res.data.code === 0) {
-    //       console.log('orderList',res.data.data.orderList)
-    //       that.setData({
-    //         totalOrderList: res.data.data.orderList,
-    //         logisticsMap: res.data.data.logisticsMap,
-    //         goodsMap: res.data.data.goodsMap
-    //       });
-    //       //订单分类
-    //       var orderList = [];
-    //       for (let i = 0; i < that.data.tabs.length; i++) {
-    //         var tempList = [];
-    //         for (let j = 0; j < res.data.data.orderList.length; j++) {
-    //           if (res.data.data.orderList[j].status == i) {
-    //             tempList.push(res.data.data.orderList[j])
-    //             //orderList[i].push(res.data.data.orderList[j])
-    //           }
-    //         }
-    //         console.log(tempList)
-    //         orderList.push({ 'status': i, 'isnull': tempList.length === 0, 'orderList': tempList })
-    //       }
-    //       console.log(orderList)
-    //       this.setData({
-    //         orderList: orderList
-    //       });
-    //     } else {
-    //       console.log('orderList not exist')
-    //       that.setData({
-    //         orderList: 'null',
-    //         logisticsMap: {},
-    //         goodsMap: {}
-    //       });
-    //     }
-    //     this.setData({
-    //       loadingStatus: false
-    //     })
-    //   },
-    //   fail: (res) =>{
-    //     console.log('获取orderList错误',res.data)
-    //   }
-    // })
+    let that = this;
+    let orderDataList = new Array(5);
+    let db = app.globalData.db;
+    db.collection('order').where({
+      _openid: app.globalData.openid,
+    }).get({
+      success: res => {
+        console.log('[数据库] [查询记录] [用户订单] 成功: ', res);
+        if (res.data && res.data.length > 0 ) {
+
+          for (let i = 0; i < that.data.tabs.length; i++) {
+            let tempList = [];
+            for (let j = 0; j < res.data.length; j++) {
+              if (res.data[j].status == i ) {
+                tempList[tempList.length] = {
+                  createTime: dateUtil.getFormatDate(res.data[j].createTime),
+                  _id: res.data[j]._id,
+                  status: res.data[j].status,
+                  remark: res.data[j].remark,
+                  productList: res.data[j].productList,
+                  totalAmount: res.data[j].totalAmount
+                };
+              }
+            }
+            orderDataList[i] = { 'status': i, 'isnull': tempList.length === 0, 'orderList': tempList };
+          }
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        });
+        console.error('[数据库] [查询记录] [用户订单] 失败：', err)
+      }
+    });
+    this.setData({
+      orderList: orderDataList,
+      //loadingStatus: false,
+    })
   },
   orderDetail: function (e) {
     var orderId = e.currentTarget.dataset.id;
@@ -248,17 +202,21 @@ Page({
     stv.tStart = false;
     this.setData({ stv: this.data.stv })
   },
-  ////////
+  //
   _updateSelectedPage(page) {
     console.log('_updateSelectedPage')
     let { tabs, stv, activeTab } = this.data;
     activeTab = page;
-    this.setData({ activeTab: activeTab })
     stv.offset = stv.windowWidth * activeTab;
-    this.setData({ stv: this.data.stv })
+    this.setData({
+      activeTab: activeTab,
+      stv: this.data.stv,
+      orderList: this.data.orderList,
+    });
   },
+  // 用户点击订单页顶部tab切换
   handlerTabTap(e) {
-    console.log('handlerTapTap', e.currentTarget.dataset.index)
+    console.log('handlerTapTap', this.data.orderList)
     this._updateSelectedPage(e.currentTarget.dataset.index);
   },
   //事件处理函数

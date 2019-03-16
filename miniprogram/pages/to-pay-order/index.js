@@ -4,11 +4,12 @@ var app = getApp()
 
 Page({
   data: {
-    productList: [],
-    expressFee: 0,
-    productAmount: 0,
-    totalAmount: 0,
-    discountAmount: 0,
+    productList: [], // 下单的产品信息 + 数量 + 重量等
+    curAddressData: null,// 地址信息
+    expressFee: 0,// 快递费
+    productAmount: 0, // 产品本身的费用
+    totalAmount: 0,// 订单总额
+    discountAmount: 0,// 折扣金额，默认是零
     orderType: "", //订单类型，购物车下单或立即支付下单，默认是购物车，
   },
   onShow: function () {
@@ -33,7 +34,7 @@ Page({
     that.setData({
       productList: productList,
     });
-    that.getUserAddress();
+    that.getDefaultUserAddress();
     that.processTotalAmount();
   },
 
@@ -56,49 +57,66 @@ Page({
     return aaa;
   },
 
+  // [重要] 下单接口
   createOrder: function (e) {
     var that = this;
     wx.showLoading();
-    var loginToken = wx.getStorageSync('token') // 用户登录 token
+    if (!that.data.curAddressData) {
+      wx.hideLoading();
+      wx.showModal({
+        title: '错误',
+        content: '请先设置您的收货地址！',
+        showCancel: false
+      });
+      return;
+    }
     var remark = ""; // 备注信息
     if (e) {
       remark = e.detail.value.remark; // 备注信息
     }
 
-    var postData = {
-      token: loginToken,
-      goodsJsonStr: that.data.goodsJsonStr,
-      remark: remark
-    };
-    if (that.data.kjId) {
-      postData.kjid = that.data.kjId;
-    }
-    if (that.data.isNeedLogistics > 0) {
-      if (!that.data.curAddressData) {
+    let db = app.globalData.db;
+    db.collection('order').add({
+      data: {
+        userAddress: that.data.curAddressData,
+        productList: that.data.productList,
+        expressFee: that.data.expressFee,
+        productAmount: that.data.productAmount,
+        totalAmount: that.data.totalAmount,
+        discountAmount: that.data.discountAmount,
+        createTime: new Date(),
+        status: 0,
+        remark: that.data.remark
+      },
+      success: res => {
+        wx.hideLoading();
+        // wx.showToast({
+        //   title: '订单保存成功',
+        // })
+        console.log('[数据库] [新增记录] [创建订单] 成功，记录 _id: ', res._id);
+
+        // 清空购物车数据
+        if (e && "buyNow" != that.data.orderType) {
+          wx.removeStorageSync('shopCarInfo');
+        }
+
+        // 配置模板消息推送
+        //TODO
+        // 下单成功，跳转到订单管理界面
+        wx.redirectTo({
+          url: "/pages/ucenter/order-list/index"
+        });
+      },
+      fail: err => {
         wx.hideLoading();
         wx.showModal({
           title: '错误',
-          content: '请先设置您的收货地址！',
+          content: '下单失败',
           showCancel: false
-        })
-        return;
+        });
+        console.error('[数据库] [新增记录] [创建订单] 失败：', err)
       }
-      postData.provinceId = that.data.curAddressData.provinceId;
-      postData.cityId = that.data.curAddressData.cityId;
-      if (that.data.curAddressData.districtId) {
-        postData.districtId = that.data.curAddressData.districtId;
-      }
-      postData.address = that.data.curAddressData.address;
-      postData.name = that.data.curAddressData.name;
-      postData.mobile = that.data.curAddressData.mobile;
-      postData.code = that.data.curAddressData.code;
-    }
-    if (that.data.curCoupon) {
-      postData.couponId = that.data.curCoupon.id;
-    }
-    if (!e) {
-      postData.calculate = "true";
-    }
+    });
 
     //TODO-DLX
     // wx.request({
@@ -163,7 +181,7 @@ Page({
 
   },
   //
-  getUserAddress: function () {
+  getDefaultUserAddress: function () {
     var that = this;
     let db = app.globalData.db;
     db.collection('user_address').where({
@@ -171,11 +189,20 @@ Page({
       isDefault:true
     }).get({
       success: res => {
-        if (res.data && res.data.length > 0) {
+        console.log('[数据库] [查询记录] [用户地址] 成功: ', res);
+        if (res.data && res.data.length > 0 ) {
+          that.data.curAddressData = {};
+          that.data.curAddressData.addressId = res.data[0].id;
+          that.data.curAddressData.address = res.data[0].address;
+          that.data.curAddressData.cityName = res.data[0].cityName;
+          that.data.curAddressData.districtName = res.data[0].districtName;
+          that.data.curAddressData.mobile = res.data[0].mobile;
+          that.data.curAddressData.name = res.data[0].name;
+          that.data.curAddressData.postalCode = res.data[0].postalCode;
+          that.data.curAddressData.provinceName = res.data[0].provinceName;
           this.setData({
-            curAddressData: res.data[0]
-          })
-          console.log('[数据库] [查询记录] 成功: ', res)
+            curAddressData: that.data.curAddressData
+          });
         }
       },
       fail: err => {
@@ -186,7 +213,7 @@ Page({
         console.error('[数据库] [查询记录] 失败：', err)
       }
     });
-    //TODO-DLX
+
   },
   processTotalAmount: function () {
     this.setData({

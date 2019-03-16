@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c9a7ec0-d892-41e3-b7ac-3145e4fdb10f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/miniprogram/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miniprogram/pages/address-add/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/address-add/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/address-add/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/address-add/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/select-address/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/select-address/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/select-address/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/select-address/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/start/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/start/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,33 +21,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.445856">
+    <splitter split-orientation="horizontal" split-proportion="0.3057211">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.js">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="597">
-                  <caret line="195" column="24" lean-forward="true" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
+                <state relative-caret-position="322">
+                  <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/miniprogram/pages/address-add/index.js">
+          <file leaf-file-name="date.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/miniprogram/utils/date.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="367">
-                  <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+                <state relative-caret-position="193">
+                  <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
                 </state>
               </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.wxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/miniprogram/pages/select-address/index.wxml">
-              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
         </leaf>
@@ -57,19 +47,57 @@
       <split-second>
         <leaf>
           <file leaf-file-name="index.wxml" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxml">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="784">
-                  <caret line="62" column="31" lean-forward="true" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+                <state relative-caret-position="627">
+                  <caret line="69" column="16" lean-forward="true" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+                  <folding>
+                    <element signature="n#style#0;n#view#0;n#view#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#view#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#view#0;n#view#0;n#view#1;n#view#0;n#view#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#view#4;n#view#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#view#7;n#view#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="350">
+                  <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+                  <folding>
+                    <element signature="n#style#0;n#swiper#0;n#view#1;n#view#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#swiper-item#0;n#view#0;n#view#1;n#swiper#0;n#view#1;n#view#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2450">
+                  <caret line="175" column="23" lean-forward="true" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="index.wxss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxss">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="305">
-                  <caret line="124" column="1" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+                <state relative-caret-position="297">
+                  <caret line="190" column="22" selection-start-line="190" selection-start-column="22" selection-end-line="190" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.wxss" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/wuliu/index.wxss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="297">
+                  <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -80,24 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>^^^^^^^^^^^^^^^^^^^^^^^^^</find>
-      <find>productList</find>
-      <find>productNum</find>
-      <find>selectSizePrice</find>
-      <find>shopDeliveryPrice</find>
-      <find>tobuy</find>
-      <find>bindGuiGeTap</find>
-      <find>shopNum</find>
-      <find>toAddShopCar</find>
-      <find>addShopCar</find>
-      <find>buyNow</find>
-      <find>buliduBuyNowInfo</find>
-      <find>新增地址</find>
-      <find>counters</find>
-      <find>结算页面</find>
-      <find>bulidShopCarInfo</find>
-      <find>counter</find>
-      <find>mallName</find>
       <find>initShippingAddress</find>
       <find>curAddressData</find>
       <find>JSON.stringify</find>
@@ -109,7 +119,25 @@
       <find>yunPrice</find>
       <find>youhuijine</find>
       <find>processYunfei</find>
+      <find>提交订单</find>
+      <find>createOrder</find>
       <find>allGoodsAndYunPrice</find>
+      <find>counters</find>
+      <find>db.collection(</find>
+      <find>[数据库] [新增记录] [用户地址]</find>
+      <find>Date</find>
+      <find>UserAddress</find>
+      <find>db.collection</find>
+      <find>length}}</find>
+      <find>.push</find>
+      <find>swiper class</find>
+      <find>Time</find>
+      <find>toDateString</find>
+      <find>pay.js</find>
+      <find>handlerTabTap</find>
+      <find>status</find>
+      <find>timeout</find>
+      <find>console(&quot;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&quot;);</find>
     </findStrings>
     <replaceStrings>
       <replace>/pages/home/index</replace>
@@ -130,7 +158,6 @@
         <option value="$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxml" />
         <option value="$PROJECT_DIR$/miniprogram/pages/authorize/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/app.wxss" />
-        <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml" />
         <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxss" />
         <option value="$PROJECT_DIR$/miniprogram/pages/goods-details/index.wxss" />
@@ -139,14 +166,18 @@
         <option value="$PROJECT_DIR$/miniprogram/app.json" />
         <option value="$PROJECT_DIR$/miniprogram/utils/config.js" />
         <option value="$PROJECT_DIR$/miniprogram/pages/start/start.js" />
-        <option value="$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/pages/goods-details/index.wxml" />
         <option value="$PROJECT_DIR$/miniprogram/pages/goods-details/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/app.js" />
         <option value="$PROJECT_DIR$/miniprogram/pages/select-address/index.js" />
-        <option value="$PROJECT_DIR$/miniprogram/pages/address-add/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxml" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/address-add/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.js" />
+        <option value="$PROJECT_DIR$/miniprogram/utils/date.js" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxml" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.js" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml" />
       </list>
     </option>
   </component>
@@ -163,9 +194,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1101" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -210,7 +240,7 @@
               <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
               <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="select-address" type="462c0819:PsiDirectoryNode" />
+              <item name="address-add" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
@@ -218,6 +248,35 @@
               <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="to-pay-order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ucenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ucenter" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ucenter" type="462c0819:PsiDirectoryNode" />
+              <item name="order-list" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -235,8 +294,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\code\qfarm-yangmei-mp\miniprogram" />
       <recent name="D:\code\qfarm-yangmei-mp\miniprogram\utils" />
+      <recent name="D:\code\qfarm-yangmei-mp\miniprogram" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -262,18 +321,18 @@
       <option name="presentableId" value="Default" />
       <updated>1552558221941</updated>
       <workItem from="1552558224338" duration="70000" />
-      <workItem from="1552558302509" duration="61989000" />
+      <workItem from="1552558302509" duration="84240000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62059000" />
+    <option name="totallyTimeSpent" value="84310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1390625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12604167" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -299,32 +358,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/search/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/search/index.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/search/index.wxml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/templates/starscore/starscore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/index/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/utils/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14">
@@ -389,19 +422,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#view#0;n#view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#0;n#view#0;n#view#1;n#view#0;n#view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#4;n#view#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxss">
       <provider selected="true" editor-type-id="text-editor">
@@ -481,9 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/utils/pay.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/utils/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -502,13 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="173" column="36" selection-start-line="173" selection-start-column="36" selection-end-line="173" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -534,27 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14">
           <caret line="1" column="30" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/utils/city.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="805">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_PLUGINS_DIR$/weapp-support-plugin.jar!/lib/weixin-app/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="2729" column="13" selection-start-line="2729" selection-start-column="13" selection-end-line="2729" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/goods-details/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="174" column="30" lean-forward="true" selection-start-line="174" selection-start-column="19" selection-end-line="174" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -584,29 +573,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/address-add/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="977" column="4" selection-start-line="977" selection-start-column="4" selection-end-line="977" selection-end-column="4" />
+        <state relative-caret-position="896">
+          <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/app.js">
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+        <state relative-caret-position="154">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/goods-details/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="174" column="30" lean-forward="true" selection-start-line="174" selection-start-column="19" selection-end-line="174" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_PLUGINS_DIR$/weapp-support-plugin.jar!/lib/weixin-app/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="2445" column="13" selection-start-line="2445" selection-start-column="13" selection-end-line="2445" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/select-address/index.wxml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/address-add/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxss">
       <provider selected="true" editor-type-id="text-editor">
@@ -615,19 +614,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.wxml">
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="62" column="31" lean-forward="true" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+        <state relative-caret-position="84">
+          <caret line="78" column="32" lean-forward="true" selection-start-line="77" selection-start-column="4" selection-end-line="78" selection-end-column="32" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/to-pay-order/index.js">
+    <entry file="file://$PROJECT_DIR$/miniprogram/utils/city.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="195" column="24" lean-forward="true" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
+        <state relative-caret-position="27034">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/utils/pay.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1974">
+          <caret line="141" column="4" lean-forward="true" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1467">
+          <caret line="645" column="4" selection-start-line="645" selection-start-column="4" selection-end-line="645" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/utils/date.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/wuliu/index.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="190" column="22" selection-start-line="190" selection-start-column="22" selection-end-line="190" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/order-list/index.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#swiper#0;n#view#1;n#view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#swiper-item#0;n#view#0;n#view#1;n#swiper#0;n#view#1;n#view#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/shop-cart/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2450">
+          <caret line="175" column="23" lean-forward="true" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/ucenter/index/index.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="69" column="16" lean-forward="true" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#view#0;n#view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#view#0;n#view#1;n#view#0;n#view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#4;n#view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#7;n#view#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
