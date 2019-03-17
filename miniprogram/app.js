@@ -56,11 +56,16 @@ App({
       }
     });
 
-    // 获取商城数据（关键，配置相关，如商品价格，优惠信息）
+    // 获取产品数据
     wx.cloud.init();
     that.globalData.db = wx.cloud.database();
-    that.userLogin();
     that.getProducts(0);
+
+    // 记录log
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+    that.userLogin();
   },
   onShow (e) {
     this.globalData.launchOption = e
@@ -114,32 +119,6 @@ App({
     }, 1000)
   },
 
-  sendTempleMsg: function (orderId, trigger, template_id, form_id, page, postJsonString, emphasis_keyword){
-    var that = this;
-    //TODO-DLX
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + that.globalData.subDomain + '/template-msg/put',
-    //   method:'POST',
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   data: {
-    //     token: wx.getStorageSync('token'), //登录接口返回的登录凭证
-    //     type: 0, //0 小程序 1 服务号
-    //     module: 'order', //所属模块：immediately 立即发送模板消息；order 所属订单模块
-    //     business_id: orderId, //登录接口返回的登录凭证
-    //     trigger: trigger, //module不为immediately时必填，代表对应的【订单】触发的状态
-    //     template_id: template_id, //模板消息ID
-    //     form_id: form_id, //type=0时必填，表单提交场景下，为 submit 事件带上的 formId；支付场景下，为本次支付的 prepay_id
-    //     url: page, //小程序：点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）；服务号：跳转的网页地址
-    //     postJsonString: postJsonString, //模板消息内容
-    //     emphasis_keyword: emphasis_keyword //小程序："keyword1.DATA" 模板需要放大的关键词，不填则默认无放大
-    //   },
-    //   success: (res) => {
-    //     //console.log(res.data);
-    //   }
-    // })
-  },
   getProducts: function (categoryId) {
     if (categoryId == 0) {
       categoryId = "";
@@ -149,12 +128,10 @@ App({
     var db = that.globalData.db;
     db.collection('products').where({
       disable: false,
-      // recommend: true,
     })
       .orderBy('sort', 'asc')
       .get({
         success(res) {
-          // res.data 是包含以上定义的两条记录的数组
           that.globalData.products = [];
           if (res.data.length == 0) {
             return;
@@ -164,10 +141,10 @@ App({
             temp.salePrice = temp.salePrice.toFixed(2);
             temp.originPrice = temp.originPrice.toFixed(2);
             temp.starpic = starscore.picStr(temp.starScore);
+            // 已经添加的件数
+            temp.numb = 0;
             that.globalData.products.push(temp);
           }
-
-          console.log(that.globalData.products);
         }
       });
   },
@@ -176,31 +153,19 @@ App({
 
   },
   globalData:{
-    page: 1, //初始加载商品时的页面号
-    pageSize: 10000, //初始加载时的商品数，设置为10000保证小商户能加载完全部商品
-    categories: [],
     products: [],
-    hotGoods: ['桔', '火龙果', '香蕉', '酸奶', '甘蔗'], //自定义热门搜索商品
-    goodsName: [],
-    goodsList: [],
-    onLoadStatus: true,
-    activeCategoryId: null,
 
-    globalBGColor: '#f00056',
-    bgRed: 240,
-    bgGreen: 0,
-    bgBlue: 86,
+    globalBGColor: '#fff',
+    bgRed: 255,
+    bgGreen: 255,
+    bgBlue: 255,
     userInfo: null,
-    subDomain: "tggtest",// 商城后台个性域名tgg
-    version: "2.0.6",
     shareProfile: '   一流的服务，做超新鲜的水果', // 首页转发的时候术语
 
     db:{},
     mallName:"杨梅小店",
-    env: 'qfarm-mp-test',
     isConnected: true,
     launchOption: undefined,
     openid: null
   }
-  // 根据自己需要修改下单时候的模板消息内容设置，可增加关闭订单、收货时候模板消息提醒
 })

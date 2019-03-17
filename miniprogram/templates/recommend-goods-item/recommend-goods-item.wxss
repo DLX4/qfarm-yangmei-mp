@@ -18,13 +18,13 @@
 
 .goods-info-box {
   width: 430rpx;
-  height: 250rpx;
+  height: 200rpx;
   margin-left: 20rpx;
   display: flex;
   flex-direction: column;
 }
 
-.goods-box .goods-title {
+.goods-title {
   width: 430;
   height: 60rpx;
   font-size: 28rpx;
@@ -33,37 +33,35 @@
   color: black;
 }
 
-.goods-box .goods-introduction {
+.goods-introduction {
   width: 430;
-  height: 100rpx;
+  height: 140rpx;
   font-size: 24rpx;
   text-align: left;
   padding-top: 5rpx;
   color: dimgrey;
 }
 
-.goods-box .goods-price-box {
-  width: 430rpx;
+.goods-price-box {
+  width: 60%;
   height: 40rpx;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-  /*flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-end;
-  overflow: hidden;*/
+  flex-direction: column;
+  margin-left: 0rpx;
 }
 
-.goods-box .goods-price-box .goods-minPrice {
+.goods-price-box .goods-minPrice {
+  text-align: left;
+  padding-top: 5rpx;
   font-size: 28rpx;
   font-weight: bold;
-  color:  #ff4422;
+  color:  #FF0077;
 }
 
-.goods-box .goods-price-box .goods-originalPrice {
-  padding-left: 10rpx;
+.goods-price-box .goods-originalPrice {
+  text-align: left;
+  padding-top: 5rpx;
+  padding-left: 0rpx;
   font-size: 24rpx;
 }
 
@@ -71,7 +69,6 @@
   width: 430rpx;
   height: 45rpx;
   display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   color: gray;
   font-size: 22rpx;
 }
@@ -88,3 +85,69 @@
   padding: 5rpx 0;
   text-align: left;
 }
+
+.product-numb{
+  height: 40rpx;
+  width: 130rpx;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0rpx;
+  margin-right: 30rpx;
+  line-height: 40rpx;
+  font-size: 25rpx;
+}
+
+.product-numb-remove{
+  margin-right: 15rpx;
+  line-height: 28rpx;
+  font-size: 60rpx;
+  font-weight: 500;
+  box-sizing: border-box;
+  border: 2rpx;
+  border-style: solid;
+  border-color: #B0B0B0;
+  color: #B0B0B0;
+}
+.product-numb-add{
+  font-size: 35rpx;
+  line-height: 37rpx;
+  font-weight: 700;
+  background: #FFD161;
+  margin-left: 15rpx;
+}
+.food-numb{
+  height: 40rpx;
+  width: 130rpx;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 95rpx;
+  margin-right: 30rpx;
+  line-height: 40rpx;
+  font-size: 25rpx;
+}
+.product-numb .add,.product-numb .remove{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 30rpx;
+  text-align: center;
+}
+.product-numb .add{
+  font-size: 35rpx;
+  line-height: 37rpx;
+  font-weight: 700;
+  background: #FF0077;
+  margin-left: 15rpx;
+  color: #ffffff;
+}
+.product-numb .remove{
+  margin-right: 15rpx;
+  line-height: 28rpx;
+  font-size: 60rpx;
+  font-weight: 500;
+  box-sizing: border-box;
+  border: 2rpx;
+  border-style: solid;
+  border-color: #B0B0B0;
+  color: #B0B0B0;
+}
+

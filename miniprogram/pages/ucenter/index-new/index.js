@@ -10,7 +10,6 @@ Page({
   onLoad() {
     let that = this;
     that.setData({
-      version: app.globalData.version,
       background_color: app.globalData.globalBGColor,
       bgRed: app.globalData.bgRed,
       bgGreen: app.globalData.bgGreen,
