@@ -1,36 +1,48 @@
 page {
-    min-height: 100%;
     background-color: #f4f4f4;
-}
-.container {
-    width: 100%;
-    background: #f4f4f4;
+    min-height: 100%;
 }
 
-.userHeader {
+.container {
+    width: 100%;
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+}
+
+.user-info {
+    width: 100%;
+    margin-top: 0rpx;
+    background-color: #fff;
+}
+
+.user-header {
+    margin-top:0rpx;
+    margin-left:30rpx;
+    width: 150rpx;
+    height: 150rpx;
+    float: left;
+}
+.user-header-image {
     border-radius: 50%;
     overflow: hidden;
     width: 120rpx;
     height: 120rpx;
-    position: relative;
-    background: yellow;
     left: 0rpx;
     top: 0rpx;
+    background: #dbdbdb;
+
+}
+.user-nickname {
+    font-size: 32rpx;
+    float: left;
+    text-align: center;
+    line-height: 50rpx;
+    padding-left: 10rpx;
+    padding-top: 36rpx;
 }
 
-.userbox {
-    width: 100%;
-    height: 300rpx;
-    align-items: center;
-    justify-content: center;
-}
-.userbox .userinfo {
-    width: 100%;
-    margin-top: 0rpx;
-}
-
-.order-area {width: 100%;margin-top:19rpx;margin-left:0rpx;background-color:#fff;}
-.other-area {width: 100%;margin-top:19rpx;margin-left:0rpx;background-color:#fff;}
+.ucenter-area-box {width: 100%;margin-top:19rpx;margin-left:0rpx;background-color:#fff;}
 .arrow-right-image {
     width:32rpx;
     height:37rpx;

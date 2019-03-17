@@ -10,7 +10,9 @@
         </view>  
         <view class="dots" wx:if="{{swiperCurrent + 1 == swiperMaxNumber}}">
           <form bindsubmit="goToIndex" report-submit="true">
-            <button type="primary" size="mini" form-type="submit" class="weui-btn mini-btn">进入店铺</button>
+            <!--<button type="primary" size="mini" form-type="submit" class="weui-btn mini-btn">进入店铺</button>-->
+            <button type="default" size="mini" form-type="submit" class="weui-btn mini-btn">进入店铺</button>
+              <!--<button class="weui-btn" type="default">页面次要操作 Normal</button>-->
           </form>
         </view>
    </view>

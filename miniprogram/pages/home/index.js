@@ -13,11 +13,11 @@ Page({
     swiperCurrent: 0,
     recommendTitlePicStr: '',
     loadingMoreHidden: true,
-    stv: {
-      windowWidth: 0,
-      windowHeight: 0,
-    },
-    height: [],
+    // stv: {
+    //   windowWidth: 0,
+    //   windowHeight: 0,
+    // },
+    // height: [],
     // 业务数据
     noticeList:[],
     banners: [],
@@ -50,29 +50,29 @@ Page({
       ]
     });
 
-    try {
-      var res = wx.getSystemInfoSync()
-      if (that.data.noticeList) {
-        that.setData({
-          stv: {
-            windowsWidth: res.windowWidth,
-            windowsHeight: res.windowHeight
-          },
-          height: (750 / res.windowWidth) * res.windowHeight - 100
-        })
-      } else {
-        that.setData({
-          stv: {
-            windowsWidth: res.windowWidth,
-            windowsHeight: res.windowHeight
-          },
-          height: (750 / res.windowWidth) * res.windowHeight
-        })
-      }
-
-    } catch (e) {
-
-    }
+    // try {
+    //   var res = wx.getSystemInfoSync()
+    //   if (that.data.noticeList) {
+    //     that.setData({
+    //       stv: {
+    //         windowsWidth: res.windowWidth,
+    //         windowsHeight: res.windowHeight
+    //       },
+    //       height: (750 / res.windowWidth) * res.windowHeight - 100
+    //     })
+    //   } else {
+    //     that.setData({
+    //       stv: {
+    //         windowsWidth: res.windowWidth,
+    //         windowsHeight: res.windowHeight
+    //       },
+    //       height: (750 / res.windowWidth) * res.windowHeight
+    //     })
+    //   }
+    //
+    // } catch (e) {
+    //
+    // }
   },
   onShow: function () {
 
