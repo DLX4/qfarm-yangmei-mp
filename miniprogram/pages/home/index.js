@@ -170,17 +170,6 @@ Page({
               }
           ]
          });
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/notice/list',
-    //   data: { pageSize: 7 },
-    //   success: function (res) {
-    //     if (res.data.code == 0) {
-    //       that.setData({
-    //         noticeList: res.data.data
-    //       });
-    //     }
-    //   }
-    // })
   },
   getBanners: function () {
     var that = this
@@ -190,30 +179,6 @@ Page({
         {bannerId:2, picUrl:"http://iph.href.lu/750x375"}
       ]
     });
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/banner/list',
-    //   data: {
-    //     key: 'mallName'
-    //   },
-    //   success: function (res) {
-    //     console.log("请求banners返回代码", res.data.code)
-    //     if (res.data.code === 0) {
-    //       that.setData({
-    //         banners: res.data.data
-    //       });
-    //     } else if ((res.data.code === 404) || (res.data.code === 700) || (res.data.code === 701)) {
-    //       that.setData({
-    //         showNoBanners: true
-    //       })
-    //
-    //     } else {
-    //       that.setData({
-    //         showNoBanners: true
-    //       })
-    //       that.showPopup('.banners_warn_Popup')
-    //     }
-    //   }
-    // })
   },
   getRecommendGoodsShow: function () {
     var that = this;

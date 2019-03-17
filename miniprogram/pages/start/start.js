@@ -30,7 +30,7 @@ Page({
           ]
       });
       wx.setStorageSync('app_show_pic_version', CONFIG.version);
-      console.log('[当前版本]', app_show_pic_version);
+      console.log('[设置当前版本]', app_show_pic_version);
     }
   },
   onShow:function(){

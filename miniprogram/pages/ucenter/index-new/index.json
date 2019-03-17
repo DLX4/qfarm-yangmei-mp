@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wxc-loadmore": "../../../dist/packages/@minui/wxc-loadmore/dist/index"
+  },
+  "navigationBarTitleText": "我的"
+}

@@ -1,0 +1,138 @@
+﻿<!--index.wxml-->
+<view class="container">
+    <!--<view class='userbox' style='background: -webkit-linear-gradient(top, rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 1), rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 0.3))'>-->
+    <view style="width: 100%;height: 300rpx;margin-top: 0rpx;clear:both;float:left;background-color: #fff">
+        <view class='userHeader'>
+            <open-data class='userInfo' type="userAvatarUrl"></open-data>
+        </view>
+        <open-data class="userinfo-nickname" type="userNickName"></open-data>
+
+    </view>
+
+
+    <view class="order-area">
+        <view style="width: 100%;height:37rpx;margin-top:31rpx;margin-left:32rpx;">
+            <text style="width:20%;margin-top:0rpx;margin-left:0rpx;float:left;font-size:27rpx;">全部订单</text>
+            <view style="width:40%;height:37rpx;float:left;margin-top:0rpx;margin-left:0rpx;"> </view>
+            <view style="width:28%;height:37rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                <text style="height:37rpx;margin-top:0rpx;color:#949994;font-size:27rpx;clear:both;float:left;margin-left:0;text-align:left;" >查看全部订单</text>
+            </view>
+            <view style="width:12%;height:37rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
+                       bindtap="VIP_25_click" ></image>
+            </view>
+        </view>
+        <view class="cut-line" style="margin-top:33rpx"></view>
+        <view style="width:649rpx;height:100rpx;margin-top:24rpx;margin-left:50rpx;">
+            <view style="width:86rpx;margin-left:0rpx;float:left;">
+                <image src="images/VIP/VIP_29_29.png" style=" width:86rpx;height:57rpx;" border="0"
+                       bindtap="VIP_29_click" class="order-type-image"></image>
+                <text class="order-type-name">待支付</text>
+            </view>
+            <view style="width:86rpx;margin-left:100rpx;float:left;">
+                <image src="images/VIP/VIP_32_32.png" style=" width:86rpx;height:57rpx;" border="0"
+                       bindtap="VIP_32_click" class="order-type-image"></image>
+                <text class="order-type-name">待发货</text>
+            </view>
+            <view style="width:86rpx;margin-left:100rpx;float:left;">
+                <image src="images/VIP/VIP_35_35.png" style=" width:86rpx;height:57rpx;" border="0"
+                       bindtap="VIP_35_click" class="order-type-image"></image>
+                <text class="order-type-name">待收货</text>
+            </view>
+            <view style="width:86rpx;margin-left:100rpx;float:left;">
+                <image src="images/VIP/VIP_38_38.png" style=" width:86rpx;height:57rpx;" border="0"
+                       bindtap="VIP_38_click" class="order-type-image"></image>
+                <text class="order-type-name">待评价</text>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="other-area">
+        <navigator url="/pages/select-address/index" hover-class="none" class="a">
+            <view class="ucenter-list">
+                <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                    <image src="images/VIP/VIP_49_49.png"  border="0"
+                           bindtap="VIP_43_click" class="ucenter-list-icon"></image>
+                </view>
+                <text style="width:78%;" class="entry-text">收货地址</text>
+                <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                    <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
+                           bindtap="VIP_25_click" ></image>
+                </view>
+            </view>
+        </navigator>
+
+        <view class="cut-line" style="margin-top:28rpx"></view>
+
+
+        <view class="ucenter-list">
+            <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                <image src="images/VIP/VIP_49_49.png"  border="0"
+                       bindtap="VIP_43_click" class="ucenter-list-icon"></image>
+            </view>
+            <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
+            <text style="width:78%;" class="entry-text">联系客服</text>
+            <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
+                       bindtap="VIP_25_click" ></image>
+            </view>
+        </view>
+
+
+        <view class="cut-line" style="margin-top:28rpx"></view>
+
+        <navigator url="/pages/ucenter/location/location" hover-class="none" class="a">
+            <view class="ucenter-list">
+                <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                    <image src="images/VIP/VIP_49_49.png"  border="0"
+                           bindtap="VIP_43_click" class="ucenter-list-icon"></image>
+                </view>
+                <text style="width:78%;" class="entry-text">实地采摘</text>
+                <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                    <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
+                           bindtap="VIP_25_click" ></image>
+                </view>
+            </view>
+        </navigator>
+
+        <view class="cut-line" style="margin-top:28rpx"></view>
+
+        <!--<view class="ucenter-list">-->
+            <!--<view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">-->
+                <!--<image src="images/VIP/VIP_49_49.png"  border="0"-->
+                       <!--bindtap="VIP_43_click" class="ucenter-list-icon"></image>-->
+            <!--</view>-->
+            <!--<text style="width:78%;" class="entry-text">关于我们</text>-->
+            <!--<view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">-->
+                <!--<image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"-->
+                       <!--bindtap="VIP_25_click" ></image>-->
+            <!--</view>-->
+        <!--</view>-->
+
+        <!--<view class="cut-line" style="margin-top:28rpx"></view>-->
+        <navigator url="/pages/ucenter/feedback/feedback" hover-class="none" class="a">
+            <view class="ucenter-list">
+                <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                    <image src="images/VIP/VIP_49_49.png"  border="0"
+                           bindtap="VIP_43_click" class="ucenter-list-icon"></image>
+                </view>
+                <text style="width:78%;" class="entry-text">意见反馈</text>
+                <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
+                    <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
+                           bindtap="VIP_25_click" ></image>
+                </view>
+            </view>
+        </navigator>
+        <!--align-items: center;-->
+        <!--justify-content: center;-->
+        <view class="cut-line" style="margin-top:28rpx"></view>
+
+    </view>
+
+    <view style="width: 100%;height: 100%;margin-top:19rpx;margin-left:0rpx;clear: both; float: bottom">
+        <wxc-loadmore  is-end="{{true}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
+    </view>
+
+
+</view>
