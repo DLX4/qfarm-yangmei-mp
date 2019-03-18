@@ -50,29 +50,6 @@ Page({
       ]
     });
 
-    // try {
-    //   var res = wx.getSystemInfoSync()
-    //   if (that.data.noticeList) {
-    //     that.setData({
-    //       stv: {
-    //         windowsWidth: res.windowWidth,
-    //         windowsHeight: res.windowHeight
-    //       },
-    //       height: (750 / res.windowWidth) * res.windowHeight - 100
-    //     })
-    //   } else {
-    //     that.setData({
-    //       stv: {
-    //         windowsWidth: res.windowWidth,
-    //         windowsHeight: res.windowHeight
-    //       },
-    //       height: (750 / res.windowWidth) * res.windowHeight
-    //     })
-    //   }
-    //
-    // } catch (e) {
-    //
-    // }
   },
   onShow: function () {
 
@@ -96,16 +73,22 @@ Page({
   addToTrolley: function (e) {
     var that = this;
     let productId = e.currentTarget.dataset.productid;
-
+    let numb = 0;
     for (let i = 0; i < app.globalData.products.length; i++) {
       if (app.globalData.products[i]._id == productId) {
         app.globalData.products[i].numb++;
+        num += app.globalData.products[i].numb;
       }
     }
 
     that.setData({
       shopCarProducts: app.globalData.products,
-    })
+    });
+    wx.setTabBarBadge( {
+        index: 1,
+        text: '8',
+      }
+    )
   },
   // 购物车--
   removeFromTrolley: function (e) {

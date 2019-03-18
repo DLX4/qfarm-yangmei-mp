@@ -10,60 +10,24 @@ page {
   width: 100%;
   background-color: #f4f4f4;
 }
-
-.notice {
-  margin-top: 5rpx;
-  width: 100%;
-  height: 100rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 28rpx;
-}
-
-.notice_swiper {
-  display: flex;
-  flex-direction: row;
-  height: 50rpx;
-  line-height: 40rpx;
-  width: 400rpx;
-}
-
-.notice_item {
-  width: 100%;
-  height: 50rpx;
-  line-height: 50rpx;
-  text-align: center;
-  color: #333;
-}
-
-.popup__content {
-  width: 100%;
-  height: 100rpx;
-  line-height: 100rpx;
-  background: #fff;
-  text-align: center;
-}
-
-.swiper-container {
+/* [banner区] swiper */
+.banner-container {
   width: 750rpx;
-  position: relative;
   background-color: white;
 }
 
-.swiper_box {
+.swiper-box {
   width: 100%;
   height: 375rpx; /*562.5rpx;*//**/
-  overflow: visible;
+  overflow: hidden;
 }
 
-.swiper_item{
+.swiper-item {
   overflow: visible;
   border-radius: 50%;
 }
 
-.slide-image {
+.swiper-item .slide-image {
   /*swiper-item image */
   width: 100%;
   display: inline-block;
@@ -75,7 +39,8 @@ page {
   position: relative;
 }
 
-.swiper-container .dots {
+
+.dots {
   position: relative;
   bottom: 10rpx;
   margin: 20rpx 30rpx 0 0;
@@ -83,7 +48,7 @@ page {
   justify-content: flex-end;
 }
 
-.swiper-container .dots .dot {
+.dots .dot {
   margin: 0 10rpx;
   width: 15rpx;
   height: 15rpx;
@@ -93,64 +58,61 @@ page {
   opacity: 0.5;
 }
 
-.swiper-container .dots .dot.active {
+.dots .dot.active {
   background-color: #FF0077;
   opacity: 1;
 }
 
-.introduced {
+/* [公告栏] */
+.notice-container {
+  margin-top: 5rpx;
   width: 100%;
   height: 100rpx;
+  background: #ffffff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  margin-top: 15rpx;
-  color: #e64340;
+  font-size: 28rpx;
 }
 
-.introduced .introudced-img {
-  width: 175rpx;
-  height: 56rpx;
+
+.notice-swiper {
+  display: flex;
+  flex-direction: row;
+  height: 50rpx;
+  line-height: 40rpx;
+  width: 400rpx;
 }
 
-.type-goods{
-  margin-top: 15rpx;
+.notice-item {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #333;
+}
+/* 产品区 */
+.products-container {
+  margin-top: 11rpx;
+  padding-top: 5rpx;
   width: 100%;
   height: 100%;
+  background: #ffffff;
   align-items: center;
   justify-content: center;
 }
 
-.goods-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  box-sizing: content-box;
-  /*padding: 24rpx;*/
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.goods-box {
+.product-list {
   position: relative;
-  width: 700rpx;
-  height: 265rpx;
+  width: 100%;
+  height: 260rpx;
   background-color: white;
   overflow: hidden;
-  margin: 0 0 20rpx 20rpx;
-  display: inline-flex;
+  margin: 10rpx 10rpx 10rpx 20rpx;
+  display: flex;
   flex-direction: row;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.pos-fiexd {
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
 

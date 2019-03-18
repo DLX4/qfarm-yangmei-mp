@@ -10,15 +10,11 @@
     "pages/select-address/index",
     "pages/address-add/index",
     "pages/ucenter/order-list/index",
-
-
     "pages/order-details/index",
     "pages/wuliu/index",
     "pages/notice/show",
-    "pages/recharge/index",
     "pages/ucenter/location/location",
 
-    "pages/wxml/index",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
