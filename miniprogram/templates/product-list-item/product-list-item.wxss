@@ -1,3 +1,4 @@
+/* 产品图片 */
 .product-list .img-box {
   width: 250rpx;
   height: 250rpx;
@@ -15,8 +16,8 @@
   width: 80rpx;
   height: 80rpx;
 }
-
-.goods-info-box {
+/* 产品信息 */
+.product-info-box {
   width: 430rpx;
   height: 200rpx;
   margin-left: 20rpx;
@@ -24,8 +25,8 @@
   flex-direction: column;
 }
 
-.goods-title {
-  width: 430;
+.product-title {
+  width: 100%;
   height: 60rpx;
   font-size: 28rpx;
   text-align: left;
@@ -33,16 +34,16 @@
   color: black;
 }
 
-.goods-introduction {
-  width: 430;
+.product-introduction {
+  width: 100%;
   height: 140rpx;
   font-size: 24rpx;
   text-align: left;
   padding-top: 5rpx;
   color: dimgrey;
 }
-
-.goods-price-box {
+/* 产品价格 */
+.product-price-box {
   width: 60%;
   height: 40rpx;
   display: flex;
@@ -50,7 +51,7 @@
   margin-left: 0rpx;
 }
 
-.goods-price-box .goods-minPrice {
+.product-price-box .product-sale-price {
   text-align: left;
   padding-top: 5rpx;
   font-size: 28rpx;
@@ -58,34 +59,13 @@
   color:  #FF0077;
 }
 
-.goods-price-box .goods-originalPrice {
+.product-price-box .product-origin-price {
   text-align: left;
   padding-top: 5rpx;
   padding-left: 0rpx;
   font-size: 24rpx;
 }
-
-.product-list .sellInformation {
-  width: 430rpx;
-  height: 45rpx;
-  display: flex;
-  color: gray;
-  font-size: 22rpx;
-}
-
-.product-list .sellInformation .goodsSoldNumber {
-  width: 40%;
-  padding: 5rpx 0;
-  text-align: left;
-}
-
-.product-list .sellInformation .goodsScore {
-  overflow: hidden;
-  width: 60%;
-  padding: 5rpx 0;
-  text-align: left;
-}
-
+/* 产品添加到购物车 */
 .product-numb{
   height: 40rpx;
   width: 130rpx;
@@ -97,34 +77,6 @@
   font-size: 25rpx;
 }
 
-.product-numb-remove{
-  margin-right: 15rpx;
-  line-height: 28rpx;
-  font-size: 60rpx;
-  font-weight: 500;
-  box-sizing: border-box;
-  border: 2rpx;
-  border-style: solid;
-  border-color: #B0B0B0;
-  color: #B0B0B0;
-}
-.product-numb-add{
-  font-size: 35rpx;
-  line-height: 37rpx;
-  font-weight: 700;
-  background: #FFD161;
-  margin-left: 15rpx;
-}
-.food-numb{
-  height: 40rpx;
-  width: 130rpx;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 95rpx;
-  margin-right: 30rpx;
-  line-height: 40rpx;
-  font-size: 25rpx;
-}
 .product-numb .add,.product-numb .remove{
   width: 40rpx;
   height: 40rpx;

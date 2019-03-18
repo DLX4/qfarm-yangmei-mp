@@ -1,5 +1,5 @@
 /**index.wxss**/
-@import "../../templates/recommend-goods-item/recommend-goods-item.wxss";
+@import "../../templates/product-list-item/product-list-item.wxss";
 
 page {
   background-color: #f4f4f4;

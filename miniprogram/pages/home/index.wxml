@@ -1,4 +1,4 @@
-<import src="../../templates/recommend-goods-item/recommend-goods-item.wxml" />
+<import src="../../templates/product-list-item/product-list-item.wxml" />
 
 <view class="container" style="height:{{height}}rpx;" scroll-y="true" scroll-with-animation="true" >
   <scroll-view scroll-y="true" style="width:100%">
@@ -35,7 +35,7 @@
 
     <view class="products-container">
       <view class="product-list" wx:for="{{shopCarProducts}}" wx:key="id" wx:for-item="item" data-id="{{item._id}}" bindtap="">
-        <template is="recommend-goods-item" data="{{item}}"> </template>
+        <template is="product-list-item" data="{{item}}"> </template>
       </view>
       <wxc-loadmore wx:if="{{loadingMore}}" text="正在努力加载中..." icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
     </view>

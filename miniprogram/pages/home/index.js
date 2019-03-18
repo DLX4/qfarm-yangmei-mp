@@ -77,7 +77,7 @@ Page({
     for (let i = 0; i < app.globalData.products.length; i++) {
       if (app.globalData.products[i]._id == productId) {
         app.globalData.products[i].numb++;
-        num += app.globalData.products[i].numb;
+        numb += app.globalData.products[i].numb;
       }
     }
 

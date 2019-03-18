@@ -3,19 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7c9a7ec0-d892-41e3-b7ac-3145e4fdb10f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/images/goodsDescription/buy2add1red.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/images/goodsDescription/fresh.png" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/images/product/fresh.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miniprogram/pages/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miniprogram/pages/home/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/home/index.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miniprogram/pages/home/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/home/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/recharge/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/recharge/index.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/recharge/index.wxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/recharge/index.wxss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/wxml/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/wxml/index.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/wxml/index.wxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/wxml/index.wxss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,14 +22,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6704762">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.wxml" pinned="false" current-in-tab="true">
+          <file leaf-file-name="product-list-item.wxml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="216">
+                  <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+                  <folding>
+                    <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#view#2;n#view#0;n#view#1;n#template#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.wxml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.wxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="98">
-                  <caret line="7" column="105" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="105" />
+                <state relative-caret-position="518">
+                  <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
                   <folding>
                     <element signature="n#style#0;n#view#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#scroll-view#0;n#view#0;n#!!top" expanded="true" />
@@ -48,37 +67,15 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recommend-goods-item.wxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-                  <folding>
-                    <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#view#2;n#view#0;n#view#1;n#template#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="recommend-goods-item.wxss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="182">
-                  <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.wxss" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.wxss">
+          <file leaf-file-name="product-list-item.wxss" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="443">
-                  <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+                <state relative-caret-position="938">
+                  <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
                 </state>
               </provider>
             </entry>
@@ -89,9 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>handlerMove</find>
-      <find>showPopup</find>
-      <find>tapBanner</find>
       <find>handlerStart</find>
       <find>img-box</find>
       <find>flex-direction</find>
@@ -118,11 +112,15 @@
       <find>我的</find>
       <find>进入</find>
       <find>wxml/</find>
+      <find>slide-image</find>
       <find>goods-box</find>
+      <find>+= app.globalData.products</find>
+      <find>goods</find>
     </findStrings>
     <replaceStrings>
       <replace>/pages/home/index</replace>
       <replace>product-list</replace>
+      <replace>product</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\code\qfarm-yangmei-mp\miniprogram\pages</dir>
@@ -168,11 +166,13 @@
         <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/index-new/index.wxss" />
         <option value="$PROJECT_DIR$/miniprogram/pages/ucenter/index-new/index.wxml" />
         <option value="$PROJECT_DIR$/miniprogram/pages/start/start.wxml" />
-        <option value="$PROJECT_DIR$/miniprogram/pages/home/index.js" />
         <option value="$PROJECT_DIR$/miniprogram/app.json" />
         <option value="$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxss" />
-        <option value="$PROJECT_DIR$/miniprogram/pages/home/index.wxml" />
         <option value="$PROJECT_DIR$/miniprogram/pages/home/index.wxss" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/home/index.wxml" />
+        <option value="$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxml" />
+        <option value="$PROJECT_DIR$/miniprogram/pages/home/index.js" />
+        <option value="$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxss" />
       </list>
     </option>
   </component>
@@ -235,14 +235,27 @@
               <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
               <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
               <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="more" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
               <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
               <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
@@ -250,6 +263,21 @@
               <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="start" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ucenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
+              <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ucenter" type="462c0819:PsiDirectoryNode" />
+              <item name="index-new" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
@@ -268,7 +296,7 @@
               <item name="qfarm-yangmei-mp" type="462c0819:PsiDirectoryNode" />
               <item name="miniprogram" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="recommend-goods-item" type="462c0819:PsiDirectoryNode" />
+              <item name="product-list-item" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="qfarm-yangmei-mp" type="b2602c69:ProjectViewProjectNode" />
@@ -291,6 +319,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\code\qfarm-yangmei-mp\miniprogram\images\goodsDescription" />
+      <recent name="D:\code\qfarm-yangmei-mp\miniprogram\images\home" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\code\qfarm-yangmei-mp\miniprogram\templates\meituan" />
       <recent name="D:\code\qfarm-yangmei-mp\miniprogram\pages\ucenter" />
@@ -322,12 +354,12 @@
       <option name="presentableId" value="Default" />
       <updated>1552558221941</updated>
       <workItem from="1552558224338" duration="70000" />
-      <workItem from="1552558302509" duration="151263000" />
+      <workItem from="1552558302509" duration="152599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151333000" />
+    <option name="totallyTimeSpent" value="152669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -337,7 +369,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32980973" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -608,16 +640,6 @@
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/chooseLib/chooseLib.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/databaseGuide/databaseGuide.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -666,28 +688,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxml">
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.wxss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#2;n#view#0;n#view#1;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/templates/recommend-goods-item/recommend-goods-item.wxss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        <state relative-caret-position="511">
+          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.wxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="7" column="105" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="105" />
+        <state relative-caret-position="518">
+          <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#scroll-view#0;n#view#0;n#!!top" expanded="true" />
@@ -699,10 +710,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.wxss">
+    <entry file="file://$PROJECT_DIR$/miniprogram/pages/home/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+        <state relative-caret-position="210">
+          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="938">
+          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/miniprogram/templates/product-list-item/product-list-item.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#2;n#view#0;n#view#1;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
