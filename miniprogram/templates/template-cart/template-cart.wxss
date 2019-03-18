@@ -13,17 +13,20 @@
 }
 
 .list-top {
-  width: 100%;
   height: 88rpx;
   line-height: 88rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 30rpx;
   font-size: 28rpx;
   align-items: center;
-  background: rgba(105, 195, 170, 0.3);
+  /*background: rgba(105, 195, 170, 0.3);*/
+  /*background: white;*/
+  width: 870rpx;/*870*/
+  transition: margin-left 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .list-top .label {
@@ -105,10 +108,6 @@
   height: 38rpx;
   line-height: 38rpx;
   margin: 8rpx 0 25rpx 0;
-}
-
-.goods-info .text-box .goods-price {
-  color: #ff4422;
 }
 
 .goods-info .text-box .buy-num {
@@ -238,4 +237,42 @@
 
 .jiesuan-box .total {
   color: #ff4422;
+}
+
+/* 产品添加到购物车 */
+.product-numb{
+  height: 40rpx;
+  width: 130rpx;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0rpx;
+  margin-right: 30rpx;
+  line-height: 40rpx;
+  font-size: 25rpx;
+}
+
+.product-numb .add,.product-numb .remove{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 30rpx;
+  text-align: center;
+}
+.product-numb .add{
+  font-size: 35rpx;
+  line-height: 37rpx;
+  font-weight: 700;
+  background: #FF0077;
+  margin-left: 15rpx;
+  color: #ffffff;
+}
+.product-numb .remove{
+  margin-right: 15rpx;
+  line-height: 28rpx;
+  font-size: 60rpx;
+  font-weight: 500;
+  box-sizing: border-box;
+  border: 2rpx;
+  border-style: solid;
+  border-color: #B0B0B0;
+  color: #B0B0B0;
 }

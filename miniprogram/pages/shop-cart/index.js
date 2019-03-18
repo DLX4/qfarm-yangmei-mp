@@ -2,6 +2,8 @@
 var app = getApp()
 Page({
   data: {
+    shopCarProducts: [],
+
     goodsList: {
       saveHidden: true,
       totalPrice: 0,
@@ -11,6 +13,29 @@ Page({
     },
     shopDeliveryPrice:[],
     delBtnWidth: 120,    //删除按钮宽度单位（rpx）
+  },
+  onLoad: function () {
+    this.setData({
+      shopCarProducts: app.globalData.products,
+    });
+    this.initEleWidth();
+    //this.onShow();
+    this.getDeliveryPrice()
+  },
+  onShow: function () {
+    var shopList = [];
+    // 获取购物车数据
+    var shopCarInfoMem = wx.getStorageSync('shopCarInfo');
+    if (shopCarInfoMem && shopCarInfoMem.shopList) {
+      shopList = shopCarInfoMem.shopList
+    }
+    this.data.goodsList.list = shopList;
+    this.setGoodsList(this.getSaveHide(), this.totalPrice(), this.allSelect(), this.noSelect(), shopList);
+  },
+  toIndexPage: function () {
+    wx.switchTab({
+      url: "/pages/home/index"
+    });
   },
 
   //获取元素自适应后的实际宽度
@@ -31,26 +56,6 @@ Page({
     var delBtnWidth = this.getEleWidth(this.data.delBtnWidth);
     this.setData({
       delBtnWidth: delBtnWidth
-    });
-  },
-  onLoad: function () {
-    this.initEleWidth();
-    //this.onShow();
-    this.getDeliveryPrice()
-  },
-  onShow: function () {
-    var shopList = [];
-    // 获取购物车数据
-    var shopCarInfoMem = wx.getStorageSync('shopCarInfo');
-    if (shopCarInfoMem && shopCarInfoMem.shopList) {
-      shopList = shopCarInfoMem.shopList
-    }
-    this.data.goodsList.list = shopList;
-    this.setGoodsList(this.getSaveHide(), this.totalPrice(), this.allSelect(), this.noSelect(), shopList);
-  },
-  toIndexPage: function () {
-    wx.switchTab({
-      url: "/pages/home/index"
     });
   },
 
@@ -433,22 +438,5 @@ Page({
     })
   },
   getDeliveryPrice:function() {
-    var that = this
-    //TODO-DLX
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/config/get-value',
-    //   data: {
-    //     key: 'shopDeliveryPrice'
-    //   },
-    //   success: function (res) {
-    //     if (res.data.code == 0) {
-    //       var shopDeliveryPrice = parseFloat(parseFloat(res.data.data.value).toFixed(2))
-    //       that.setData({
-    //         shopDeliveryPrice: shopDeliveryPrice
-    //       })
-    //       console.log('配送起步价：',shopDeliveryPrice,res.data.data.value)
-    //     }
-    //   }
-    // })
   }
 })

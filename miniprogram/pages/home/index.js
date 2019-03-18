@@ -72,11 +72,13 @@ Page({
       numb += app.globalData.products[i].numb;
     }
     // 更新购物车红点提示
-    wx.setTabBarBadge( {
-        index: 1,
-        text: numb + '',
-      }
-    );
+    if (numb > 0) {
+      wx.setTabBarBadge( {
+          index: 1,
+          text: numb + '',
+        }
+      );
+    }
   },
 
   // 购物车++
