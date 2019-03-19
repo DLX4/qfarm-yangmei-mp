@@ -87,6 +87,14 @@ Page({
       //loadingStatus: false,
     })
   },
+  // 前端订单支付回调接口
+  toPayTap: function (e) {
+    var that = this;
+    var orderId = e.currentTarget.dataset.id;
+    var money = e.currentTarget.dataset.money;
+    wxpay.wxpay(app, money, orderId, "/pages/ucenter/order-list/index");
+  },
+
   orderDetail: function (e) {
     var orderId = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -120,14 +128,7 @@ Page({
       }
     })
   },
-  toPayTap: function (e) {
-    var that = this;
-    var orderId = e.currentTarget.dataset.id;
-    var money = e.currentTarget.dataset.money;
-    var needScore = e.currentTarget.dataset.score;
-    //wxpay.wxpay(app, money, orderId, "/pages/order-list/index");
-      // TODO
-  },
+
   ////////
   handlerStart(e) {
     console.log('handlerStart')
