@@ -1,5 +1,5 @@
 {
-  "name": "sum",
+  "name": "orderquery",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wx-server-sdk": "latest"
+    "crypto": "^1.0.1",
+    "request": "^2.88.0",
+    "wx-server-sdk": "latest",
+    "xml2js": "^0.4.19",
+    "xmlreader": "^0.2.3"
   }
 }

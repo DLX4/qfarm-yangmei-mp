@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var db = require('../../utils/db.js')
 var app = getApp()
 
 Page({
@@ -75,48 +76,43 @@ Page({
       remark = e.detail.value.remark; // 备注信息
     }
 
-    let db = app.globalData.db;
-    db.collection('order').add({
-      data: {
-        userAddress: that.data.curAddressData,
-        productList: that.data.productList,
-        expressFee: that.data.expressFee,
-        productAmount: that.data.productAmount,
-        totalAmount: that.data.totalAmount,
-        discountAmount: that.data.discountAmount,
-        createTime: new Date(),
-        status: 0,
-        remark: that.data.remark
-      },
-      success: res => {
-        wx.hideLoading();
-        // wx.showToast({
-        //   title: '订单保存成功',
-        // })
-        console.log('[数据库] [新增记录] [创建订单] 成功，记录 _id: ', res._id);
+    // 订单信息
+    let order = {
+      userAddress: that.data.curAddressData,
+      productList: that.data.productList,
+      expressFee: that.data.expressFee,
+      productAmount: that.data.productAmount,
+      totalAmount: that.data.totalAmount,
+      discountAmount: that.data.discountAmount,
+      createTime: new Date(),
+      status: 0,
+      remark: that.data.remark
+    };
 
-        // 清空购物车数据
-        if (e && "buyNow" != that.data.orderType) {
-          wx.removeStorageSync('shopCarInfo');
-        }
+    db.saveOrder(app, order).then(id => {
+      wx.hideLoading();
+      console.log('[数据库] [新增记录] [创建订单] 成功，记录 _id: ', id);
 
-        // 配置模板消息推送
-        //TODO
-        // 下单成功，跳转到订单管理界面
-        wx.redirectTo({
-          url: "/pages/ucenter/order-list/index"
-        });
-      },
-      fail: err => {
-        wx.hideLoading();
-        wx.showModal({
-          title: '错误',
-          content: '下单失败',
-          showCancel: false
-        });
-        console.error('[数据库] [新增记录] [创建订单] 失败：', err)
+      // 清空购物车数据
+      if (e && "buyNow" !== that.data.orderType) {
+        wx.removeStorageSync('shopCarInfo');
       }
-    });
+
+      // 配置模板消息推送
+      //TODO
+      // 下单成功，跳转到订单管理界面
+      wx.redirectTo({
+        url: "/pages/ucenter/order-list/index"
+      });
+    }, err => {
+      wx.hideLoading();
+      wx.showModal({
+        title: '错误',
+        content: '下单失败',
+        showCancel: false
+      });
+      console.error('[数据库] [新增记录] [创建订单] 失败：', err)
+    })
 
     //TODO-DLX
     // wx.request({
@@ -183,35 +179,27 @@ Page({
   //
   getDefaultUserAddress: function () {
     var that = this;
-    let db = app.globalData.db;
-    db.collection('user_address').where({
-      _openid: app.globalData.openid,
-      isDefault:true
-    }).get({
-      success: res => {
-        console.log('[数据库] [查询记录] [用户地址] 成功: ', res);
-        if (res.data && res.data.length > 0 ) {
-          that.data.curAddressData = {};
-          that.data.curAddressData.addressId = res.data[0].id;
-          that.data.curAddressData.address = res.data[0].address;
-          that.data.curAddressData.cityName = res.data[0].cityName;
-          that.data.curAddressData.districtName = res.data[0].districtName;
-          that.data.curAddressData.mobile = res.data[0].mobile;
-          that.data.curAddressData.name = res.data[0].name;
-          that.data.curAddressData.postalCode = res.data[0].postalCode;
-          that.data.curAddressData.provinceName = res.data[0].provinceName;
-          this.setData({
-            curAddressData: that.data.curAddressData
-          });
-        }
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '查询记录失败'
-        })
-        console.error('[数据库] [查询记录] 失败：', err)
+    db.getDefaultUserAddress(app).then(result => {
+      if (result && result.length > 0 ) {
+        this.setData({
+          curAddressData: {
+            addressId: result[0].id,
+            address: result[0].address,
+            cityName: result[0].cityName,
+            districtName: result[0].districtName,
+            mobile: result[0].mobile,
+            name: result[0].name,
+            postalCode: result[0].postalCode,
+            provinceName: result[0].provinceName
+          }
+        });
       }
+    }, err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      console.error('[数据库] [查询记录] 失败：', err)
     });
 
   },

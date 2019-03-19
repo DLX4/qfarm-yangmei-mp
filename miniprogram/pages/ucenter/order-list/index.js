@@ -1,5 +1,6 @@
 var wxpay = require('../../../utils/pay.js')
 var dateUtil = require('../../../utils/date.js')
+var db = require('../../../utils/db.js')
 var app = getApp()
 Page({
   data: {
@@ -48,43 +49,36 @@ Page({
   getOrderList: function () {
     let that = this;
     let orderDataList = new Array(5);
-    let db = app.globalData.db;
-    db.collection('order').where({
-      _openid: app.globalData.openid,
-    }).get({
-      success: res => {
-        console.log('[数据库] [查询记录] [用户订单] 成功: ', res);
-        if (res.data && res.data.length > 0 ) {
 
-          for (let i = 0; i < that.data.tabs.length; i++) {
-            let tempList = [];
-            for (let j = 0; j < res.data.length; j++) {
-              if (res.data[j].status == i ) {
-                tempList[tempList.length] = {
-                  createTime: dateUtil.getFormatDate(res.data[j].createTime),
-                  _id: res.data[j]._id,
-                  status: res.data[j].status,
-                  remark: res.data[j].remark,
-                  productList: res.data[j].productList,
-                  totalAmount: res.data[j].totalAmount
-                };
-              }
+    db.getUserOrderList(app).then(data => {
+      if (data && data.length > 0 ) {
+
+        for (let i = 0; i < that.data.tabs.length; i++) {
+          let tempList = [];
+          for (let j = 0; j < data.length; j++) {
+            if (data[j].status == i ) {
+              tempList[tempList.length] = {
+                createTime: dateUtil.getFormatDate(data[j].createTime),
+                _id: data[j]._id,
+                status: data[j].status,
+                remark: data[j].remark,
+                productList: data[j].productList,
+                totalAmount: data[j].totalAmount
+              };
             }
-            orderDataList[i] = { 'status': i, 'isnull': tempList.length === 0, 'orderList': tempList };
           }
+          orderDataList[i] = { 'status': i, 'isnull': tempList.length === 0, 'orderList': tempList };
         }
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '查询记录失败'
-        });
-        console.error('[数据库] [查询记录] [用户订单] 失败：', err)
       }
+    }, err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      });
     });
+
     this.setData({
       orderList: orderDataList,
-      //loadingStatus: false,
     })
   },
   // 前端订单支付回调接口
@@ -110,6 +104,8 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.showLoading();
+          wxpay.query(orderId);
+          wx.hideLoading();
           //TODO-DLX
           // wx.request({
           //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/close',

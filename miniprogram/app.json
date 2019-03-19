@@ -2,7 +2,6 @@
   "pages": [
     "pages/start/start",
     "pages/home/index",
-    "pages/ucenter/index/index",
     "pages/ucenter/index-new/index",
     "pages/goods-details/index",
     "pages/shop-cart/index",
@@ -13,15 +12,8 @@
     "pages/order-details/index",
     "pages/wuliu/index",
     "pages/notice/show",
-    "pages/ucenter/location/location",
+    "pages/ucenter/location/location"
 
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
   ],
   "window":{
     "backgroundTextStyle":"light",

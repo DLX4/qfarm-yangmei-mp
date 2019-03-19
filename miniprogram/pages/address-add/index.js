@@ -1,4 +1,5 @@
 var commonCityData = require('../../utils/city.js')
+var db = require('../../utils/db.js')
 //获取应用实例
 var app = getApp()
 Page({
@@ -27,7 +28,7 @@ Page({
     var mobile = e.detail.value.mobile;
     var postalCode = e.detail.value.code;
 
-    if (name == "") {
+    if (name === "") {
       wx.showModal({
         title: '提示',
         content: '请填写联系人姓名',
@@ -35,7 +36,7 @@ Page({
       })
       return
     }
-    if (mobile == "") {
+    if (mobile === "") {
       wx.showModal({
         title: '提示',
         content: '请填写手机号码',
@@ -43,7 +44,7 @@ Page({
       })
       return
     }
-    if (this.data.selProvince == "请选择") {
+    if (this.data.selProvince === "请选择") {
       wx.showModal({
         title: '提示',
         content: '请选择地区',
@@ -51,7 +52,7 @@ Page({
       })
       return
     }
-    if (this.data.selCity == "请选择") {
+    if (this.data.selCity === "请选择") {
       wx.showModal({
         title: '提示',
         content: '请选择地区',
@@ -63,14 +64,14 @@ Page({
     var cityName = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].name;
     var districtId;
     var districtName;
-    if (this.data.selDistrict == "请选择" || !this.data.selDistrict) {
+    if (this.data.selDistrict === "请选择" || !this.data.selDistrict) {
       districtId = '';
       districtName = '';
     } else {
       districtId = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList[this.data.selDistrictIndex].id;
       districtName = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList[this.data.selDistrictIndex].name;
     }
-    if (address == "") {
+    if (address === "") {
       wx.showModal({
         title: '提示',
         content: '请填写详细地址',
@@ -78,7 +79,7 @@ Page({
       })
       return
     }
-    if (postalCode == "") {
+    if (postalCode === "") {
       wx.showModal({
         title: '提示',
         content: '请填写邮编',
@@ -93,38 +94,28 @@ Page({
     } else {
       apiAddid = 0;
     }
-    let db = app.globalData.db;
-    db.collection('user_address').add({
-      data: {
-        provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
-        cityName: cityName,
-        districtName: districtName,
-        name: name,
-        address: address,
-        mobile: mobile,
-        postalCode: postalCode,
-        isDefault: true
-      },
-      success: res => {
-        // 在返回结果中会包含新创建的记录的 _id
-        // this.setData({
-        // });
-        wx.showToast({
-          title: '新增记录成功',
-        });
-        console.log('[数据库] [新增记录] [用户地址] 成功', res);
-        // 跳转到结算页面
-        wx.navigateBack({});
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '新增记录失败'
-        })
-        console.error('[数据库] [新增记录] 失败：', err)
-      }
+    // 保存用户的地址
+    db.saveUserAddress(app, {
+      provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
+      cityName: cityName,
+      districtName: districtName,
+      name: name,
+      address: address,
+      mobile: mobile,
+      postalCode: postalCode,
+      isDefault: true
+    }).then(res => {
+      wx.showToast({
+        title: '地址保存成功',
+      });
+      // 跳转到结算页面
+      wx.navigateBack({});
+    }, err => {
+      wx.showToast({
+        icon: 'none',
+        title: '地址保存失败'
+      })
     });
-
   },
   initCityData: function (level, obj) {
     if (level == 1) {

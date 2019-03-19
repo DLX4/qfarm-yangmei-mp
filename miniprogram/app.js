@@ -1,5 +1,6 @@
 //app.js
 var starscore = require("./templates/starscore/starscore.js");
+var db = require('./utils/db.js')
 App({
   onLaunch: function () {
     var that = this;
@@ -120,37 +121,28 @@ App({
   },
   // 从数据库获取产品数据，并和本地的数据merge
   getProductsFromDB: function () {
+    let that = this;
+    db.getProducts(this).then(data => {
+      that.globalData.products = [];
+      if (data.length == 0) {
+        return;
+      }
 
-    var that = this;
-    var db = that.globalData.db;
-    db.collection('products').where({
-      disable: false,
-    })
-      .orderBy('sort', 'asc')
-      .get({
-        success(res) {
-          that.globalData.products = [];
-          if (res.data.length == 0) {
-            return;
-          }
+      for (let i = 0; i < data.length; i++) {
+        let temp = data[i];
+        temp.salePrice = temp.salePrice.toFixed(2);
+        temp.originPrice = temp.originPrice.toFixed(2);
+        // 已经添加的件数
+        temp.numb = 0;
+        //console.log('[插入更新产品数据]',temp);
+        that.insdateProductsLocal(temp);
 
-          for (let i = 0; i < res.data.length; i++) {
-            let temp = res.data[i];
-            temp.salePrice = temp.salePrice.toFixed(2);
-            temp.originPrice = temp.originPrice.toFixed(2);
-            // 已经添加的件数
-            temp.numb = 0;
-            //console.log('[插入更新产品数据]',temp);
-            that.insdateProductsLocal(temp);
-
-          }
-          that.globalData.products = wx.getStorageSync('product_data').products;
-          console.log('[load页]获取所有产品信息merge', that.globalData.products);
-        }
-      });
-
-
+      }
+      that.globalData.products = wx.getStorageSync('product_data').products;
+      console.log('[load页]获取所有产品信息merge', that.globalData.products);
+    });
   },
+
   // 保存更新本地产品数据
   insdateProductsLocal: function (product) {
     let productsData = wx.getStorageSync('product_data');
