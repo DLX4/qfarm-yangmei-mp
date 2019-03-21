@@ -1,38 +1,44 @@
 <import src="../../templates/wxParse/wxParse.wxml" />
 <view class="container">
-  <view class="swiper-container" wx:if="{{!product.detail.video}}">
-    <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-      <block wx:for="{{product.detail.pics}}" wx:key="unique">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image" width="355" height="150" mode="aspectFit" lazy-load="true" />
+  <view class="swiper-container">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange" indicator-dots="{{true}}">
+        <swiper-item class='swiper-item' wx:for="{{product.detail.pics}}" wx:key="unique">
+          <image src="{{item}}" class="swiper-item-image" mode="scaleToFill" lazy-load="true" />
         </swiper-item>
-      </block>
     </swiper>
-    <view class="dots">
-      <block wx:for="{{product.detail.pics}}" wx:key="unique">
-        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-      </block>
-    </view>
+
   </view>
-  <view class="swiper-container" wx:if="{{product.detail.video}}">
-    <video src="{{product.detail.video}}" autoplay="true" loop="true" style='width:100%'></video>
-  </view>
-  <view class="goods-info">
-    <view class="goods-title">{{product.title}}</view>
-    <wxc-price style="padding-left:25rpx;color: #e64340;font-weight: bold;float: left;width: 40%;height:50rpx;line-height:40rpx;" value='{{product.salePrice}}'></wxc-price>
-    <view style="color:#999;font-size:24rpx;box-sizing: border-box;float: left;">{{product.soldCnt}}人已购买</view>
-    <view class="goods-info-fx" >
-      <wxc-icon type='share' size='60' color='#e64340'></wxc-icon>
-      <button open-type="share">分享</button>
-      <text>分享有赏</text>
+
+  <view class="product-info">
+    <view class="title">{{product.title}}</view>
+    <view class="introduction">{{product.introduction}}</view>
+
+    <view class="product-brief-info">
+      <view class="product-brief-part1">
+        <wxc-price class='product-sale-price' value='{{198}}'></wxc-price>
+        <wxc-price class="product-origin-price" value='{{122}}' status='del'></wxc-price>
+      </view>
+
+      <view class="product-brief-part2">
+        <view class="product-brief-font">好评率96.7%</view>
+      </view>
+
+      <view class="product-brief-part3">
+        <view class="product-brief-font">已售{{product.soldCnt}}份</view>
+      </view>
     </view>
+
+    <view style="display: flex;flex-direction: row;justify-content:center; align-items:center;">
+      <view class="cut-line" style="margin-top:5rpx"></view>
+    </view>
+
   </view>
   <!--<view wx:if="{{curGoodsKanjia}}" class="row-arrow" bindtap="goKanjia">-->
       <!--邀请好友帮忙砍价 ( <text style='color:red'>底价 {{curGoodsKanjia.minPrice}} 元</text> )-->
   <!--</view>-->
-  <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="selectPieceNum">
-    选择：  数量
-  </view>
+  <!--<view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="selectPieceNum">-->
+    <!--选择：  数量-->
+  <!--</view>-->
   <view class="goods-des-info">
     <view class="label-title">商品介绍</view>
     <view class="goods-text">
