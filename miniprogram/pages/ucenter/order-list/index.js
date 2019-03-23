@@ -33,14 +33,14 @@ Page({
     this.getOrderList();
   },
   onReady: function () {
-    let that = this;
-    setTimeout(function() {
-      that.setData({
-        orderList: that.data.orderList,
-        loadingStatus: false
-      });
-      //that._updateSelectedPage(0);
-    }, 400);
+    // let that = this;
+    // setTimeout(function() {
+    //   that.setData({
+    //     orderList: that.data.orderList,
+    //     loadingStatus: false
+    //   });
+    //   //that._updateSelectedPage(0);
+    // }, 400);
 
   },
   onShow: function () {
@@ -70,6 +70,10 @@ Page({
           orderDataList[i] = { 'status': i, 'isnull': tempList.length === 0, 'orderList': tempList };
         }
       }
+      this.setData({
+        loadingStatus: false,
+        orderList: orderDataList,
+      })
     }, err => {
       wx.showToast({
         icon: 'none',
@@ -77,9 +81,7 @@ Page({
       });
     });
 
-    this.setData({
-      orderList: orderDataList,
-    })
+
   },
   // 前端订单支付回调接口
   toPayTap: function (e) {

@@ -28,90 +28,32 @@
       </view>
     </view>
 
-    <view style="display: flex;flex-direction: row;justify-content:center; align-items:center;">
-      <view class="cut-line" style="margin-top:5rpx"></view>
+    <view class="cut-line-box">
+      <view class="cut-line"></view>
+    </view>
+
+    <view class="label-box" >
+      <view style="display:inline-block;padding-left: 35rpx;" wx:for="{{product.detail.labels}}" wx:key="unique">◉{{item}}</view>
     </view>
 
   </view>
-  <!--<view wx:if="{{curGoodsKanjia}}" class="row-arrow" bindtap="goKanjia">-->
-      <!--邀请好友帮忙砍价 ( <text style='color:red'>底价 {{curGoodsKanjia.minPrice}} 元</text> )-->
-  <!--</view>-->
-  <!--<view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="selectPieceNum">-->
-    <!--选择：  数量-->
-  <!--</view>-->
-  <view class="goods-des-info">
-    <view class="label-title">商品介绍</view>
-    <view class="goods-text">
-      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  <view class="product-detail-info">
+    <view class="title">商品详情</view>
+    <view class="detail">重量：{{product.weight}}克/份</view>
+    <view class="detail">包装：真空 + 冰块 保鲜</view>
+    <view class="detail">保质期：到货即可食用</view>
+    <view class="detail">贮存方法：冷藏</view>
+    <view class="image-box">
+      <image src="{{item}}"  mode="aspectFit" lazy-load="true" wx:for="{{product.detail.detailPics}}" wx:key="unique" />
     </view>
+
   </view>
-  <view class="goods-des-info" style="margin-top:35rpx;" wx:if="{{reputation}}">
-    <view class="label-title" style="border-bottom:1px solid #f4f4f4;">大家评价
-      <text style="color:red">({{reputation.length}})</text>
-    </view>
-    <view class="goods-text" style="margin-top:15rpx;" wx:for="{{reputation}}" wx:key="id">
-      <view style="width:100rpx;float:left;">
-        <image style="width: 100rpx; height: 100rpx;" src="{{item.user.avatarUrl}}"></image>
-      </view>
-      <view style="width:500rpx;float:left;margin-left:35rpx;border-bottom:1px solid #f4f4f4;">
-        <view>{{item.goods.goodReputationRemark}}</view>
-        <view style="color: #B0B0B0;font-size:24rpx;">{{item.goods.dateReputation}} {{item.goods.property}}</view>
-      </view>
-      <wxc-label class='goods-text-label' type='corner' text="{{item.goods.goodReputationStr}}"></wxc-label>
-    </view>
-  </view>
+
   <view class="footer-box">
-    <view class="contact">
-      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
-      <view style='position:absolute;bottom:10rpx;'> 客服 </view>
-    </view>
     <view class="shop-cart-btn" bindtap="goShopCar">
-      <view class="shop-num">({{shopCarInfo.productList.length}})</view>
-      <view style='position:absolute;bottom:10rpx;'> 购物车 </view>
+      <view class="shop-num">{{7}}</view>
     </view>
     <view class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>
-    <view class="now-buy" bindtap="tobuy">立即购买</view>
-  </view>
-  <view class="show-popup" hidden="{{hideShopPopup}}">
-    <view class="popup-mask" bindtap="closePopupTap"></view>
-    <view class="popup-contents">
-      <view class="pop-goods-info">
-        <view class="pop-img-box">
-          <image src="{{product.pic}}" class="goods-thumbnail" />
-        </view>
-        <view class="pop-goods-des">
-          <view class="pop-goods-title">{{product.title}}</view>
-          <view class="pop-goods-price">¥ {{selectSizePrice}}</view>
-        </view>
-        <view class="pop-goods-close" bindtap="closePopupTap"></view>
-      </view>
-      <!--<view class="size-label-box">-->
-        <!--<block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">-->
-          <!--<view class="label">{{property.name}}</view>-->
-          <!--<view class="label-item-box">-->
-            <!--<view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}"-->
-              <!--data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">-->
-              <!--{{item.name}}-->
-            <!--</view>-->
-          <!--</view>-->
-        <!--</block>-->
-      <!--</view>-->
-      <view class="buy-num-box">
-        <view class="num-label">购买数量</view>
-        <view class="num-box">
-          <view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
-          <view class="num-input">
-            <input type="number" value="{{buyNumber}}" disabled/>
-          </view>
-          <view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numJiaTap">+</view>
-        </view>
-      </view>
-      <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">
-        加入购物车
-      </view>
-      <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow">
-        立即购买
-      </view>
-    </view>
+    <!--<view class="now-buy" bindtap="tobuy">立即购买</view>-->
   </view>
 </view>

@@ -60,7 +60,6 @@ App({
     // 获取产品数据
     wx.cloud.init();
     that.globalData.db = wx.cloud.database();
-    that.getProductsFromDB();
 
     // 记录log
     var logs = wx.getStorageSync('logs') || [];
@@ -119,71 +118,8 @@ App({
       })
     }, 1000)
   },
-  // 从数据库获取产品数据，并和本地的数据merge
-  getProductsFromDB: function () {
-    let that = this;
-    db.getProducts(this).then(data => {
-      that.globalData.products = [];
-      if (data.length == 0) {
-        return;
-      }
-
-      for (let i = 0; i < data.length; i++) {
-        let temp = data[i];
-        temp.salePrice = temp.salePrice.toFixed(2);
-        temp.originPrice = temp.originPrice.toFixed(2);
-        // 已经添加的件数
-        temp.numb = 0;
-        //console.log('[插入更新产品数据]',temp);
-        that.insdateProductsLocal(temp);
-
-      }
-      that.globalData.products = wx.getStorageSync('product_data').products;
-      console.log('[load页]获取所有产品信息merge', that.globalData.products);
-    });
-  },
-
-  // 保存更新本地产品数据
-  insdateProductsLocal: function (product) {
-    let productsData = wx.getStorageSync('product_data');
-    //console.log('[product信息]>> 从storage读取', productsData);
-    if (productsData == "") {
-      productsData = {products: [product]};
-      wx.setStorageSync('product_data', productsData);
-      //console.log('[product信息]>> 初始化并写入到storage', productsData);
-      return;
-    }
-
-    for (let i = 0; i < productsData.products.length; i++) {
-      if (productsData.products[i]._id === product._id) {
-        product.numb += productsData.products[i].numb;
-        productsData.products[i] = product;
-        wx.setStorageSync('product_data', productsData);
-        //console.log('[product信息]>> 更新并写入到storage', productsData);
-        return;
-      }
-    }
-    productsData.products[productsData.products.length] = product;
-    wx.setStorageSync('product_data', productsData);
-    //console.log('[product信息]>> 新增并写入到storage', productsData);
-  },
 
 
-  // 保存产品数据到本地
-  saveProductsLocal: function () {
-    let that = this;
-    let productsData = {products: that.globalData.products};
-    wx.setStorageSync('product_data', productsData);
-  },
-  // 获取本地产品数据
-  getProductsLocal: function (productId) {
-    let productsLocal = wx.getStorageSync('product_data');
-    for (let i = 0; i < productsLocal.length; i++) {
-      if (productsLocal[i]._id == productId) {
-        return productsLocal;
-      }
-    }
-  },
 
   // 按照一定的规则计算快递费用
   getDeliveryPrice: function () {

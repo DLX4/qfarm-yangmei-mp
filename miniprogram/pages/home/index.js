@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var db = require('../../utils/db.js')
 var app = getApp();
 Page({
   data: {
@@ -30,7 +31,7 @@ Page({
     that.setData({
       recommendTitlePicStr: "http://iph.href.lu/175x56",
       shopCarProducts: app.globalData.products,
-      loadingMore: false,
+      loadingMore: true,
       isEnd: true,
       banners: [
         {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"http://iph.href.lu/750x375"},
@@ -46,9 +47,84 @@ Page({
       ]
     });
 
+    // 获取产品数据
+    this.getProductsFromDB();
+
   },
   onShow: function () {
     this.refreshTrolleyBadge();
+  },
+
+  // 从数据库获取产品数据，并和本地的数据merge
+  getProductsFromDB: function () {
+    let that = this;
+    db.getProducts(app).then(data => {
+      if (data.length === 0) {
+        return;
+      }
+
+      for (let i = 0; i < data.length; i++) {
+        let temp = data[i];
+        temp.salePrice = temp.salePrice.toFixed(2);
+        temp.originPrice = temp.originPrice.toFixed(2);
+        // 已经添加的件数
+        temp.numb = 0;
+        //console.log('[插入更新产品数据]',temp);
+        that.insdateProductsLocal(temp);
+
+      }
+      app.globalData.products = wx.getStorageSync('product_data').products;
+      console.log('[load页]获取所有产品信息merge', app.globalData.products);
+
+      that.setData({
+        shopCarProducts: app.globalData.products,
+        loadingMore: false,
+        isEnd: true,
+      });
+
+    });
+  },
+
+  // 保存更新本地产品数据
+  insdateProductsLocal: function (product) {
+    let productsData = wx.getStorageSync('product_data');
+    //console.log('[product信息]>> 从storage读取', productsData);
+    if (productsData === "") {
+      productsData = {products: [product]};
+      wx.setStorageSync('product_data', productsData);
+      //console.log('[product信息]>> 初始化并写入到storage', productsData);
+      return;
+    }
+
+    for (let i = 0; i < productsData.products.length; i++) {
+      if (productsData.products[i]._id === product._id) {
+        product.numb += productsData.products[i].numb;
+        productsData.products[i] = product;
+        wx.setStorageSync('product_data', productsData);
+        //console.log('[product信息]>> 更新并写入到storage', productsData);
+        return;
+      }
+    }
+    productsData.products[productsData.products.length] = product;
+    wx.setStorageSync('product_data', productsData);
+    //console.log('[product信息]>> 新增并写入到storage', productsData);
+  },
+
+
+  // 保存产品数据到本地
+  saveProductsLocal: function () {
+    let that = this;
+    let productsData = {products: app.globalData.products};
+    wx.setStorageSync('product_data', productsData);
+  },
+  // 获取本地产品数据
+  getProductsLocal: function (productId) {
+    let productsLocal = wx.getStorageSync('product_data');
+    for (let i = 0; i < productsLocal.length; i++) {
+      if (productsLocal[i]._id === productId) {
+        return productsLocal;
+      }
+    }
   },
 
   // 跳转到产品详情页（产品列表）
@@ -104,7 +180,7 @@ Page({
       }
     );
     // 保存到本地
-    app.saveProductsLocal();
+    that.saveProductsLocal();
   },
   // 购物车--
   removeFromTrolley: function (e) {
@@ -131,7 +207,7 @@ Page({
       )
     }
     // 保存到本地
-    app.saveProductsLocal();
+    that.saveProductsLocal();
   },
 
   /*------------------------------------事件处理函数---------------------------------------*/
