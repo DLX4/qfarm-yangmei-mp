@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var db = require('../../utils/db.js')
+var local = require('../../utils/local.js')
 var app = getApp();
 Page({
   data: {
@@ -52,7 +53,6 @@ Page({
 
   },
   onShow: function () {
-    this.refreshTrolleyBadge();
   },
 
   // 从数据库获取产品数据，并和本地的数据merge
@@ -73,7 +73,7 @@ Page({
         that.insdateProductsLocal(temp);
 
       }
-      app.globalData.products = wx.getStorageSync('product_data').products;
+      app.globalData.products = local.getProductsLocal().products;
       console.log('[load页]获取所有产品信息merge', app.globalData.products);
 
       that.setData({
@@ -82,17 +82,18 @@ Page({
         isEnd: true,
       });
 
+      that.refreshTrolleyBadge();
+
     });
   },
 
   // 保存更新本地产品数据
   insdateProductsLocal: function (product) {
-    let productsData = wx.getStorageSync('product_data');
+    let productsData = local.getProductsLocal();
     //console.log('[product信息]>> 从storage读取', productsData);
     if (productsData === "") {
       productsData = {products: [product]};
-      wx.setStorageSync('product_data', productsData);
-      //console.log('[product信息]>> 初始化并写入到storage', productsData);
+      local.saveProductsLocal(productsData);
       return;
     }
 
@@ -100,26 +101,19 @@ Page({
       if (productsData.products[i]._id === product._id) {
         product.numb += productsData.products[i].numb;
         productsData.products[i] = product;
-        wx.setStorageSync('product_data', productsData);
-        //console.log('[product信息]>> 更新并写入到storage', productsData);
+        local.saveProductsLocal(productsData);
         return;
       }
     }
     productsData.products[productsData.products.length] = product;
-    wx.setStorageSync('product_data', productsData);
+    local.saveProductsLocal(productsData);
     //console.log('[product信息]>> 新增并写入到storage', productsData);
   },
 
 
-  // 保存产品数据到本地
-  saveProductsLocal: function () {
-    let that = this;
-    let productsData = {products: app.globalData.products};
-    wx.setStorageSync('product_data', productsData);
-  },
   // 获取本地产品数据
   getProductsLocal: function (productId) {
-    let productsLocal = wx.getStorageSync('product_data');
+    let productsLocal = local.getProductsLocal();
     for (let i = 0; i < productsLocal.length; i++) {
       if (productsLocal[i]._id === productId) {
         return productsLocal;
@@ -135,7 +129,7 @@ Page({
   },
   // 跳转到产品详情页（顶部banner）
   tapBanner: function (e) {
-    if (e.currentTarget.dataset.id != 0) {
+    if (e.currentTarget.dataset.id !== 0) {
       wx.navigateTo({
         url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
       })
@@ -180,7 +174,7 @@ Page({
       }
     );
     // 保存到本地
-    that.saveProductsLocal();
+    local.saveProductsLocal({products: app.globalData.products});
   },
   // 购物车--
   removeFromTrolley: function (e) {
@@ -190,7 +184,7 @@ Page({
     let numb = 0;
 
     for (let i = 0; i < app.globalData.products.length; i++) {
-      if (app.globalData.products[i]._id == productId) {
+      if (app.globalData.products[i]._id === productId) {
         app.globalData.products[i].numb--;
       }
       numb += app.globalData.products[i].numb;
@@ -198,16 +192,22 @@ Page({
 
     that.setData({
       shopCarProducts: app.globalData.products,
-    })
+    });
     // 更新购物车红点提示
     if (numb <= 0) {
       wx.removeTabBarBadge( {
           index: 1,
         }
       )
+    } else {
+      wx.setTabBarBadge( {
+          index: 1,
+          text: numb + '',
+        }
+      );
     }
     // 保存到本地
-    that.saveProductsLocal();
+    local.saveProductsLocal({products: app.globalData.products});
   },
 
   /*------------------------------------事件处理函数---------------------------------------*/
