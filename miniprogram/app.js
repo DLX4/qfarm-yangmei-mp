@@ -1,5 +1,4 @@
 //app.js
-var starscore = require("./templates/starscore/starscore.js");
 var db = require('./utils/db.js')
 App({
   onLaunch: function () {

@@ -13,7 +13,7 @@ Page({
 
     product:null,
   },
-  
+
   onLoad: function (e) {
     var that = this;
     // 设置详情页产品信息

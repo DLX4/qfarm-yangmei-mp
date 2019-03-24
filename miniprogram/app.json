@@ -3,7 +3,7 @@
     "pages/start/start",
     "pages/home/index",
     "pages/ucenter/index-new/index",
-    "pages/goods-details/index",
+    "pages/product-detail/index",
     "pages/shop-cart/index",
     "pages/to-pay-order/index",
     "pages/select-address/index",

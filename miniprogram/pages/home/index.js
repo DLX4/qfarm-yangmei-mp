@@ -2,6 +2,7 @@
 //获取应用实例
 var db = require('../../utils/db.js')
 var local = require('../../utils/local.js')
+var trolley = require('../../utils/trolley.js')
 var app = getApp();
 Page({
   data: {
@@ -82,7 +83,8 @@ Page({
         isEnd: true,
       });
 
-      that.refreshTrolleyBadge();
+      // 刷新购物车tab的红点消息
+      trolley.refreshTrolleyBadge(app);
 
     });
   },
@@ -124,90 +126,40 @@ Page({
   // 跳转到产品详情页（产品列表）
   toDetailsTap: function (e) {
     wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/product-detail/index?id=" + e.currentTarget.dataset.id
     })
   },
   // 跳转到产品详情页（顶部banner）
   tapBanner: function (e) {
     if (e.currentTarget.dataset.id !== 0) {
       wx.navigateTo({
-        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+        url: "/pages/product-detail/index?id=" + e.currentTarget.dataset.id
       })
     }
   },
-  // 刷新购物车tab的红点消息
-  refreshTrolleyBadge: function() {
-    let numb = 0;
-    for (let i = 0; i < app.globalData.products.length; i++) {
-      numb += app.globalData.products[i].numb;
-    }
-    // 更新购物车红点提示
-    if (numb > 0) {
-      wx.setTabBarBadge( {
-          index: 1,
-          text: numb + '',
-        }
-      );
-    }
-  },
+
 
   // 购物车++
   addToTrolley: function (e) {
     var that = this;
     // 更新全局的产品数据
     let productId = e.currentTarget.dataset.productid;
-    let numb = 0;
-    for (let i = 0; i < app.globalData.products.length; i++) {
-      if (app.globalData.products[i]._id === productId) {
-        app.globalData.products[i].numb++;
-      }
-      numb += app.globalData.products[i].numb;
-    }
 
     that.setData({
-      shopCarProducts: app.globalData.products,
+      shopCarProducts: trolley.addToTrolley(app, productId),
     });
-    // 更新购物车红点提示
-    wx.setTabBarBadge( {
-        index: 1,
-        text: numb + '',
-      }
-    );
-    // 保存到本地
-    local.saveProductsLocal({products: app.globalData.products});
+
   },
   // 购物车--
   removeFromTrolley: function (e) {
     var that = this;
     // 更新全局的产品数据
     let productId = e.currentTarget.dataset.productid;
-    let numb = 0;
-
-    for (let i = 0; i < app.globalData.products.length; i++) {
-      if (app.globalData.products[i]._id === productId) {
-        app.globalData.products[i].numb--;
-      }
-      numb += app.globalData.products[i].numb;
-    }
 
     that.setData({
-      shopCarProducts: app.globalData.products,
+      shopCarProducts: trolley.removeFromTrolley(app, productId),
     });
-    // 更新购物车红点提示
-    if (numb <= 0) {
-      wx.removeTabBarBadge( {
-          index: 1,
-        }
-      )
-    } else {
-      wx.setTabBarBadge( {
-          index: 1,
-          text: numb + '',
-        }
-      );
-    }
-    // 保存到本地
-    local.saveProductsLocal({products: app.globalData.products});
+
   },
 
   /*------------------------------------事件处理函数---------------------------------------*/
