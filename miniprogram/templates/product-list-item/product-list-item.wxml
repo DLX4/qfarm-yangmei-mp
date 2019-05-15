@@ -8,8 +8,8 @@
 
   <view style="width: 430rpx;height: 250rpx;">
     <view class='product-info-box'>
-      <view class="product-title">{{item.title}}</view>
-      <view class='product-introduction'>{{item.introduction}}</view>
+      <view class="product-title" bindtap="tapNavProduct" data-productid="{{item._id}}">{{item.title}}</view>
+      <view class='product-introduction' bindtap="tapNavProduct" data-productid="{{item._id}}">{{item.introduction}}</view>
       <view style="width: 430rpx;height: 40rpx;display: flex;flex-direction: row;">
         <view class="product-price-box">
           <wxc-price class='product-sale-price' value='{{item.salePrice}}'></wxc-price>

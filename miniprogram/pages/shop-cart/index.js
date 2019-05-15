@@ -65,6 +65,13 @@ Page({
     });
 
   },
+  // 购物车导航到产品详情页
+  tapNavProduct: function (e) {
+    let productId = e.currentTarget.dataset.productid;
+    wx.navigateTo({
+      url: "/pages/product-detail/index?id=" + productId
+    })
+  },
 
   // 全选/取消全选
   allSelect: function () {

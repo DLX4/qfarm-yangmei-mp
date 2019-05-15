@@ -5,7 +5,7 @@
     <view class="banner-container">
       <swiper class="swiper-box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current='swiperCurrent' bindchange="swiperchange">
         <swiper-item class='swiper-item' wx:for="{{banners}}" wx:key="id">
-          <image bindtap="tapBanner" data-id="{{item.bannerId}}" src="{{item.picUrl}}" class="slide-image" style="-webkit-transform: scale({{ swiperCurrent == index ? 0.9 : 0.65 }}) translate({{ (swiperCurrent == index - 1 || swiperCurrent == index + 1) ? (swiperCurrent - index) * 30 : 0 }}%, 0); -webkit-transition: 0.6s;"
+          <image bindtap="tapNavProduct" data-productid="{{item.bannerId}}" src="{{item.picUrl}}" class="slide-image" style="-webkit-transform: scale({{ swiperCurrent == index ? 0.9 : 0.65 }}) translate({{ (swiperCurrent == index - 1 || swiperCurrent == index + 1) ? (swiperCurrent - index) * 30 : 0 }}%, 0); -webkit-transition: 0.6s;"
             mode="aspectFill" />
         </swiper-item>
       </swiper>

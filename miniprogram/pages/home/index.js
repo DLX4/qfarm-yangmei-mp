@@ -44,7 +44,7 @@ Page({
           id:1, title:"仙居杨梅火热预定中！",
         },
         {
-          id:2, title:"仙居杨梅火热预定中！",
+          id:2, title:"每日限量供应60份，预购从速~",
         }
       ]
     });
@@ -126,20 +126,12 @@ Page({
   },
 
   // 跳转到产品详情页（产品列表）
-  toDetailsTap: function (e) {
+  tapNavProduct: function (e) {
+    let productId = e.currentTarget.dataset.productid;
     wx.navigateTo({
-      url: "/pages/product-detail/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/product-detail/index?id=" + productId
     })
   },
-  // 跳转到产品详情页（顶部banner）
-  tapBanner: function (e) {
-    if (e.currentTarget.dataset.id !== 0) {
-      wx.navigateTo({
-        url: "/pages/product-detail/index?id=" + e.currentTarget.dataset.id
-      })
-    }
-  },
-
 
   // 购物车++
   addToTrolley: function (e) {

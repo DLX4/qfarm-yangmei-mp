@@ -4,7 +4,7 @@
   </view>
 
   <view class="shop-cart-empty">
-    <wxc-abnor type="CART" title='购物车空空如也~' bind:abnortap="toIndexPage"></wxc-abnor>
+    <wxc-abnor type="CART" title='每日限量发售，欲购从速~' bind:abnortap="toIndexPage"></wxc-abnor>
   </view>
 </template>
 
@@ -23,8 +23,8 @@
               <image src="{{item.pic}}" class="img" />
             </view>
             <view class="text-box">
-              <view class="goods-title" bindtap="selectTap" data-productid="{{item._id}}">{{item.title}}</view>
-              <view class="goods-label" bindtap="selectTap" data-productid="{{item._id}}">{{item.title}}</view>
+              <view class="goods-title" bindtap="tapNavProduct" data-productid="{{item._id}}">{{item.title}}</view>
+              <view class="goods-label" bindtap="tapNavProduct" data-productid="{{item._id}}">{{item.title}}</view>
               <view style="width: 430rpx;height: 40rpx;display: flex;flex-direction: row;">
                 <wxc-price style="color: #FF0077; width: 60%;font-size: 24rpx;" value="{{item.salePrice}}" icon='sub' decimal='small'></wxc-price>
                 <view class="product-numb">
@@ -54,7 +54,7 @@
       <view class="all-selected {{isShopCarAllSelect? 'active':''}}" wx:if="{{true}}" bindtap="allSelect">全选</view>
       <view class="total" wx:if="true">合计：¥ {{shopCarSelectAccount}}</view>
     </view>
-    <view class="to-pay-btn {{noSelect?'no-select':''}}" wx:if="{{true}}" bindtap="toPayOrder">去结算</view>
+    <view class="to-pay-btn {{shopCarSelectAccount > 0?'':''}}" wx:if="{{true}}" bindtap="toPayOrder">去结算</view>
     <!--<view class="to-pay-btn {{noSelect?'no-select':''}}" wx:if="{{!true}}" bindtap="deleteSelected">删除</view>-->
   </view>
 </template>
