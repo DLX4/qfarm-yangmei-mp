@@ -99,6 +99,7 @@ Page({
       return;
     }
 
+    // 更新一条产品数据
     for (let i = 0; i < productsData.products.length; i++) {
       if (productsData.products[i]._id === product._id) {
         product.numb += productsData.products[i].numb;
@@ -107,6 +108,7 @@ Page({
         return;
       }
     }
+    // 插入一条新的产品
     productsData.products[productsData.products.length] = product;
     local.saveProductsLocal(productsData);
     //console.log('[product信息]>> 新增并写入到storage', productsData);

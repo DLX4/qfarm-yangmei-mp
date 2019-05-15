@@ -6,8 +6,16 @@ function addToTrolley(app, productId) {
   for (let i = 0; i < app.globalData.products.length; i++) {
     if (app.globalData.products[i]._id === productId) {
       app.globalData.products[i].numb++;
+      // 添加到购物车之后默认是选中的状态
+      app.globalData.products[i].active = true;
     }
-    numb += app.globalData.products[i].numb;
+    if (numb + app.globalData.products[i].numb <= 99) {
+      numb += app.globalData.products[i].numb;
+    } else {
+      console.info("购物车商品件数最大为99件");
+      return;
+    }
+
   }
 
   // 更新购物车红点提示
@@ -27,8 +35,13 @@ function removeFromTrolley(app, productId) {
   let numb = 0;
 
   for (let i = 0; i < app.globalData.products.length; i++) {
-    if (app.globalData.products[i]._id === productId) {
-      app.globalData.products[i].numb--;
+    if (app.globalData.products[i]._id === productId ) {
+      if (app.globalData.products[i].numb > 0) {
+        app.globalData.products[i].numb--;
+      } else {
+        // 避免由于界面刷新滞后导致数量较少到负数
+        return ;
+      }
     }
     numb += app.globalData.products[i].numb;
   }
@@ -83,10 +96,51 @@ function getTrolley(app) {
   return app.globalData.products;
 }
 
+// 选中某条购物车记录
+function selectTrolleyItem(app, productId) {
+  for (let i = 0; i < app.globalData.products.length; i++) {
+    if (app.globalData.products[i]._id === productId) {
+      // 此处断言：active属性的值必然是true 或者 false
+      app.globalData.products[i].active = !app.globalData.products[i].active;
+    }
+  }
+  // 保存到本地
+  local.saveProductsLocal({products: app.globalData.products});
+
+  return app.globalData.products;
+}
+
+// 选中全部购物车记录
+function selectAllTrolleyItem(app) {
+  for (let i = 0; i < app.globalData.products.length; i++) {
+    // 此处断言：active属性的值必然是true 或者 false
+    app.globalData.products[i].active = !app.globalData.products[i].active;
+  }
+  // 保存到本地
+  local.saveProductsLocal({products: app.globalData.products});
+
+  return app.globalData.products;
+}
+
+// 购物车中选中的商品总额结算
+function sumSelectTrolley(app) {
+  let sum = 0.00;
+  for (let i = 0; i < app.globalData.products.length; i++) {
+    // 此处断言：active属性的值必然是true 或者 false
+    if (app.globalData.products[i].active) {
+      sum += parseFloat(app.globalData.products[i].salePrice) * app.globalData.products[i].numb;
+    }
+  }
+  return parseFloat(sum);
+}
+
 module.exports = {
   addToTrolley: addToTrolley,
   removeFromTrolley: removeFromTrolley,
   refreshTrolleyBadge: refreshTrolleyBadge,
   isTrolleyEmpty: isTrolleyEmpty,
-  getTrolley: getTrolley
+  getTrolley: getTrolley,
+  selectTrolleyItem: selectTrolleyItem,
+  selectAllTrolleyItem: selectAllTrolleyItem,
+  sumSelectTrolley: sumSelectTrolley
 }

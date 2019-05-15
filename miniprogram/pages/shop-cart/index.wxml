@@ -2,5 +2,5 @@
 <import src="../../templates/template-cart/template-cart.wxml" />
 
 <view class="container">
-  <template is="{{isShopCarEmpty ? 'no-goods' : 'cart-goods-list'}}" data="{{shopCarProducts}}"></template>
+  <template is="{{isShopCarEmpty ? 'no-goods' : 'cart-goods-list'}}" data="{{shopCarProducts, isShopCarAllSelect, shopCarSelectAccount}}"></template>
 </view>

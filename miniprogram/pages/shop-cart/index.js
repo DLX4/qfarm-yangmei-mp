@@ -5,19 +5,22 @@ Page({
   data: {
     shopCarProducts: [],
     isShopCarEmpty: true,
-
+    isShopCarAllSelect: false,// 购物车是否全选
+    shopCarSelectAccount: 0.00 //购物车总金额
   },
   onLoad: function () {
     this.setData({
       shopCarProducts: trolley.getTrolley(app),
-      isShopCarEmpty: trolley.isTrolleyEmpty(app)
+      isShopCarEmpty: trolley.isTrolleyEmpty(app),
+      shopCarSelectAccount: trolley.sumSelectTrolley(app)
     });
 
   },
   onShow: function () {
     this.setData({
       shopCarProducts: trolley.getTrolley(app),
-      isShopCarEmpty: trolley.isTrolleyEmpty(app)
+      isShopCarEmpty: trolley.isTrolleyEmpty(app),
+      shopCarSelectAccount: trolley.sumSelectTrolley(app)
     });
   },
   // 购物车++
@@ -39,6 +42,7 @@ Page({
 
     that.setData({
       shopCarProducts: trolley.removeFromTrolley(app, productId),
+      shopCarSelectAccount: trolley.sumSelectTrolley(app)
     });
 
   },
@@ -51,12 +55,26 @@ Page({
 
   // 勾选/去勾选购物车左侧小圆点
   selectTap: function (e) {
-    var index = e.currentTarget.dataset.index;
-    // var list = this.data.goodsList.list;
-    // if (index !== "" && index != null) {
-    //   list[parseInt(index)].active = !list[parseInt(index)].active;
-    //   this.setGoodsList(this.getSaveHide(), this.totalPrice(), this.allSelect(), this.noSelect(), list);
-    // }
+    var that = this;
+    // 更新全局的产品数据
+    let productId = e.currentTarget.dataset.productid;
+
+    that.setData({
+      shopCarProducts: trolley.selectTrolleyItem(app, productId),
+      shopCarSelectAccount: trolley.sumSelectTrolley(app)
+    });
+
+  },
+
+  // 全选/取消全选
+  allSelect: function () {
+    var that = this;
+
+    that.setData({
+      shopCarProducts: trolley.selectAllTrolleyItem(app),
+      isShopCarAllSelect: !this.data.isShopCarAllSelect,
+      shopCarSelectAccount: trolley.sumSelectTrolley(app)
+    });
   },
 
   // 购物车底部显示的总价
@@ -72,37 +90,7 @@ Page({
     total = parseFloat(total.toFixed(2));//js浮点计算bug，取两位小数精度
     return total;
   },
-  // 购物车底部显示的全选按钮
-  allSelect: function () {
-    var list = this.data.goodsList.list;
-    var allSelect = false;
-    for (var i = 0; i < list.length; i++) {
-      var curItem = list[i];
-      if (curItem.active) {
-        allSelect = true;
-      } else {
-        allSelect = false;
-        break;
-      }
-    }
-    return allSelect;
-  },
-  // 购物车底部显示的取消全选按钮
-  noSelect: function () {
-    var list = this.data.goodsList.list;
-    var noSelect = 0;
-    for (var i = 0; i < list.length; i++) {
-      var curItem = list[i];
-      if (!curItem.active) {
-        noSelect++;
-      }
-    }
-    if (noSelect == list.length) {
-      return true;
-    } else {
-      return false;
-    }
-  },
+
   // 结算按钮点击处理
   toPayOrder: function () {
     if (this.data.goodsList.totalPrice < this.data.shopDeliveryPrice){

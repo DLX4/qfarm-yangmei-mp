@@ -113,12 +113,18 @@
 
 .selector{
   width: 80rpx;
+  /*
   background: url(https://cdn.it120.cc/apifactory/2018/03/07/8ecdab31cfc3ccda44edd7bebfbdd45f.png) no-repeat 30rpx center;
+  */
+  background: url(https://cdn.it120.cc/images/weappshop/gou.png) no-repeat 30rpx center;
   background-size: 34rpx auto;
 }
 
 .selector.active{
+  /*
   background: url(https://cdn.it120.cc/apifactory/2018/03/07/d14e39b0a699114fe29c1a8614f6dbec.png) no-repeat 30rpx center;
+  */
+  background: url(https://cdn.it120.cc/images/weappshop/gou-red.png) no-repeat 30rpx center;
   background-size: 34rpx auto;
 }
 
@@ -228,7 +234,7 @@
   color: #fff;
 }
 
-.jiesuan-box {
+.account-box {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -241,7 +247,7 @@
   background-color: #fff;
 }
 
-.jiesuan-box .to-pay-btn {
+.account-box .to-pay-btn {
   width: 240rpx;
   height: 110rpx;
   text-align: center;
@@ -251,11 +257,11 @@
   color: #fff;
 }
 
-.jiesuan-box .to-pay-btn.no-select {
+.account-box .to-pay-btn.no-select {
   background-color: #ccc;
 }
 
-.jiesuan-box  .left-price {
+.account-box  .left-price {
   display: flex;
   width: 510rpx;
   justify-content: space-between;
@@ -265,19 +271,19 @@
   box-sizing: border-box;
 }
 
-.jiesuan-box .all-selected {
+.all-selected {
   padding-left: 90rpx;
   color: #000;
   background: url(https://cdn.it120.cc/images/weappshop/gou.png) no-repeat 30rpx center;
   background-size: 40rpx auto;
 }
 
-.jiesuan-box .all-selected.active {
+.all-selected.active {
   background: url(https://cdn.it120.cc/images/weappshop/gou-red.png) no-repeat 30rpx center;
   background-size: 40rpx auto;
 }
 
-.jiesuan-box .total {
+.account-box .total {
   color: #ff4422;
 }
 
