@@ -15,12 +15,12 @@
 
     <view class="product-brief-info">
       <view class="product-brief-part1">
-        <wxc-price class='product-sale-price' value='{{198}}'></wxc-price>
-        <wxc-price class="product-origin-price" value='{{122}}' status='del'></wxc-price>
+        <wxc-price class='product-sale-price' value='{{product.salePrice}}'></wxc-price>
+        <wxc-price class="product-origin-price" value='{{product.originPrice}}' status='del'></wxc-price>
       </view>
 
       <view class="product-brief-part2">
-        <view class="product-brief-font">好评率96.7%</view>
+        <view class="product-brief-font">{{product.praiseCnt}}人觉得很赞</view>
       </view>
 
       <view class="product-brief-part3">

@@ -36,15 +36,16 @@ Page({
       loadingMore: true,
       isEnd: true,
       banners: [
-        {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"http://iph.href.lu/750x375"},
-        {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"http://iph.href.lu/750x375"}
+        {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-01.PNG"},
+        {bannerId:'XIpZm3kPDdDCJ7Hy', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-02.PNG"},
+        {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-03.PNG"}
       ],
       noticeList: [
         {
           id:1, title:"仙居杨梅火热预定中！",
         },
         {
-          id:2, title:"每日限量供应60份，预购从速~",
+          id:2, title:"每日限量供应新鲜杨梅~",
         }
       ]
     });
