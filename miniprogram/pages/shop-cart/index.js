@@ -100,129 +100,22 @@ Page({
 
   // 结算按钮点击处理
   toPayOrder: function () {
-    if (this.data.goodsList.totalPrice < this.data.shopDeliveryPrice){
-      wx.showModal({
-        title: '未达到起送价',
-        content: '请您再选一些吧！',
-        showCancel: false,
-      })
-    }else{
-      wx.showLoading();
-      var that = this;
-      if (this.data.goodsList.noSelect) {
-        wx.hideLoading();
-        return;
-      }
-      // 重新计算价格，判断库存
-      var shopList = [];
-      var shopCarInfoMem = wx.getStorageSync('shopCarInfo');
-      if (shopCarInfoMem && shopCarInfoMem.shopList) {
-        // shopList = shopCarInfoMem.shopList
-        shopList = shopCarInfoMem.shopList.filter(entity => {
-          return entity.active;
-        });
-      }
-      if (shopList.length == 0) {
-        wx.hideLoading();
-        return;
-      }
-      var isFail = false;
-      var doneNumber = 0;
-      var needDoneNUmber = shopList.length;
-      for (let i = 0; i < shopList.length; i++) {
-        if (isFail) {
-          wx.hideLoading();
-          return;
-        }
-        let carShopBean = shopList[i];
-        // 获取价格和库存
-        if (!carShopBean.propertyChildIds || carShopBean.propertyChildIds == "") {
-          //TODO-DLX
-          // wx.request({
-          //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/shop/goods/detail',
-          //   data: {
-          //     id: carShopBean.goodsId
-          //   },
-          //   success: function (res) {
-          //     doneNumber++;
-          //     if (res.data.data.properties) {
-          //       wx.showModal({
-          //         title: '提示',
-          //         content: res.data.data.basicInfo.name + ' 商品已失效，请重新购买',
-          //         showCancel: false
-          //       })
-          //       isFail = true;
-          //       wx.hideLoading();
-          //       return;
-          //     }
-          //     if (res.data.data.basicInfo.stores < carShopBean.number) {
-          //       wx.showModal({
-          //         title: '提示',
-          //         content: res.data.data.basicInfo.name + ' 库存不足，请重新购买',
-          //         showCancel: false
-          //       })
-          //       isFail = true;
-          //       wx.hideLoading();
-          //       return;
-          //     }
-          //     if (res.data.data.basicInfo.minPrice != carShopBean.price) {
-          //       wx.showModal({
-          //         title: '提示',
-          //         content: res.data.data.basicInfo.name + ' 价格有调整，请重新购买',
-          //         showCancel: false
-          //       })
-          //       isFail = true;
-          //       wx.hideLoading();
-          //       return;
-          //     }
-          //     if (needDoneNUmber == doneNumber) {
-          //       that.navigateToPayOrder();
-          //     }
-          //   }
-          // })
-        } else {
-          //TODO-DLX
-          // wx.request({
-          //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/shop/goods/price',
-          //   data: {
-          //     goodsId: carShopBean.goodsId,
-          //     propertyChildIds: carShopBean.propertyChildIds
-          //   },
-          //   success: function (res) {
-          //     doneNumber++;
-          //     if (res.data.data.stores < carShopBean.number) {
-          //       wx.showModal({
-          //         title: '提示',
-          //         content: carShopBean.name + ' 库存不足，请重新购买',
-          //         showCancel: false
-          //       })
-          //       isFail = true;
-          //       wx.hideLoading();
-          //       return;
-          //     }
-          //     if (res.data.data.price != carShopBean.price) {
-          //       wx.showModal({
-          //         title: '提示',
-          //         content: carShopBean.name + ' 价格有调整，请重新购买',
-          //         showCancel: false
-          //       })
-          //       isFail = true;
-          //       wx.hideLoading();
-          //       return;
-          //     }
-          //     if (needDoneNUmber == doneNumber) {
-          //       that.navigateToPayOrder();
-          //     }
-          //   }
-          // })
-        }
 
-      }
+    wx.showLoading();
+    var that = this;
+    if (this.data.shopCarSelectAccount <= 0.88) {
+      wx.hideLoading();
+      return;
     }
+    // TODO 每日限购数量判断
+    wx.hideLoading();
+    this.navigateToPayOrder();
+
   },
   // 跳转到结算页
   navigateToPayOrder: function () {
     wx.hideLoading();
+    trolley.saveSelectTrolleyToPay(app);
     wx.navigateTo({
       url: "/pages/to-pay-order/index"
     })

@@ -134,6 +134,33 @@ function sumSelectTrolley(app) {
   return parseFloat(sum);
 }
 
+// 保存购物车中选中的要支付的商品信息
+function saveSelectTrolleyToPay(app) {
+  app.globalData.productsToPay = [];
+  for (let i = 0; i < app.globalData.products.length; i++) {
+    // 此处断言：active属性的值必然是true 或者 false
+    if (app.globalData.products[i].active) {
+      app.globalData.productsToPay.push(app.globalData.products[i]);
+    }
+  }
+  console.log("[购物车==> 下单收银台][productsToPay]:" + app.globalData.productsToPay);
+  for (let i = 0; i < app.globalData.productsToPay.length; i++) {
+    console.log(app.globalData.productsToPay[i]._id);
+  }
+}
+
+// 读取要支付的商品信息
+function getSelectTrolleyToPay(app) {
+  return app.globalData.productsToPay;
+}
+
+// 删除已经提交订单的商品信息
+function deleteTrolleyForOrder(app) {
+  for (let i = 0; i < app.globalData.productsToPay.length; i++) {
+    app.globalData.productsToPay[i].active = false;
+  }
+}
+
 module.exports = {
   addToTrolley: addToTrolley,
   removeFromTrolley: removeFromTrolley,
@@ -142,5 +169,8 @@ module.exports = {
   getTrolley: getTrolley,
   selectTrolleyItem: selectTrolleyItem,
   selectAllTrolleyItem: selectAllTrolleyItem,
-  sumSelectTrolley: sumSelectTrolley
+  sumSelectTrolley: sumSelectTrolley,
+  saveSelectTrolleyToPay: saveSelectTrolleyToPay,
+  getSelectTrolleyToPay: getSelectTrolleyToPay,
+  deleteTrolleyForOrder: deleteTrolleyForOrder
 }

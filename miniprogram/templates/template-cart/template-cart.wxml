@@ -54,7 +54,7 @@
       <view class="all-selected {{isShopCarAllSelect? 'active':''}}" wx:if="{{true}}" bindtap="allSelect">全选</view>
       <view class="total" wx:if="true">合计：¥ {{shopCarSelectAccount}}</view>
     </view>
-    <view class="to-pay-btn {{shopCarSelectAccount > 0?'':''}}" wx:if="{{true}}" bindtap="toPayOrder">去结算</view>
+    <view class="to-pay-btn {{shopCarSelectAccount > 0.88 ?'':'no-select'}}" wx:if="{{true}}" bindtap="toPayOrder">去结算</view>
     <!--<view class="to-pay-btn {{noSelect?'no-select':''}}" wx:if="{{!true}}" bindtap="deleteSelected">删除</view>-->
   </view>
 </template>

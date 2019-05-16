@@ -14,18 +14,18 @@
     </view>
     <view class="goods-list">
       <view class="list-title">商品列表</view>
-      <view class="a-goods" wx:for-items="{{productList}}" wx:key="{{index}}">
+      <view class="a-goods" wx:for-items="{{productsToPay}}" wx:key="{{index}}">
         <view class="img-box">
           <image src="{{item.pic}}" class="img" />
         </view>
         <view class="text-box">
           <view class="arow arow01">
-            <view class="goods-name">{{item.name}}</view>
-            <view class="goods-price">¥ {{item.price}}</view>
+            <view class="goods-name">{{item.title}}</view>
+            <view class="goods-price">¥ {{item.salePrice}}</view>
           </view>
           <view class="arow">
             <!--<view class="goods-label">{{item.label}}</view>-->
-            <view class="goods-num">x {{item.number}}</view>
+            <view class="goods-num">x {{item.numb}}</view>
           </view>
         </view>
       </view>
@@ -33,8 +33,8 @@
     <view class="peisong-way">
       <view class="row-box">
         <view class="row-label">配送方式</view>
-        <view class="right-text" wx:if="{{expressFee > 0}}">快递</view>
-        <view class="right-text" wx:if="{{expressFee == 0}}">包邮</view>
+        <view class="right-text" wx:if="{{expressFee > 0}}">顺丰包邮</view>
+        <view class="right-text" wx:if="{{expressFee == 0}}">顺丰包邮</view>
       </view>
       <view class="row-box">
         <view class="row-label">备注</view>

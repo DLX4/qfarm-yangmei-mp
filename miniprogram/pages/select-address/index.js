@@ -46,17 +46,19 @@ Page({
   },
   getUserAddress: function () {
     var that = this;
-    var queryResult = db.getUserAddress(app);
+    var queryResult = db.getUserAddress(app).then(data => {
+      if (data && data.length > 0 ) {
+        this.setData({
+          addressList: data
+        });
+      }
 
-    if (queryResult.code === "SUCCESS") {
-      this.setData({
-        addressList: queryResult.data
-      })
-    } else {
+    }, err => {
       wx.showToast({
         icon: 'none',
         title: '查询记录失败'
       });
-    }
+    });
+
   }
 })

@@ -125,12 +125,14 @@ App({
 
   },
   globalData:{
-    products: [],
-    db:{},
+    products: [], // 全局的产品信息（包括购物车数据），同步保存到storage
+    db:{}, // 全局的数据库对象
+    openid: null, // 全局的openID
+    productsToPay: [],// 选中准备下单的产品（购物车==> 下单收银台）
+
+    // 其它全局变量（TODO： 删除不用的全局变量）
     isConnected: true,
     launchOption: undefined,
-    openid: null,
-
     mallName:"杨梅小店",
     shareProfile: '为您奉上最好的杨梅', // 首页转发的时候术语
     globalBGColor: '#fff',

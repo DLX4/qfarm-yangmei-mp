@@ -1,39 +1,23 @@
 //index.js
 //获取应用实例
 var db = require('../../utils/db.js')
+var trolley = require('../../utils/trolley.js')
 var app = getApp()
 
 Page({
   data: {
-    productList: [], // 下单的产品信息 + 数量 + 重量等
+    productsToPay: [], // 准备下单的产品信息 + 数量 + 重量等
     curAddressData: null,// 地址信息
     expressFee: 0,// 快递费
     productAmount: 0, // 产品本身的费用
     totalAmount: 0,// 订单总额
     discountAmount: 0,// 折扣金额，默认是零
-    orderType: "", //订单类型，购物车下单或立即支付下单，默认是购物车，
   },
   onShow: function () {
     var that = this;
-    var productList = [];
-    //立即购买下单
-    if ("buyNow" === that.data.orderType) {
-      console.log('buyNow!!')
-      var buyNowInfo = wx.getStorageSync('buyNowInfo');
-      if (buyNowInfo) {
-        productList.push(buyNowInfo);
-      }
-    } else {
-      //购物车下单
-      var shopCarInfoMem = wx.getStorageSync('shopCarInfo');
-      if (shopCarInfoMem && shopCarInfoMem.productList) {
-        productList = shopCarInfoMem.productList.filter(entity => {
-          return entity.active;
-        });
-      }
-    }
+
     that.setData({
-      productList: productList,
+      productsToPay: trolley.getSelectTrolleyToPay(app),
     });
     that.getDefaultUserAddress();
     that.processTotalAmount();
@@ -41,21 +25,7 @@ Page({
 
   onLoad: function (e) {
     var that = this;
-    //显示收货地址标识
-    that.setData({
-      isNeedLogistics: 1,
-      orderType: e.orderType
-    });
-  },
 
-  getDistrictId: function (obj, aaa) {
-    if (!obj) {
-      return "";
-    }
-    if (!aaa) {
-      return "";
-    }
-    return aaa;
   },
 
   // [重要] 下单接口
@@ -86,7 +56,7 @@ Page({
       discountAmount: that.data.discountAmount,
       createTime: new Date(),
       status: 0,
-      remark: that.data.remark
+      remark: remark
     };
 
     db.saveOrder(app, order).then(id => {
@@ -204,10 +174,17 @@ Page({
 
   },
   processTotalAmount: function () {
+    let sum = 0.00;
+    for (let i = 0; i < this.data.productsToPay.length; i++) {
+      if (this.data.productsToPay[i].active) {
+        sum += parseFloat(this.data.productsToPay[i].salePrice) * this.data.productsToPay[i].numb;
+      }
+    }
+
     this.setData({
-      expressFee: 30,
-      totalAmount: 200,
-      productAmount: 198,
+      expressFee: 0,
+      totalAmount: parseFloat(sum),
+      productAmount: parseFloat(sum),
       discountAmount: 0,
     })
   },
