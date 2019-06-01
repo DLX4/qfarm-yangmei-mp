@@ -51,12 +51,12 @@ Page({
     let orderDataList = new Array(5);
 
     db.getUserOrderList(app).then(data => {
-      if (data && data.length > 0 ) {
+      if (data.length > 0 ) {
 
         for (let i = 0; i < that.data.tabs.length; i++) {
           let tempList = [];
           for (let j = 0; j < data.length; j++) {
-            if (data[j].status == i ) {
+            if (data[j].status === i ) {
               tempList[tempList.length] = {
                 createTime: dateUtil.getFormatDate(data[j].createTime),
                 _id: data[j]._id,
@@ -80,15 +80,13 @@ Page({
         title: '查询记录失败'
       });
     });
-
-
   },
   // 前端订单支付回调接口
   toPayTap: function (e) {
     var that = this;
     var orderId = e.currentTarget.dataset.id;
     var money = e.currentTarget.dataset.money;
-    wxpay.wxpay(app, money, orderId, "/pages/ucenter/order-list/index");
+    wxpay.wxpay(app, money, orderId, db, "/pages/ucenter/order-list/index");
   },
 
   orderDetail: function (e) {

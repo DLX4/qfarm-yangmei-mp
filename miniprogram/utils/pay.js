@@ -18,13 +18,14 @@ function queryMppay(orderId) {
 }
 
 // 微信支付统一下单接口
-function wxpay(app, money, orderId, redirectUrl) {
+function wxpay(app, money, orderId, db, redirectUrl) {
   console.log("[订单支付]", orderId);
   wx.cloud.callFunction({
     name: 'mppay',
     data: {
       openid: wx.getStorageSync('openid'),
-      total_fee: money * 100,
+      //total_fee: money * 100,
+      total_fee: 1,
       order_id: orderId,
       body: "新鲜杨梅"
     },
@@ -46,19 +47,25 @@ function wxpay(app, money, orderId, redirectUrl) {
           setTimeout(() => {
             // 查询支付结果
             queryMppay(orderId).then(res => {
+              //console.log("#########：" + JSON.stringify(res));
+              let data = res.result.data;
               // 查询并更新订单状态
-              if (res.result_code === "SUCCESS"
-                && res.trade_state === "SUCCESS" ) {
-                console.log("订单支付成功")
+              if (data.result_code === "SUCCESS"
+                && data.trade_state === "SUCCESS" ) {
+                db.setOrderPaid(app, orderId, data);
+                //console.log("订单支付成功" + res)
               }
               // 跳转回订单页
               wx.hideLoading();
               wx.redirectTo({
                 url: redirectUrl // 一般跳转到订单列表页 "/pages/order-list/index"
               });
+            }, err => {
+              // 再次尝试TODO
+              wx.hideLoading();
+              wx.showToast({title: '支付失败'});
             });
           }, 1000);
-
         }
       })
     }

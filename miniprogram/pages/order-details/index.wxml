@@ -17,13 +17,13 @@
         <view class="des" hidden="true">请于11时59分59秒内付款，超时订单将自动关闭</view>
       </view>
     </view>-->
-    <block wx:if="{{orderDetail.logistics}}">
-      <view wx:if="{{orderDetail.logisticsTraces}}" class="wuliu-box">
+    <block wx:if="{{true}}">
+      <view wx:if="{{false}}" class="wuliu-box">
         <view class="icon-box">
           <image class="icon" src="/images/order-details/icon-wuliu.png"></image>
         </view>
         <view class="right-text" bindtap="wuliuDetailsTap" data-id="{{orderDetail.orderInfo.id}}">
-          <view class="order-number">快递单号：{{orderDetail.logistics.trackingNumber}}</view>
+          <view class="order-number">快递单号：{{111455555555}}</view>
           <block wx:if="{{orderDetail.logisticsTraces}}">
             <view class="wuliu-text">{{orderDetail.logisticsTraces[orderDetail.logisticsTraces.length-1].AcceptStation}}</view>
             <view class="wuliu-date">{{orderDetail.logisticsTraces[orderDetail.logisticsTraces.length-1].AcceptTime}}</view>
@@ -38,21 +38,21 @@
           <image class="icon" src="/images/order-details/icon-wuliu.png"></image>
         </view>
         <view class="right-text">
-          <view class="order-number">快递单号：{{orderDetail.logistics.trackingNumber}}</view>
+          <view class="order-number">快递单号：{{24444441}}</view>
           <view class="wuliu-text">暂无物流信息</view>
         </view>
       </view>
-      <view class="address-sec">
-        <view class="icon-box">
-          <image class="icon" src="/images/order-details/icon-address.png"></image>
-        </view>
-        <view class="right-box">
-          <view class="name-tel">{{orderDetail.logistics.linkMan}} {{orderDetail.logistics.mobile}}</view>
-          <view class="text">
-            {{orderDetail.logistics.address}}
-          </view>
-        </view>
-      </view>
+      <!--<view class="address-sec">-->
+        <!--<view class="icon-box">-->
+          <!--<image class="icon" src="/images/order-details/icon-address.png"></image>-->
+        <!--</view>-->
+        <!--<view class="right-box">-->
+          <!--<view class="name-tel">{{orderDetail.logistics.linkMan}} {{orderDetail.logistics.mobile}}</view>-->
+          <!--<view class="text">-->
+            <!--{{orderDetail.logistics.address}}-->
+          <!--</view>-->
+        <!--</view>-->
+      <!--</view>-->
     </block>
   </view>
   <view class="goods-list">

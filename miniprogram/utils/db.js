@@ -77,7 +77,7 @@ function updateUserAddress(app, userAddress) {
   let id = String(userAddress._id);
   delete userAddress._openid;
   delete userAddress._id;
-  let promise = new Promise((resolve, reject) => db.collection('user_address').doc(id).set({
+  let promise = new Promise((resolve, reject) => db.collection('user_address').doc(id).set({// 注意这里是替换更新
     data: userAddress,
   }).then(res => {
     console.log('[数据库] [更新记录] [更新用户的地址] 成功，记录 _id: ', res._id);
@@ -87,7 +87,7 @@ function updateUserAddress(app, userAddress) {
     reject({code: "FAIL", data: null});
   }));
 
-  return promise;
+  return promise;lis
 }
 
 // 保存用户订单
@@ -101,6 +101,28 @@ function saveOrder(app, order) {
     resolve(res._id);
   }, err => {
     console.error('[数据库] [新增记录] [创建订单] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
+// 更新用户订单状态
+function setOrderPaid(app, orderId, detail) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('order').doc(orderId).update({
+    data: {
+      isPaid: true,
+      payTime: new Date(),
+      payDetail: detail,
+      status : 1 // 已支付（待发货）
+    },
+  }).then(res => {
+    console.log('[数据库] [更新支付订单] 成功，记录 _id: ', orderId);
+    resolve(res._id);
+  }, err => {
+    console.error('[数据库] [更新支付订单] 失败：', err)
     reject({code: "FAIL", data: null});
   }));
 
@@ -150,6 +172,7 @@ module.exports = {
   getUserAddressByKey: getUserAddressByKey,
   updateUserAddress: updateUserAddress,
   saveOrder: saveOrder,
+  setOrderPaid: setOrderPaid,
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,
   getProducts: getProducts

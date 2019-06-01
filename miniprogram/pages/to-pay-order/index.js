@@ -55,6 +55,7 @@ Page({
       totalAmount: that.data.totalAmount,
       discountAmount: that.data.discountAmount,
       createTime: new Date(),
+      isPaid: false,
       status: 0,
       remark: remark
     };
