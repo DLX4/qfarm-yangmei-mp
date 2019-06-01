@@ -213,7 +213,7 @@
 
 .order-list .a-order .price-box .total-price {
   font-size: 26rpx;
-  color: #e64340;
+  color: #FF0077;
 }
 
 .a-order .price-box .btn {

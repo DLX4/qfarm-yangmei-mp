@@ -51,7 +51,7 @@ Page({
       })
       return
     }
-    if (this.data.selProvince === "请选择") {
+    if (that.data.selProvince === "请选择") {
       wx.showModal({
         title: '提示',
         content: '请选择地区',
@@ -59,7 +59,7 @@ Page({
       })
       return
     }
-    if (this.data.selCity === "请选择") {
+    if (that.data.selCity === "请选择") {
       wx.showModal({
         title: '提示',
         content: '请选择地区',
@@ -67,16 +67,16 @@ Page({
       })
       return
     }
-    var cityId = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].id;
-    var cityName = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].name;
+    var cityId = commonCityData.cityData[that.data.selProvinceIndex].cityList[that.data.selCityIndex].id;
+    var cityName = commonCityData.cityData[that.data.selProvinceIndex].cityList[that.data.selCityIndex].name;
     var districtId;
     var districtName;
-    if (this.data.selDistrict === "请选择" || !this.data.selDistrict) {
+    if (that.data.selDistrict === "请选择" || !that.data.selDistrict) {
       districtId = '';
       districtName = '';
     } else {
-      districtId = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList[this.data.selDistrictIndex].id;
-      districtName = commonCityData.cityData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList[this.data.selDistrictIndex].name;
+      districtId = commonCityData.cityData[that.data.selProvinceIndex].cityList[that.data.selCityIndex].districtList[that.data.selDistrictIndex].id;
+      districtName = commonCityData.cityData[that.data.selProvinceIndex].cityList[that.data.selCityIndex].districtList[that.data.selDistrictIndex].name;
     }
     if (address === "") {
       wx.showModal({
@@ -102,16 +102,35 @@ Page({
       apiAddid = 0;
     }
     // 保存用户的地址
-    db.saveUserAddress(app, {
-      provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
-      cityName: cityName,
-      districtName: districtName,
-      name: name,
-      address: address,
-      mobile: mobile,
-      postalCode: postalCode,
-      isDefault: false// 非默认地址
-    }).then(res => {
+    let savePromise;
+    if (that.data.id !== '') {
+      // 保存老的地址
+      savePromise = db.updateUserAddress(app, {
+        provinceName: commonCityData.cityData[that.data.selProvinceIndex].name,
+        cityName: cityName,
+        districtName: districtName,
+        name: name,
+        address: address,
+        mobile: mobile,
+        postalCode: postalCode,
+        isDefault: false,// 非默认地址,
+        _id: that.data.id
+      })
+    } else {
+      // 保存一条新的地址
+      savePromise = db.saveUserAddress(app, {
+        provinceName: commonCityData.cityData[that.data.selProvinceIndex].name,
+        cityName: cityName,
+        districtName: districtName,
+        name: name,
+        address: address,
+        mobile: mobile,
+        postalCode: postalCode,
+        isDefault: false// 非默认地址
+      });
+    }
+
+    savePromise.then(res => {
       wx.showToast({
         title: '地址保存成功',
       });
@@ -194,8 +213,10 @@ Page({
 
       var that = this;
       db.getUserAddressByKey(app).then(result => {
+        wx.hideLoading();
         if (result.length > 0 ) {
           let address = result[0];
+          console.log("address:" + JSON.stringify(address));
           this.setData({
             selProvince: address.provinceName,
             selCity: address.cityName,
@@ -207,15 +228,6 @@ Page({
             code: address.postalCode,// 邮政编码
             id: address._id,// 数据主键
             isSubmitted: true,// 老地址还是新地址
-
-            // provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
-            // cityName: cityName,
-            // districtName: districtName,
-            // name: name,
-            // address: address,
-            // mobile: mobile,
-            // postalCode: postalCode,
-            // isDefault: false// 非默认地址
           });
           that.recoverAddressSel(address.provinceName, address.cityName, address.districtName);
         }
@@ -263,12 +275,15 @@ Page({
     for (var i = 0; i < commonCityData.cityData.length; i++) {
       if (selProvince == commonCityData.cityData[i].name) {
         this.data.selProvinceIndex = i;
+        console.log("this.data.selProvinceIndex = " + this.data.selProvinceIndex)
         for (var j = 0; j < commonCityData.cityData[i].cityList.length; j++) {
           if (selCity == commonCityData.cityData[i].cityList[j].name) {
             this.data.selCityIndex = j;
+            console.log("this.data.selCityIndex = " + this.data.selCityIndex)
             for (var k = 0; k < commonCityData.cityData[i].cityList[j].districtList.length; k++) {
               if (selDistrict == commonCityData.cityData[i].cityList[j].districtList[k].name) {
                 this.data.selDistrictIndex = k;
+                console.log("this.data.selDistrictIndex" + this.data.selDistrictIndex)
               }
             }
           }

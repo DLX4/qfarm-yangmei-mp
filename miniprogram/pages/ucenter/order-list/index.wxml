@@ -23,20 +23,20 @@
                 <wxc-abnor type="ORDER" title='您还没有相关订单~' button="去逛逛" bind:abnortap="toIndexPage"></wxc-abnor>
               </view>
               <view wx:else class="order-list">
-                <view class="a-order" wx:for-items="{{item.orderList}}" wx:key="{{_id}}">
+                <view class="a-order" wx:for-items="{{item.orderList}}" wx:key="{{_id}}" bindtap="orderDetail" data-id="{{item._id}}">
                   <view class="order-date">
-                    <view>下单时间：       {{item.createTime}}</view>
+                    <view>下单时间：{{item.createTime}}</view>
                     <!--<view class="status {{(item.status==-1 || item.status==4) ? '':'red'}}">{{item.status}}</view>-->
                   </view>
                   <view class="goods-info">
                     <view class="goods-des">
                       <view class='order-info'>
-                        <view>订单号：       {{item._id}}</view>
-                        <view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:if="{{item.status == 0 }}">订单详情</view>
-                        <view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:elif="{{item.status == 1}}">物流信息</view>
-                        <view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:elif="{{item.status == 2}}">确认收货</view>
-                        <view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:elif="{{item.status == 3}}">评价订单</view>
-                        <view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:else="{{item.status == 4}}">查看订单</view>
+                        <view>订单号：{{item._id}}</view>
+                        <!--<view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:if="{{item.status == 0 }}">订单详情</view>-->
+                        <!--<view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:elif="{{item.status == 1}}">物流信息</view>-->
+                        <!--<view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:elif="{{item.status == 2}}">确认收货</view>-->
+                        <!--<view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:elif="{{item.status == 3}}">评价订单</view>-->
+                        <!--<view class='order-advance' bindtap="orderDetail" data-id="{{item._id}}" wx:else="{{item.status == 4}}">查看订单</view>-->
                       </view>
                       <view style='padding-top:15rpx;' wx:if="{{item.remark && item.remark != ''}}">备注： {{item.remark}}</view>
                     </view>
@@ -53,7 +53,7 @@
                     <!--<view class="total-price" wx:if="{{item.score <= 0}}">合计：¥ {{item.amountReal}}</view>-->
                     <!--<view class="total-price" wx:if="{{item.score > 0}}">合计：¥ {{item.amountReal}} + {{item.score}} 积分</view>-->
                     <view style='width:250rpx;display: flex; flex-direction:row; justify-content: space-between;'>
-                      <button class="zan-btn zan-btn--warn zan-btn--mini zan-btn--plain" hidden="{{item.status==0? false : true}}" bindtap="cancelOrderTap" data-id="{{item._id}}">取消订单</button>
+                      <button class="zan-btn  zan-btn--mini zan-btn--plain" hidden="{{item.status==0? false : true}}" bindtap="cancelOrderTap" data-id="{{item._id}}">取消订单</button>
                       <button class="zan-btn zan-btn--primary zan-btn--mini zan-btn--plain" hidden="{{item.status==0? false : true}}" bindtap="toPayTap" data-id="{{item._id}}" data-money="{{item.totalAmount}}">马上付款</button>
                     </view>
                     <!--<view class="btn cancel-btn" hidden="{{item.status==0? fslse : true}}" bindtap="cancelOrderTap" data-id="{{item.id}}">取消订单</view>

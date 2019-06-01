@@ -203,7 +203,7 @@ Page({
   },
   //
   _updateSelectedPage(page) {
-    console.log('_updateSelectedPage')
+    //console.log('_updateSelectedPage')
     let { tabs, stv, activeTab } = this.data;
     activeTab = page;
     stv.offset = stv.windowWidth * activeTab;
@@ -215,7 +215,7 @@ Page({
   },
   // 用户点击订单页顶部tab切换
   handlerTabTap(e) {
-    console.log('handlerTapTap', this.data.orderList)
+    //console.log('handlerTapTap', this.data.orderList)
     this._updateSelectedPage(e.currentTarget.dataset.index);
   },
   //事件处理函数
