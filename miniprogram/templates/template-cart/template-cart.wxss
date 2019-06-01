@@ -116,7 +116,7 @@
   /*
   background: url(https://cdn.it120.cc/apifactory/2018/03/07/8ecdab31cfc3ccda44edd7bebfbdd45f.png) no-repeat 30rpx center;
   */
-  background: url(https://cdn.it120.cc/images/weappshop/gou.png) no-repeat 30rpx center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/gou.png) no-repeat 30rpx center;
   background-size: 34rpx auto;
 }
 
@@ -124,7 +124,7 @@
   /*
   background: url(https://cdn.it120.cc/apifactory/2018/03/07/d14e39b0a699114fe29c1a8614f6dbec.png) no-repeat 30rpx center;
   */
-  background: url(https://cdn.it120.cc/images/weappshop/gou-red.png) no-repeat 30rpx center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/gou-red.png) no-repeat 30rpx center;
   background-size: 34rpx auto;
 }
 
@@ -252,7 +252,7 @@
   height: 110rpx;
   text-align: center;
   line-height: 100rpx;
-  background-color: #e64340;
+  background-color: #FF0077;
   font-size: 32rpx;
   color: #fff;
 }
@@ -274,17 +274,18 @@
 .all-selected {
   padding-left: 90rpx;
   color: #000;
-  background: url(https://cdn.it120.cc/images/weappshop/gou.png) no-repeat 30rpx center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/gou.png) no-repeat 30rpx center;
   background-size: 40rpx auto;
 }
 
 .all-selected.active {
-  background: url(https://cdn.it120.cc/images/weappshop/gou-red.png) no-repeat 30rpx center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/gou-red.png) no-repeat 30rpx center;
   background-size: 40rpx auto;
 }
 
 .account-box .total {
-  color: #ff4422;
+  font-weight:bold;
+  color: #FF0077;
 }
 
 

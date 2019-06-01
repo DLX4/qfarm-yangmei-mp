@@ -4,6 +4,13 @@ var db = require('../../utils/db.js')
 var app = getApp()
 Page({
   data: {
+    name:'',// 姓名
+    mobile:'',// 手机号
+    address:'',// 详细地址
+    code:'',// 邮政编码
+    id:'',// 数据主键
+    isSubmitted: false,// 老地址还是新地址
+
     provinces: [],
     citys: [],
     defaultProvinceCode: 2,
@@ -103,7 +110,7 @@ Page({
       address: address,
       mobile: mobile,
       postalCode: postalCode,
-      isDefault: true
+      isDefault: false// 非默认地址
     }).then(res => {
       wx.showToast({
         title: '地址保存成功',
@@ -183,8 +190,43 @@ Page({
     this.initCityData(1);
     var id = e.id;
     if (id) {
-      // 初始化原数据
       wx.showLoading();
+
+      var that = this;
+      db.getUserAddressByKey(app).then(result => {
+        if (result.length > 0 ) {
+          let address = result[0];
+          this.setData({
+            selProvince: address.provinceName,
+            selCity: address.cityName,
+            selDistrict: address.districtName,
+
+            name: address.name,// 姓名
+            mobile: address.mobile,// 手机号
+            address: address.address,// 详细地址
+            code: address.postalCode,// 邮政编码
+            id: address._id,// 数据主键
+            isSubmitted: true,// 老地址还是新地址
+
+            // provinceName: commonCityData.cityData[this.data.selProvinceIndex].name,
+            // cityName: cityName,
+            // districtName: districtName,
+            // name: name,
+            // address: address,
+            // mobile: mobile,
+            // postalCode: postalCode,
+            // isDefault: false// 非默认地址
+          });
+          that.recoverAddressSel(address.provinceName, address.cityName, address.districtName);
+        }
+      }, err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        })
+        console.error('[数据库] [查询记录] 失败：', err)
+      });
+
       // TODO-DLX
       // wx.request({
       //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/user/shipping-address/detail',
@@ -215,16 +257,17 @@ Page({
       // })
     }
   },
-  setDBSaveAddressId: function (data) {
+  //
+  recoverAddressSel: function (selProvince, selCity, selDistrict) {
     var retSelIdx = 0;
     for (var i = 0; i < commonCityData.cityData.length; i++) {
-      if (data.provinceId == commonCityData.cityData[i].id) {
+      if (selProvince == commonCityData.cityData[i].name) {
         this.data.selProvinceIndex = i;
         for (var j = 0; j < commonCityData.cityData[i].cityList.length; j++) {
-          if (data.cityId == commonCityData.cityData[i].cityList[j].id) {
+          if (selCity == commonCityData.cityData[i].cityList[j].name) {
             this.data.selCityIndex = j;
             for (var k = 0; k < commonCityData.cityData[i].cityList[j].districtList.length; k++) {
-              if (data.districtId == commonCityData.cityData[i].cityList[j].districtList[k].id) {
+              if (selDistrict == commonCityData.cityData[i].cityList[j].districtList[k].name) {
                 this.data.selDistrictIndex = k;
               }
             }

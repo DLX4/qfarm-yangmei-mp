@@ -14,13 +14,14 @@ function getUserAddress(app) {
 
   return promise;
 }
-// 查询用户的默认地址
-function getDefaultUserAddress(app) {
+
+// 查询用户的地址
+function getUserAddressByKey(app, id) {
   let db = app.globalData.db;
 
   let promise = new Promise((resolve, reject) => db.collection('user_address').where({
     _openid: app.globalData.openid,
-    isDefault: true
+    _id: id
   }).get().then(res => {
     console.log('[数据库] [查询记录] 成功: ', res)
     resolve(res.data);
@@ -29,6 +30,27 @@ function getDefaultUserAddress(app) {
     reject({code: "FAIL", data: null});
   }));
 
+  return promise;
+}
+
+// 查询用户的默认地址
+function getDefaultUserAddress(app) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) =>  getUserAddress(app).then(result => {
+    // 如果有default的地址就返回，否则返回地址列表
+    for (let i = 0; i < result.length; i++) {
+      if (result[i].isDefault) {
+        console.log('[数据库] [查询记录default] 成功: ', result[i]);
+        resolve([result[i]]);
+        return;
+      }
+    }
+    resolve(result);
+  }, err => {
+    console.error('[数据库] [查询记录] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
   return promise;
 }
 
@@ -43,6 +65,25 @@ function saveUserAddress(app, userAddress) {
     resolve(res);
   }, err => {
     console.error('[数据库] [新增记录] [保存用户的地址] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
+// 更新用户的地址
+function updateUserAddress(app, userAddress) {
+  let db = app.globalData.db;
+  let id = String(userAddress._id);
+  delete userAddress._openid;
+  delete userAddress._id;
+  let promise = new Promise((resolve, reject) => db.collection('user_address').doc(id).set({
+    data: userAddress,
+  }).then(res => {
+    console.log('[数据库] [更新记录] [更新用户的地址] 成功，记录 _id: ', res._id);
+    resolve(res);
+  }, err => {
+    console.error('[数据库] [更新记录] [更新用户的地址] 失败：', err)
     reject({code: "FAIL", data: null});
   }));
 
@@ -106,6 +147,8 @@ function getProducts(app) {
 module.exports = {
   getUserAddress: getUserAddress,
   getDefaultUserAddress: getDefaultUserAddress,
+  getUserAddressByKey: getUserAddressByKey,
+  updateUserAddress: updateUserAddress,
   saveOrder: saveOrder,
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,

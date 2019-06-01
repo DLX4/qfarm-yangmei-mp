@@ -78,7 +78,7 @@ Page({
     var that = this;
 
     that.setData({
-      shopCarProducts: trolley.selectAllTrolleyItem(app),
+      shopCarProducts: trolley.selectAllTrolleyItem(app, !this.data.isShopCarAllSelect),
       isShopCarAllSelect: !this.data.isShopCarAllSelect,
       shopCarSelectAccount: trolley.sumSelectTrolley(app)
     });
@@ -95,7 +95,7 @@ Page({
       }
     }
     total = parseFloat(total.toFixed(2));//js浮点计算bug，取两位小数精度
-    return total;
+    return total.toFixed(2);
   },
 
   // 结算按钮点击处理

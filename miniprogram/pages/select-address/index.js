@@ -9,19 +9,38 @@ Page({
   },
 
   selectTap: function (e) {
+    var that = this;
     var id = e.currentTarget.dataset.id;
-      //TODO-DLX
-    // wx.request({
-    //   url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/user/shipping-address/update',
-    //   data: {
-    //     token: wx.getStorageSync('token'),
-    //     id:id,
-    //     isDefault:'true'
-    //   },
-    //   success: (res) =>{
-    //     wx.navigateBack({})
-    //   }
-    // })
+
+    for (var i = 0; i < that.data.addressList.length; i++) {
+      if (that.data.addressList[i]._id === id) {
+        // 更新用户的地址（默认地址）
+        if (!that.data.addressList[i].isDefault) {
+          that.data.addressList[i].isDefault = true ;
+          db.updateUserAddress(app, that.data.addressList[i]).then(res => {
+          }, err => {
+            wx.showToast({
+              icon: 'none',
+              title: '地址更新失败'
+            })
+          });
+        }
+
+      } else {
+        if (that.data.addressList[i].isDefault) {
+          that.data.addressList[i].isDefault = false;
+          db.updateUserAddress(app, that.data.addressList[i]).then(res => {
+          }, err => {
+            wx.showToast({
+              icon: 'none',
+              title: '地址更新失败'
+            })
+          });
+        }
+      }
+    }
+    wx.navigateBack({});
+
   },
 
   addAddess : function () {
@@ -37,9 +56,7 @@ Page({
   },
   
   onLoad: function () {
-    console.log('onLoad')
 
-   
   },
   onShow : function () {
     this.getUserAddress();

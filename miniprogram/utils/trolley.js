@@ -111,10 +111,12 @@ function selectTrolleyItem(app, productId) {
 }
 
 // 选中全部购物车记录
-function selectAllTrolleyItem(app) {
+function selectAllTrolleyItem(app, isShopCarAllSelect) {
   for (let i = 0; i < app.globalData.products.length; i++) {
-    // 此处断言：active属性的值必然是true 或者 false
-    app.globalData.products[i].active = !app.globalData.products[i].active;
+    if (app.globalData.products[i].numb > 0) {
+      // 此处断言：active属性的值必然是true 或者 false
+      app.globalData.products[i].active = isShopCarAllSelect;
+    }
   }
   // 保存到本地
   local.saveProductsLocal({products: app.globalData.products});
@@ -131,7 +133,7 @@ function sumSelectTrolley(app) {
       sum += parseFloat(app.globalData.products[i].salePrice) * app.globalData.products[i].numb;
     }
   }
-  return parseFloat(sum);
+  return parseFloat(sum).toFixed(2);
 }
 
 // 保存购物车中选中的要支付的商品信息

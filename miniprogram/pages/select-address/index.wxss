@@ -26,7 +26,7 @@
 }
 
 .a-address .left-text.active {
-  background: url(https://cdn.it120.cc/images/weappshop/addr-active.png) no-repeat left center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/addr-active.png) no-repeat left center;
   background-size: 28rpx auto;
 }
 
@@ -45,7 +45,7 @@
   height: 100%;*/
   padding: 30rpx 50rpx 30rpx 58rpx;
   box-sizing: border-box;
-  /*background: url(https://cdn.it120.cc/images/weappshop/addr-edit.png) no-repeat 43rpx center;
+  /*background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/addr-edit.png) no-repeat 43rpx center;
   background-size: 35rpx auto;*/
 }
 
@@ -62,13 +62,13 @@
 }
 
 .bottom-box .arrow-right {
-  background: url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 705rpx center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/arrow-right.png) no-repeat 705rpx center;
   background-size: 15rpx auto;
 }
 
 .bottom-box .arrow-right .add-btn {
   margin-left: 30rpx;
   padding-left: 70rpx;
-  background: url(https://cdn.it120.cc/images/weappshop/add-addr.png) no-repeat left center;
+  background: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/add-addr.png) no-repeat left center;
   background-size: 40rpx auto;
 }

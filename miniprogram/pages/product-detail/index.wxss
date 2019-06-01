@@ -181,7 +181,7 @@
   font-size: 20rpx;
   color: #008000;
   box-sizing: border-box;
-  background: url("https://cdn.it120.cc/images/weappshop/kefu.png") no-repeat center 21rpx;
+  background: url("https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/kefu.png") no-repeat center 21rpx;
   background-size: 55rpx auto;
 }
 
@@ -196,7 +196,7 @@
   font-size: 20rpx;
   color: #acacb7;
   box-sizing: border-box;
-  background: url("https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/shop-car.png") no-repeat center 21rpx; /*https://cdn.it120.cc/images/weappshop/cart.png*/
+  background: url("https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/shop-car.png") no-repeat center 21rpx; /*https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/cart.png*/
   background-size: 60rpx auto;
 }
 

@@ -49,7 +49,7 @@ Page({
     // 订单信息
     let order = {
       userAddress: that.data.curAddressData,
-      productList: that.data.productList,
+      productList: that.data.productsToPay,
       expressFee: that.data.expressFee,
       productAmount: that.data.productAmount,
       totalAmount: that.data.totalAmount,
@@ -62,11 +62,6 @@ Page({
     db.saveOrder(app, order).then(id => {
       wx.hideLoading();
       console.log('[数据库] [新增记录] [创建订单] 成功，记录 _id: ', id);
-
-      // 清空购物车数据
-      if (e && "buyNow" !== that.data.orderType) {
-        wx.removeStorageSync('shopCarInfo');
-      }
 
       // 配置模板消息推送
       //TODO
@@ -150,7 +145,7 @@ Page({
   getDefaultUserAddress: function () {
     var that = this;
     db.getDefaultUserAddress(app).then(result => {
-      if (result && result.length > 0 ) {
+      if (result.length > 0 ) {
         this.setData({
           curAddressData: {
             addressId: result[0].id,
@@ -183,8 +178,8 @@ Page({
 
     this.setData({
       expressFee: 0,
-      totalAmount: parseFloat(sum),
-      productAmount: parseFloat(sum),
+      totalAmount: parseFloat(sum).toFixed(2),
+      productAmount: parseFloat(sum).toFixed(2),
       discountAmount: 0,
     })
   },

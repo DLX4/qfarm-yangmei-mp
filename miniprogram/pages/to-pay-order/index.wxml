@@ -30,7 +30,7 @@
         </view>
       </view>
     </view>
-    <view class="peisong-way">
+    <view class="delivery-way">
       <view class="row-box">
         <view class="row-label">配送方式</view>
         <view class="right-text" wx:if="{{expressFee > 0}}">顺丰包邮</view>
@@ -49,17 +49,18 @@
         <view class="row-label">商品金额</view>
         <view class="right-text">¥ {{productAmount}}</view>
       </view>
-      <view class="row-box" wx:if="{{expressFee > 0}}">
-        <view class="row-label">运费</view>
-        <view class="right-text">+ ¥ {{expressFee}}</view>
+      <!--<view class="row-box" wx:if="{{expressFee > 0}}">-->
+      <view class="row-box">
+        <view class="row-label">运费（含保鲜包装）</view>
+        <view class="fee-text">+ ¥ {{expressFee}}</view>
       </view>
       <view class="row-box">
         <view class="row-label">优惠</view>
-        <view class="right-text">- ¥ {{discountAmount}}</view>
+        <view class="fee-text">- ¥ {{discountAmount}}</view>
       </view>
     </view>
 
-    <view class="jiesuan-box">
+    <view class="settle-box">
       <view class="left-price">
         <view class="total">合计：¥ {{totalAmount}}</view>
       </view>
