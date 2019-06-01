@@ -18,7 +18,7 @@ Page({
   onLoad: function (options) {
     try {
       let { tabs } = this.data;
-      var res = wx.getSystemInfoSync()
+      var res = wx.getSystemInfoSync();
       this.windowWidth = res.windowWidth;
       this.data.stv.lineWidth = this.windowWidth / this.data.tabs.length;
       this.data.stv.windowWidth = res.windowWidth;

@@ -1,15 +1,16 @@
 page{
-  min-height: 100%;
+  /*min-height: 100%;*/
+  height: 100%;
   background-color: #F2f2f2;
 }
 .container{
-  min-height: 100%;
+  /*min-height: 100%;*/
   overflow: hidden;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 }
 .sec-wrap{
     background-color: #fff;
-    margin-top: 20rpx;
+    /*margin-top: 20rpx;*/
 }
 .bottom-fiexd{
   position: fixed;
@@ -82,7 +83,7 @@ page{
     height: 72rpx;
     overflow: hidden;
 }
-.wuliu-box{
+.express-box{
     width: 720rpx;
     margin-left: 30rpx;
     border-bottom: 1rpx solid #f4f4f4;
@@ -90,36 +91,36 @@ page{
     align-items: center;
     padding: 30rpx 0;
 }
-.wuliu-box .icon-box {
+.express-box .icon-box {
     width: 40rpx;
     height: 40rpx;
     overflow: hidden;
     margin-right: 31rpx;
     align-self: flex-start;
 }
-.wuliu-box .icon-box .icon{
+.express-box .icon-box .icon{
     width: 40rpx;
     height: 40rpx;
 }
-.wuliu-box .arrow-right{
+.express-box .arrow-right{
     width: 15rpx;
     height: 24rpx;
 }
-.wuliu-box .arrow-right .arrow{
+.express-box .arrow-right .arrow{
     width: 15rpx;
     height: 24rpx;
 }
-.wuliu-box .right-text{
+.express-box .right-text{
     width: 575rpx;
     margin-right: 30rpx;
 }
-.wuliu-box .right-text .order-number{
+.express-box .right-text .order-number{
     font-size:28rpx;
     color:#000;
     margin-bottom: 14rpx;
 }
-.wuliu-box .right-text .wuliu-text,
-.wuliu-box .right-text .wuliu-date{
+.express-box .right-text .express-text,
+.express-box .right-text .express-date{
     font-size:24rpx;
     color:#888888;
     line-height:36rpx;
@@ -208,12 +209,12 @@ page{
     font-size: 26rpx;
     color: #999;
 }
-.peisong-way{
+.delivery-way{
     width: 100%;
     background-color: #fff;
     margin-bottom: 20rpx;
 }
-.peisong-way .row-box{
+.delivery-way .row-box{
     width: 720rpx;
     display: flex;
     justify-content: space-between;
@@ -223,16 +224,16 @@ page{
     border-bottom: 1rpx solid #f4f4f4;
     margin-left: 30rpx;
 }
-.peisong-way .row-label{
+.delivery-way .row-label{
     font-size: 28rpx;
     color: #000;
 }
-.peisong-way .right-text{
+.delivery-way .right-text{
     font-size: 28rpx;
     color: #666;
     padding-right: 30rpx;
 }
-.peisong-way .liuyan{
+.delivery-way .liuyan{
     width: 510rpx;
     font-size: 28rpx;
 }

@@ -146,6 +146,24 @@ function getUserOrderList(app) {
   return promise;
 }
 
+// 根据订单号查询订单
+function getUserOrderByKey(app, orderId) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('order').where({
+    _openid: app.globalData.openid,
+    _id: orderId
+  }).get().then(res => {
+    console.log('[数据库] [查询记录] [用户订单] 成功: ', res)
+    resolve(res.data);
+  }, err => {
+    console.error('[数据库] [查询记录] [用户订单]失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
 // 获取产品信息
 function getProducts(app) {
   let db = app.globalData.db;
@@ -173,6 +191,7 @@ module.exports = {
   updateUserAddress: updateUserAddress,
   saveOrder: saveOrder,
   setOrderPaid: setOrderPaid,
+  getUserOrderByKey: getUserOrderByKey,
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,
   getProducts: getProducts

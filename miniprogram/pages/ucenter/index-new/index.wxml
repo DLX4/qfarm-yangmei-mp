@@ -33,22 +33,22 @@
         <view style="width:649rpx;height:120rpx;margin-top:24rpx;margin-left:50rpx;">
             <view style="width:86rpx;margin-left:0rpx;float:left;">
                 <image src="images/VIP/VIP_29_29.png" style=" width:86rpx;height:57rpx;" border="0"
-                       bindtap="VIP_29_click" class="order-type-image"></image>
+                       bindtap="" class="order-type-image"></image>
                 <text class="order-type-name">待支付</text>
             </view>
             <view style="width:86rpx;margin-left:100rpx;float:left;">
                 <image src="images/VIP/VIP_32_32.png" style=" width:86rpx;height:57rpx;" border="0"
-                       bindtap="VIP_32_click" class="order-type-image"></image>
+                       bindtap="" class="order-type-image"></image>
                 <text class="order-type-name">待发货</text>
             </view>
             <view style="width:86rpx;margin-left:100rpx;float:left;">
                 <image src="images/VIP/VIP_35_35.png" style=" width:86rpx;height:57rpx;" border="0"
-                       bindtap="VIP_35_click" class="order-type-image"></image>
+                       bindtap="" class="order-type-image"></image>
                 <text class="order-type-name">待收货</text>
             </view>
             <view style="width:86rpx;margin-left:100rpx;float:left;">
                 <image src="images/VIP/VIP_38_38.png" style=" width:86rpx;height:57rpx;" border="0"
-                       bindtap="VIP_38_click" class="order-type-image"></image>
+                       bindtap="" class="order-type-image"></image>
                 <text class="order-type-name">待评价</text>
             </view>
         </view>

@@ -18,30 +18,30 @@
       </view>
     </view>-->
     <block wx:if="{{true}}">
-      <view wx:if="{{false}}" class="wuliu-box">
+      <view wx:if="{{order.status==2}}" class="express-box">
         <view class="icon-box">
           <image class="icon" src="/images/order-details/icon-wuliu.png"></image>
         </view>
-        <view class="right-text" bindtap="wuliuDetailsTap" data-id="{{orderDetail.orderInfo.id}}">
+        <view class="right-text" bindtap="wuliuDetailsTap" data-id="{{order._id}}">
           <view class="order-number">快递单号：{{111455555555}}</view>
-          <block wx:if="{{orderDetail.logisticsTraces}}">
-            <view class="wuliu-text">{{orderDetail.logisticsTraces[orderDetail.logisticsTraces.length-1].AcceptStation}}</view>
-            <view class="wuliu-date">{{orderDetail.logisticsTraces[orderDetail.logisticsTraces.length-1].AcceptTime}}</view>
+          <block wx:if="{{true}}">
+            <view class="express-text">{{7856456454561611}}</view>
+            <!--<view class="express-date">{{order.payTime}}</view>-->
           </block>
         </view>
         <view class="arrow-right">
           <image class="arrow" src="/images/order-details/arrow-right.png"></image>
         </view>
       </view>
-      <view wx:else class="wuliu-box">
-        <view class="icon-box">
-          <image class="icon" src="/images/order-details/icon-wuliu.png"></image>
-        </view>
-        <view class="right-text">
-          <view class="order-number">快递单号：{{24444441}}</view>
-          <view class="wuliu-text">暂无物流信息</view>
-        </view>
-      </view>
+      <!--<view wx:else class="express-box">-->
+        <!--<view class="icon-box">-->
+          <!--<image class="icon" src="/images/order-details/icon-wuliu.png"></image>-->
+        <!--</view>-->
+        <!--<view class="right-text">-->
+          <!--<view class="order-number">快递单号：{{24444441}}</view>-->
+          <!--<view class="express-text">暂无物流信息</view>-->
+        <!--</view>-->
+      <!--</view>-->
       <!--<view class="address-sec">-->
         <!--<view class="icon-box">-->
           <!--<image class="icon" src="/images/order-details/icon-address.png"></image>-->
@@ -58,24 +58,23 @@
   <view class="goods-list">
     <view class="list-title">商品信息</view>
     <form bindsubmit="submitReputation">
-      <block wx:for-items="{{orderDetail.goods}}" wx:key="{{index}}">
+      <block wx:for-items="{{order.productList}}" wx:key="{{index}}">
         <view class="a-goods">
           <view class="img-box">
             <image src="{{item.pic}}" class="img" />
           </view>
           <view class="text-box">
             <view class="arow arow01">
-              <view class="goods-name">{{item.goodsName}}</view>
-              <view class="goods-price">¥ {{item.amount}}</view>
+              <view class="goods-name">{{item.title}}</view>
+              <view class="goods-price">¥ {{item.salePrice}}</view>
             </view>
             <view class="arow">
-              <view class="goods-label">{{item.property}}</view>
-              <view class="goods-num">x {{item.number}}</view>
+              <!--<view class="goods-label">{{item.property}}</view>-->
+              <view class="goods-num">x {{item.numb}}</view>
             </view>
           </view>
         </view>
-        <view class="btn-row" wx:if="{{orderDetail.orderInfo.status==3}}">
-
+        <view class="btn-row" wx:if="{{order.status==3}}">
           <view class="section section_gap">
             <view style="margin-top:35rpx;margin-bottom:35rpx;">评价：</view>
             <radio-group name="goodReputation{{index}}">
@@ -94,16 +93,16 @@
           </view>
         </view>
       </block>
-      <view class="btn-row" wx:if="{{orderDetail.orderInfo.status==3}}">
+      <view class="btn-row" wx:if="{{order.status==3}}">
         <button class="confirm-btn" formType="submit">提交评价</button>
       </view>
     </form>
-    <view class="btn-row" wx:if="{{orderDetail.orderInfo.status==2}}">
+    <view class="btn-row" wx:if="{{order.status==2}}">
       <view class="confirm-btn" bindtap="confirmBtnTap" data-id="{{orderDetail.orderInfo.id}}">确认收货</view>
     </view>
-
   </view>
-  <view class="peisong-way" hidden="true">
+
+  <view class="delivery-way" hidden="true">
     <view class="row-box">
       <view class="row-label">配送方式</view>
       <view class="right-text">顺丰快递</view>
@@ -118,15 +117,15 @@
   <view class="goods-info">
     <view class="row-box">
       <view class="row-label">商品金额</view>
-      <view class="right-text">¥ {{orderDetail.orderInfo.amount}}</view>
+      <view class="right-text">¥ {{order.productAmount}}</view>
     </view>
     <view class="row-box">
       <view class="row-label">运费</view>
-      <view class="right-text">+ ¥ {{orderDetail.orderInfo.amountLogistics}}</view>
+      <view class="right-text">+ ¥ {{order.expressFee}}</view>
     </view>
     <view class="row-box">
       <view class="row-label">应付总额</view>
-      <view class="right-text">¥ {{orderDetail.orderInfo.amountReal}}</view>
+      <view class="right-text">¥ {{order.totalAmount}}</view>
     </view>
   </view>
 </view>

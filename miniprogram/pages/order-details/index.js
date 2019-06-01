@@ -1,76 +1,26 @@
+var db = require('../../utils/db.js')
+
 var app = getApp();
 Page({
   data: {
-    orderId: 0,
-    goodsList: [
-      {
-        pic: '/images/goods02.png',
-        name: '爱马仕（HERMES）大地男士最多两行文字超出就这样显…',
-        price: '300.00',
-        label: '大地50ml',
-        number: 2
-      },
-      {
-        pic: '/images/goods02.png',
-        name: '爱马仕（HERMES）大地男士最多两行文字超出就这样显…',
-        price: '300.00',
-        label: '大地50ml',
-        number: 2
-      }
-    ],
-    yunPrice: "10.00",
-    statusSteps: [
-      {
-        current: false,
-        done: false,
-        text: '待支付',
-        desc: ''
-      },
-      {
-        done: false,
-        current: false,
-        text: '待发货',
-        desc: ''
-      },
-      {
-        done: false,
-        current: false,
-        text: '待收货',
-        desc: ''
-      },
-      {
-        done: false,
-        current: false,
-        text: '待评价',
-        desc: ''
-      },
-      {
-        done: false,
-        current: false,
-        text: '已完成',
-        desc: ''
-      }
-    ],
+    order: 0,
   },
   onLoad: function (e) {
+    let that = this;
     var orderId = e.id;
-    this.data.orderId = orderId;
-    this.setData({
-      orderId: orderId
+
+    db.getUserOrderByKey(app, orderId).then(result => {
+      if (result !== undefined && result.length > 0) {
+        that.data.order = result[0];
+      }
+      that.setData({
+        order: that.data.order
+      });
+    }, error => {
+      that.data.order = {};
     });
   },
   onShow: function () {
-    var that = this;
-    var yunPrice = parseFloat(this.data.yunPrice);
-    var allprice = 0;
-    var goodsList = this.data.goodsList;
-    for (var i = 0; i < goodsList.length; i++) {
-      allprice += parseFloat(goodsList[0].price) * goodsList[0].number;
-    }
-    this.setData({
-      allGoodsPrice: allprice,
-      yunPrice: yunPrice
-    });
   },
   wuliuDetailsTap: function (e) {
     var orderId = e.currentTarget.dataset.id;
