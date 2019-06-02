@@ -107,7 +107,7 @@ function saveOrder(app, order) {
   return promise;
 }
 
-// 更新用户订单状态
+// 更新用户订单-支付状态
 function setOrderPaid(app, orderId, detail) {
   let db = app.globalData.db;
 
@@ -128,6 +128,29 @@ function setOrderPaid(app, orderId, detail) {
 
   return promise;
 }
+
+// 更新用户订单-确认收货
+function setOrderDeliveryReceived(app, orderId) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('order').doc(orderId).update({
+    data: {
+      isReceived: true,
+      receiveTime: new Date(),
+      status : 3 // 已经确认收货
+    },
+  }).then(res => {
+    console.log('[数据库] [更新订单确认收货] 成功，记录 _id: ', orderId);
+    resolve(res._id);
+  }, err => {
+    console.error('[数据库] [更新订单确认收货] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
+// 更新用户订单-
 
 // 查询用户订单
 function getUserOrderList(app) {
@@ -184,6 +207,23 @@ function getProducts(app) {
   return promise;
 }
 
+// 保存用户订单的评价信息
+function saveUserPraise(app, praise) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('praise').add({
+    data: paise,
+  }).then(res => {
+    console.log('[数据库] [新增评价] 成功，记录 _id: ', res._id);
+    resolve(res);
+  }, err => {
+    console.error('[数据库] [新增评价] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
 module.exports = {
   getUserAddress: getUserAddress,
   getDefaultUserAddress: getDefaultUserAddress,
@@ -191,8 +231,10 @@ module.exports = {
   updateUserAddress: updateUserAddress,
   saveOrder: saveOrder,
   setOrderPaid: setOrderPaid,
+  setOrderDeliveryReceived: setOrderDeliveryReceived,
   getUserOrderByKey: getUserOrderByKey,
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,
-  getProducts: getProducts
+  getProducts: getProducts,
+  saveUserPraise: saveUserPraise
 };
