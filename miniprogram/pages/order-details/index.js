@@ -77,47 +77,47 @@ Page({
   },
   // 提交评价信息
   submitPrise: function (e) {
-    console.log("submitPraise: " + JSON.stringify(e))
+    //console.log("submitPraise: " + JSON.stringify(e))
     let that = this;
     let orderId = this.data.order._id;
-    let praises = [];
     let i = 0;
-    console.log("xxx:" + e.detail.value["orderProductId" + i]);
+    let praiseCnt = 0;
+
     wx.showLoading();
-    while (e.detail.value["orderProductId" + i] !== undefined) {
+    for (i = 0; e.detail.value["orderProductId" + i] !== undefined; i++) {
       let praise = {};
       praise.orderId = orderId;
       praise.orderProductId = e.detail.value["orderProductId" + i];
       praise.productPraiseLevel = e.detail.value["productPraiseLevel" + i];
       praise.productPraiseRemark = e.detail.value["productPraiseRemark" + i];
 
-      console.log("praise:" + JSON.stringify(praise));
-
       db.saveUserPraise(app, praise).then(result => {
-
+        if (++praiseCnt === i) {// 订单状态修改为已经评价，只提交一次
+          db.setOrderPraised(app, orderId).then( res => {
+            db.getUserOrderByKey(app, orderId).then(result => {
+              if (result !== undefined && result.length > 0) {
+                that.data.order = result[0];
+              }
+              that.setData({
+                order: that.data.order
+              });
+              that.updateStatusSteps(that.data.order);
+              wx.hideLoading();
+              wx.showToast({title: '评价成功'});
+            }, error => {
+              that.data.order = {};
+              wx.hideLoading();
+            });
+          }, err => {
+            wx.showToast({title: '评价失败'});
+            wx.hideLoading();
+          });
+        }
       }, err => {
-        wx.showToast({title: '提交评价信息失败，请重试'});
+        wx.showToast({title: '评价失败'});
         wx.hideLoading();
-        return;
       });
-      praises.push(praise);
-      i++;
     }
-
-    console.log("[提交评价信息] " + praises);
-
-    // wx.request({
-    //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/Praise',
-    //   data: {
-    //     postJsonString: postJsonString
-    //   },
-    //   success: (res) => {
-    //     wx.hideLoading();
-    //     if (res.data.code == 0) {
-    //       that.onShow();
-    //     }
-    //   }
-    // })
   },
 
   // 订单状态流程图
@@ -294,7 +294,7 @@ Page({
             current: true,
             done: true,
             text: '已完成',
-            desc: orderDetail.orderInfo.dateUpdate
+            desc: ''//that.order.praiseTime
           }
         ]
       })

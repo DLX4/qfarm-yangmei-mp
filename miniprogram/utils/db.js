@@ -150,7 +150,26 @@ function setOrderDeliveryReceived(app, orderId) {
   return promise;
 }
 
-// 更新用户订单-
+// 更新用户订单-已经提交评价
+function setOrderPraised(app, orderId) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('order').doc(orderId).update({
+    data: {
+      isPraised: true,
+      praiseTime: new Date(),
+      status : 4 // 已经提交评价
+    },
+  }).then(res => {
+    console.log('[数据库] [更新订单已评价状态] 成功，记录 _id: ', orderId);
+    resolve(res._id);
+  }, err => {
+    console.error('[数据库] [更新订单已评价状态] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
 
 // 查询用户订单
 function getUserOrderList(app) {
@@ -212,7 +231,7 @@ function saveUserPraise(app, praise) {
   let db = app.globalData.db;
 
   let promise = new Promise((resolve, reject) => db.collection('praise').add({
-    data: paise,
+    data: praise,
   }).then(res => {
     console.log('[数据库] [新增评价] 成功，记录 _id: ', res._id);
     resolve(res);
@@ -232,6 +251,7 @@ module.exports = {
   saveOrder: saveOrder,
   setOrderPaid: setOrderPaid,
   setOrderDeliveryReceived: setOrderDeliveryReceived,
+  setOrderPraised: setOrderPraised,
   getUserOrderByKey: getUserOrderByKey,
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,

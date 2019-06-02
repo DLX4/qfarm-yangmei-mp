@@ -18,7 +18,7 @@
       </view>
     </view>-->
     <block wx:if="{{true}}">
-      <view wx:if="{{order.status==2}}" class="express-box">
+      <view wx:if="{{true}}" class="express-box">
         <view class="icon-box">
           <image class="icon" src="/images/order-details/icon-wuliu.png"></image>
         </view>

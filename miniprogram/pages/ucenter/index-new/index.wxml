@@ -60,7 +60,7 @@
         <navigator url="/pages/select-address/index" hover-class="none" class="a">
             <view class="ucenter-list">
                 <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
-                    <image src="images/VIP/VIP_49_49.png"  border="0"
+                    <image src="images/setting.png"  border="0"
                            bindtap="VIP_43_click" class="ucenter-list-icon"></image>
                 </view>
                 <text style="width:78%;" class="entry-text">收货地址</text>
@@ -76,7 +76,7 @@
 
         <view class="ucenter-list">
             <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
-                <image src="images/VIP/VIP_49_49.png"  border="0"
+                <image src="images/staff.png"  border="0"
                        bindtap="VIP_43_click" class="ucenter-list-icon"></image>
             </view>
             <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
@@ -93,10 +93,10 @@
         <!--<navigator url="/pages/ucenter/location/location" hover-class="none" class="a">-->
             <view class="ucenter-list">
                 <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
-                    <image src="images/VIP/VIP_49_49.png"  border="0"
+                    <image src="images/find.png"  border="0"
                            bindtap="VIP_43_click" class="ucenter-list-icon"></image>
                 </view>
-                <text style="width:78%;" class="entry-text">实地采摘</text>
+                <text style="width:78%;" class="entry-text">采摘农家乐</text>
                 <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
                     <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
                            bindtap="VIP_25_click" ></image>
@@ -119,22 +119,22 @@
         <!--</view>-->
 
         <!--<view class="cut-line" style="margin-top:28rpx"></view>-->
-        <navigator url="/pages/ucenter/feedback/feedback" hover-class="none" class="a">
-            <view class="ucenter-list">
-                <view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
-                    <image src="images/VIP/VIP_49_49.png"  border="0"
-                           bindtap="VIP_43_click" class="ucenter-list-icon"></image>
-                </view>
-                <text style="width:78%;" class="entry-text">意见反馈</text>
-                <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
-                    <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
-                           bindtap="VIP_25_click" ></image>
-                </view>
-            </view>
-        </navigator>
+        <!--<navigator url="/pages/ucenter/feedback/feedback" hover-class="none" class="a">-->
+            <!--<view class="ucenter-list">-->
+                <!--<view style="width:10%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">-->
+                    <!--<image src="images/VIP/VIP_49_49.png"  border="0"-->
+                           <!--bindtap="VIP_43_click" class="ucenter-list-icon"></image>-->
+                <!--</view>-->
+                <!--<text style="width:78%;" class="entry-text">意见反馈</text>-->
+                <!--<view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">-->
+                    <!--<image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"-->
+                           <!--bindtap="VIP_25_click" ></image>-->
+                <!--</view>-->
+            <!--</view>-->
+        <!--</navigator>-->
         <!--align-items: center;-->
         <!--justify-content: center;-->
-        <view class="cut-line" style="margin-top:28rpx"></view>
+        <!--<view class="cut-line" style="margin-top:28rpx"></view>-->
 
     </view>
     <view class="ucenter-area-box">
