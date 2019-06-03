@@ -81,3 +81,10 @@ page {
     margin-top:30rpx;
     margin-left:32rpx;
 }
+
+.badge {
+    position: relative;
+    top: -22rpx;
+    /*right: 20rpx;*/
+    z-index: 100;
+}

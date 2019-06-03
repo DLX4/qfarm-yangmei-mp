@@ -22,7 +22,7 @@
     height: 66rpx;
     margin-top: 30rpx;
     padding: 0 30rpx;
-    background-color: #ff5777;
+    background-color: #FF0077;
     border: 0 none;
     border-radius: 2rpx;
     color: #fff;

@@ -10,7 +10,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: #FFF;
-    background: #f5342f;
+    background: #FF0077;
     border-radius: 18rpx;
     overflow: hidden;
   }

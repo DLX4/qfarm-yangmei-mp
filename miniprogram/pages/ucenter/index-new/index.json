@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "wxc-loadmore": "../../../dist/packages/@minui/wxc-loadmore/dist/index"
+    "wxc-loadmore": "../../../dist/packages/@minui/wxc-loadmore/dist/index",
+    "wxc-badge": "../../../dist/packages/@minui/wxc-badge/dist/index"
   },
   "navigationBarTitleText": "我的个人中心"
 }
