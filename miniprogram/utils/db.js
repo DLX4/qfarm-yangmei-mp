@@ -108,11 +108,12 @@ function saveOrder(app, order) {
 }
 
 // 更新用户订单-支付状态
-function setOrderPaid(app, orderId, detail) {
+function setOrderPaid(app, orderId, detail, prepayId) {
   let db = app.globalData.db;
 
   let promise = new Promise((resolve, reject) => db.collection('order').doc(orderId).update({
     data: {
+      prepayId: prepayId,
       isPaid: true,
       payTime: new Date(),
       payDetail: detail,

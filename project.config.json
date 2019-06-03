@@ -11,6 +11,10 @@
 	"appid": "wx11a17ab0a35d35ae",
 	"projectname": "qfarm-yangmei-mp",
 	"libVersion": "2.6.2",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"compileType": "miniprogram",
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -32,31 +36,31 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "¾«Ñ¡",
+					"name": "ï¿½ï¿½Ñ¡",
 					"pathName": "pages/choiceness/index",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "·¢ÏÖ",
+					"name": "ï¿½ï¿½ï¿½ï¿½",
 					"pathName": "pages/finder/index",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "·ÖÀà",
+					"name": "ï¿½ï¿½ï¿½ï¿½",
 					"pathName": "pages/classification/index",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "ÎÒµÄ",
+					"name": "ï¿½Òµï¿½",
 					"pathName": "pages/ucenter/index/index",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "¹ºÎï³µ",
+					"name": "ï¿½ï¿½ï¿½ï³µ",
 					"pathName": "pages/shop-cart/index",
 					"query": ""
 				}

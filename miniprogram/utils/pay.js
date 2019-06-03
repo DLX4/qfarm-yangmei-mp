@@ -1,3 +1,6 @@
+let tplmsg = require('../utils/tplmsg.js');
+//let dateUtil = require('../utils/date.js');
+
 // 微信支付查询接口
 function queryMppay(orderId) {
   console.log("[微信支付订单查询]", orderId);
@@ -42,19 +45,36 @@ function wxpay(app, money, orderId, db, redirectUrl) {
         },
         success: function () {
           wx.showToast({title: '支付成功'});
+          let prepayId = res.result.data.package.slice('prepay_id='.length);
 
           wx.showLoading();
+
           setTimeout(() => {
             // 查询支付结果
-            queryMppay(orderId).then(res => {
+            queryMppay(orderId).then(queryRes => {
               //console.log("#########：" + JSON.stringify(res));
-              let data = res.result.data;
+              let data = queryRes.result.data;
               // 查询并更新订单状态
               if (data.result_code === "SUCCESS"
                 && data.trade_state === "SUCCESS" ) {
-                db.setOrderPaid(app, orderId, data);
+                // 保存prepayId到订单表中
+                db.setOrderPaid(app, orderId, data, prepayId);
                 //console.log("订单支付成功" + res)
               }
+
+              // 发送模板消息
+
+              tplmsg.sendMessageForPaid(
+                prepayId,
+                queryRes.result.data.out_trade_no,
+                money,
+                queryRes.result.data.time_end).then( res => {
+
+
+              }, err => {
+
+              });
+
               // 跳转回订单页
               wx.hideLoading();
               wx.redirectTo({

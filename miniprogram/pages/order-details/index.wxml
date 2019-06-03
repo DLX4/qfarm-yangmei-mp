@@ -1,5 +1,5 @@
 <import src="/dist/packages/@zanui/steps/index.wxml" />
-<view class="container">
+<view class="orderDetailContainer">
   <view class="sec-wrap">
     <view class="zan-cell__bd" style='padding: 30rpx 30rpx;'>
       <template is="zan-steps" data="{{ type: 'horizon', hasDesc: true, steps: statusSteps }}"></template>
@@ -93,7 +93,7 @@
           </view>
         </view>
       </block>
-      <view class="btn-row" wx:if="{{order.status==3}}">
+      <view class="confirm-btn-box" wx:if="{{order.status==3}}">
         <button class="confirm-btn" formType="submit">提交评价</button>
       </view>
     </form>
