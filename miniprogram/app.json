@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/question-ask/question-ask",
     "pages/home/index",
     "pages/ucenter/index-new/index",
     "pages/product-detail/index",

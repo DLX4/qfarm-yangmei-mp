@@ -1,9 +1,9 @@
 import { promisify } from '../../utils/promise.util'
 import { $init, $digest } from '../../utils/common.util'
-import { createQuestion } from '../../services/question.service'
-import config from '../../config'
 
+var dateUtil = require('../../utils/date.js')
 const wxUploadFile = promisify(wx.uploadFile)
+const db = wx.cloud.database()
 
 Page({
 
@@ -63,48 +63,36 @@ Page({
   },
 
   submitForm(e) {
-    const title = this.data.title
-    const content = this.data.content
+    var that = this;
+    var index = 0;
+    var len = that.data.images.length;
+    wx.showLoading({
+      title: '上传中...',
+    })
+    for(var i = 0; i < len ; i++)
+    {
+      console.log(i)
+      wx.getFileSystemManager().readFile({
+        filePath: that.data.images[i], //选择图片返回的相对路径
+        encoding: 'base64', //编码格式
+        success: res => { //成功的回调
+          wx.cloud.callFunction({
+            name:'fileupload',
+            data:{
+              path: 'pictures/' + dateUtil.vcode(new Date())+index+'.png',
+              file: res.data
+            },
+            success(_res){
 
-    if (title && content) {
-      const arr = []
-
-      for (let path of this.data.images) {
-        arr.push(wxUploadFile({
-          url: config.urls.question + '/image/upload',
-          filePath: path,
-          name: 'qimg',
-        }))
-      }
-
-      wx.showLoading({
-        title: '正在创建...',
-        mask: true
-      })
-
-      Promise.all(arr).then(res => {
-        return res.map(item => JSON.parse(item.data).url)
-      }).catch(err => {
-        console.log(">>>> upload images error:", err)
-      }).then(urls => {
-        return createQuestion({
-          title: title,
-          content: content,
-          images: urls
-        })
-      }).then(res => {
-        const pages = getCurrentPages();
-        const currPage = pages[pages.length - 1];
-        const prevPage = pages[pages.length - 2];
-
-        prevPage.data.questions.unshift(res)
-        $digest(prevPage)
-
-        wx.navigateBack()
-      }).catch(err => {
-        console.log(">>>> create question error:", err)
-      }).then(() => {
-        wx.hideLoading()
+              console.log(_res)
+              wx.hideLoading()
+              //wx.hideLoading()
+            },fail(_res){
+              console.log(_res)
+            }
+          })
+          index++;
+        }
       })
     }
   }
