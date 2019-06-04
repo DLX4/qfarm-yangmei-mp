@@ -159,8 +159,14 @@ function getSelectTrolleyToPay(app) {
 // 删除已经提交订单的商品信息
 function deleteTrolleyForOrder(app) {
   for (let i = 0; i < app.globalData.productsToPay.length; i++) {
+    // 取消选中，数量
     app.globalData.productsToPay[i].active = false;
+    app.globalData.productsToPay[i].numb = 0;
   }
+  // 保存到本地
+  local.saveProductsLocal({products: app.globalData.products});
+
+  app.globalData.productsToPay = [];
 }
 
 module.exports = {

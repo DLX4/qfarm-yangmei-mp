@@ -129,6 +129,7 @@
 .product-detail-info {
   width: 100%;
   margin-top: 18rpx;
+  margin-bottom: 100rpx;
   box-sizing: border-box;
   background-color: #fff;
   display: flex;

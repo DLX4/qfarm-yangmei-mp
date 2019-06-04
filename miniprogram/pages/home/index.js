@@ -31,7 +31,6 @@ Page({
 
     var that = this;
     that.setData({
-      recommendTitlePicStr: "http://iph.href.lu/175x56",
       shopCarProducts: app.globalData.products,
       loadingMore: true,
       isEnd: true,
@@ -41,17 +40,17 @@ Page({
         {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-03.PNG"}
       ],
       noticeList: [
-        {
-          id:1, title:"仙居杨梅火热预定中！",
-        },
-        {
-          id:2, title:"每日限量供应新鲜杨梅~",
-        }
+        {id:1, title:"欢迎新老顾客光临！"},
+        {id:1, title:"不好吃不要钱：）"},
+        {id:1, title:"不新鲜不要钱：）"},
+        {id:1, title:"寄坏包赔：）"},
+        {id:2, title:"仙居勤富农场精品杨梅",}
       ]
     });
 
     // 获取产品数据
     this.getProductsFromDB();
+    // 获取统计数据
 
   },
   onShow: function () {

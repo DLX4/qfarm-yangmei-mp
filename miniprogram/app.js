@@ -118,17 +118,11 @@ App({
     }, 1000)
   },
 
-
-
-  // 按照一定的规则计算快递费用
-  getDeliveryPrice: function () {
-
-  },
   globalData:{
     products: [], // 全局的产品信息（包括购物车数据），同步保存到storage
     db:{}, // 全局的数据库对象
     openid: null, // 全局的openID
-    productsToPay: [],// 选中准备下单的产品（购物车==> 下单收银台）
+    productsToPay: [],// 选中准备下单的产品（购物车==> 下单收银台）, 存在内存中
 
     // 其它全局变量（TODO： 删除不用的全局变量）
     isConnected: true,

@@ -26,10 +26,6 @@ Page({
     } catch (e) {
     }
     // 获取订单列表
-    this.setData({
-      stv: this.data.stv,
-      loadingStatus: true
-    });
     this.getOrderList();
   },
   onReady: function () {
@@ -49,6 +45,11 @@ Page({
   getOrderList: function () {
     let that = this;
     let orderDataList = new Array(5);
+
+    that.setData({
+      stv: this.data.stv,
+      loadingStatus: true
+    });
 
     db.getUserOrderList(app).then(data => {
       if (data.length > 0 ) {
@@ -89,12 +90,14 @@ Page({
     wxpay.wxpay(app, money, orderId, db, "/pages/ucenter/order-list/index");
   },
 
+  // 订单详情
   orderDetail: function (e) {
     var orderId = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: "/pages/order-details/index?id=" + orderId
     })
   },
+  // 取消订单
   cancelOrderTap: function (e) {
     var that = this;
     var orderId = e.currentTarget.dataset.id;
@@ -104,22 +107,11 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.showLoading();
-          wxpay.query(orderId);
-          wx.hideLoading();
-          //TODO-DLX
-          // wx.request({
-          //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/close',
-          //   data: {
-          //     token: wx.getStorageSync('token'),
-          //     orderId: orderId
-          //   },
-          //   success: (res) => {
-          //     wx.hideLoading();
-          //     if (res.data.code == 0) {
-          //       that.onShow();
-          //     }
-          //   }
-          // })
+          db.setOrderCanceled(app, orderId).finally(res => {
+            console.log("[订单取消]：" + res);
+            wx.hideLoading();
+            that.getOrderList();
+          })
         }
       }
     })

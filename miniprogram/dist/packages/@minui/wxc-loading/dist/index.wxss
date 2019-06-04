@@ -23,7 +23,7 @@
     pointer-events: auto;
 }
   .loading__image--mgj {
-    background-image: url(https://s10.mogucdn.com/mlcdn/c45406/170607_5241335cb37ka3ab7781ddh504ggh_200x200.png);
+    background-image: url(https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/common/170607_5241335cb37ka3ab7781ddh504ggh_200x200.png);
 }
   .loading__image--mall {
     background-image: url(https://s10.mogucdn.com/mlcdn/c45406/171023_625g128f20b5k0aace38jgghe737b_200x200.png);

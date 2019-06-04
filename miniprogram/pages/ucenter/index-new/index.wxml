@@ -79,7 +79,7 @@
                 <image src="images/staff.png"  border="0"
                        bindtap="VIP_43_click" class="ucenter-list-icon"></image>
             </view>
-            <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
+            <button open-type="contact" class="contact-button"></button>
             <text style="width:78%;" class="entry-text">联系客服</text>
             <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
                 <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
@@ -96,6 +96,7 @@
                     <image src="images/find.png"  border="0"
                            bindtap="VIP_43_click" class="ucenter-list-icon"></image>
                 </view>
+                <button open-type="contact" class="contact-button"></button>
                 <text style="width:78%;" class="entry-text">采摘农家乐</text>
                 <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
                     <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"
@@ -112,9 +113,9 @@
                        bindtap="VIP_43_click" class="ucenter-list-icon"></image>
                 <wxc-badge class="badge">{{1}}</wxc-badge>
             </view>
-            <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
-
-            <text style="width:78%;" class="entry-text">领取回头客专属优惠券</text>
+            <!--<contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="20"></contact-button>-->
+            <button open-type="contact" class="contact-button"></button>
+            <text style="width:78%;" class="entry-text">领取新用户专属优惠券</text>
 
             <view style="width:12%;height:42rpx;float:left;margin-top:0rpx;margin-left:0rpx;">
                 <image src="/images/order-details/arrow-right-big.png" class="arrow-right-image"

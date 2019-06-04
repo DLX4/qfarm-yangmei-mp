@@ -23,7 +23,8 @@
       <wxc-icon size='40' type="{{'minus'}}" style='transform:rotate(90deg); margin-right:10rpx;'> </wxc-icon>
 
       <swiper wx:if="{{noticeList}}" class="notice-swiper" vertical="true" autoplay="true" circular="true" interval="3000">
-        <navigator wx:for-items="{{noticeList}}" wx:key="id" url="/pages/notice/show?id={{item.id}}" open-type="navigate">
+        <!--<navigator wx:for-items="{{noticeList}}" wx:key="id" url="/pages/notice/show?id={{item.id}}" open-type="navigate">-->
+        <navigator wx:for-items="{{noticeList}}" wx:key="id"  open-type="navigate">
           <swiper-item>
             <wxc-elip class="notice-item">{{item.title}}</wxc-elip>
           </swiper-item>

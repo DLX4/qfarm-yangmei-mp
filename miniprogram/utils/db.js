@@ -130,6 +130,27 @@ function setOrderPaid(app, orderId, detail, prepayId) {
   return promise;
 }
 
+// 更新用户订单-取消订单状态
+function setOrderCanceled(app, orderId) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('order').doc(orderId).update({
+    data: {
+      isCanceled: true,
+      cancelTime: new Date(),
+      status : -1 // 已取消
+    },
+  }).then(res => {
+    console.log('[数据库] [更新取消订单] 成功，记录 _id: ', orderId);
+    resolve(res._id);
+  }, err => {
+    console.error('[数据库] [更新取消订单] 失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
 // 更新用户订单-确认收货
 function setOrderDeliveryReceived(app, orderId) {
   let db = app.globalData.db;
@@ -253,6 +274,7 @@ module.exports = {
   setOrderPaid: setOrderPaid,
   setOrderDeliveryReceived: setOrderDeliveryReceived,
   setOrderPraised: setOrderPraised,
+  setOrderCanceled: setOrderCanceled,
   getUserOrderByKey: getUserOrderByKey,
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,
