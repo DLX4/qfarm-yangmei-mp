@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/circle-friends/circle-friends",
     "pages/question-ask/question-ask",
     "pages/home/index",
     "pages/ucenter/index-new/index",
@@ -13,14 +14,13 @@
     "pages/wuliu/index",
     "pages/notice/show",
     "pages/ucenter/location/location"
-
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "仙居杨梅",
-    "navigationBarTextStyle":"black",
-    "onReachBottomDistance":50,
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50,
     "backgroundColor": "#fff"
   },
   "tabBar": {
@@ -28,30 +28,33 @@
     "selectedColor": "#FF0077",
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "box-shadow":"0 0 4px 0",
-    "list": [{
-      "pagePath": "pages/home/index",
-      "iconPath": "images/nav/home-off.png",
-      "selectedIconPath": "images/nav/home-on.png",
-      "text": "首页"
-    },
-    {
-      "pagePath": "pages/shop-cart/index",
-      "iconPath": "images/nav/shop-car-off.png",
-      "selectedIconPath": "images/nav/shop-car-on.png",
-      "text": " 购物车"
-    },
-    {
-      "pagePath": "pages/ucenter/index-new/index",
-      "iconPath": "images/nav/user-center-off.png",
-      "selectedIconPath": "images/nav/user-center-on.png",
-      "text": "个人中心"
-    }]
+    "box-shadow": "0 0 4px 0",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shop-cart/index",
+        "iconPath": "images/nav/shop-car-off.png",
+        "selectedIconPath": "images/nav/shop-car-on.png",
+        "text": " 购物车"
+      },
+      {
+        "pagePath": "pages/ucenter/index-new/index",
+        "iconPath": "images/nav/user-center-off.png",
+        "selectedIconPath": "images/nav/user-center-on.png",
+        "text": "个人中心"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 5000,
     "connectSocket": 10000,
     "uploadFile": 10000,
     "downloadFile": 10000
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

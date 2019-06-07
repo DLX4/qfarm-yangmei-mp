@@ -1,13 +1,16 @@
 import { promisify } from '../../utils/promise.util'
 import { $init, $digest } from '../../utils/common.util'
 
+var app = getApp();
+var db = require('../../utils/db.js')
 var dateUtil = require('../../utils/date.js')
 const wxUploadFile = promisify(wx.uploadFile)
-const db = wx.cloud.database()
+//const db = wx.cloud.database()
 
 Page({
 
   data: {
+    userinfo:null,
     titleCount: 0,
     contentCount: 0,
     title: '',
@@ -19,6 +22,17 @@ Page({
     $init(this)
   },
 
+  onGotUserInfo: function (e) {
+    var that = this;
+
+    console.log(e.detail.userInfo);
+    console.log("nickname=" + e.detail.userInfo.nickName);
+    db.saveUserInfo(app, e.detail.userInfo);
+    that.setData({
+      userinfo: e.detail.userInfo
+    })
+  },
+  
   handleTitleInput(e) {
     const value = e.detail.value
     this.data.title = value

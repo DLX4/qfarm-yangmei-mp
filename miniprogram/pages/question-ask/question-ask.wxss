@@ -39,6 +39,7 @@ page {
 }
 
 .question-images-tool {
+  margin-left: 50rpx;
   display: flex;
   align-items: center;
 }

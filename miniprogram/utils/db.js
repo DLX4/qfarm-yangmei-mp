@@ -1,3 +1,37 @@
+// 保存用户信息
+function saveUserInfo(app, userInfo) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('userinfo').add({
+    data: userInfo,
+  }).then(res => {
+    console.log('[数据库] [新增记录] [保存用户信息] 成功，记录 _id: ', res._id);
+    resolve(res);
+  }, err => {
+    console.error('[数据库] [新增记录] [保存用户信息] 失败：', err)
+    reject({ code: "FAIL", data: null });
+  }));
+
+  return promise;
+}
+
+// 查询用户信息
+function getUserInfo(app) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('userinfo').where({
+    _openid: app.globalData.openid,
+  }).get().then(res => {
+    console.log('[数据库] [查询记录] 成功: ', res)
+    resolve(res.data);
+  }, err => {
+    console.error('[数据库] [查询记录] 失败：', err)
+    reject({ code: "FAIL", data: null });
+  }));
+
+  return promise;
+}
+
 // 查询用户的地址
 function getUserAddress(app) {
   let db = app.globalData.db;
@@ -266,6 +300,8 @@ function saveUserPraise(app, praise) {
 }
 
 module.exports = {
+  saveUserInfo: saveUserInfo,
+  getUserInfo: getUserInfo,
   getUserAddress: getUserAddress,
   getDefaultUserAddress: getDefaultUserAddress,
   getUserAddressByKey: getUserAddressByKey,

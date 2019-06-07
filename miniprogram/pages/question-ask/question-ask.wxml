@@ -22,24 +22,31 @@
 
   <view class="question-images-area">
 
-    <!-- 添加图片按钮  -->
-    <view class="question-images-tool">
-      <button type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 3}}">添加图片</button>
-    </view>
+    
 
     <!-- 图片缩略图  -->
     <view class="question-images">
       <block wx:for="{{images}}" wx:key="*this">
         <view class="q-image-wrap">
           <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
-          <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+          <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">
+            <wxc-icon type="close" size="20" color="#b3b3b3"/> 
+          </view>
         </view>
+
       </block>
+      <!-- 添加图片按钮  -->
+      <view class="question-images-tool">
+        <wxc-icon type="add" size="80" color="#b3b3b3"  wx:if="{{images.length < 3}}" bindtap="chooseImage"/> 
+        <!-- <button type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 3}}">添加图片</button> -->
+      </view>
     </view>
 
   </view>
 
   <!-- 提交表单按钮  -->
-  <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
-
+  <button wx:if="{{userinfo}}" class="weui-btn" type="primary" bindtap="submitForm">提交不为空</button> 
+  <button wx:else open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+    <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+  </button>
 </view>
