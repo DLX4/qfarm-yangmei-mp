@@ -98,6 +98,7 @@ App({
 
     let openid = wx.getStorageSync('openid');
     if (openid) {
+      that.globalData.openid = openid;
       return;
     }
     wx.cloud.callFunction({

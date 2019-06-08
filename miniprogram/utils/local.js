@@ -7,6 +7,10 @@ function saveProductsLocal (productsData) {
 function getProductsLocal () {
   return wx.getStorageSync('product_data');
 }
+// 从本地获取openid
+function getProductsLocal() {
+  return wx.getStorageSync('product_data');
+} 
 
 module.exports = {
   saveProductsLocal: saveProductsLocal,

@@ -19,7 +19,16 @@ Page({
   },
 
   onLoad(options) {
-    $init(this)
+    let that = this;
+    $init(this);
+    db.getUserInfo(app).then(res => {
+      if (res.length > 0) {
+        console.log("获取用户头像，昵称信息==>" + JSON.stringify(res[0]));
+        that.setData({
+          userinfo: res[0]
+        });
+      }
+    })
   },
 
   onGotUserInfo: function (e) {
@@ -83,6 +92,7 @@ Page({
     wx.showLoading({
       title: '上传中...',
     })
+    let pictures = [];
     for(var i = 0; i < len ; i++)
     {
       console.log(i)
@@ -90,22 +100,42 @@ Page({
         filePath: that.data.images[i], //选择图片返回的相对路径
         encoding: 'base64', //编码格式
         success: res => { //成功的回调
+          
+          let picturePath = 'pictures/' + dateUtil.vcode(new Date()) + index + '.png';
           wx.cloud.callFunction({
             name:'fileupload',
             data:{
-              path: 'pictures/' + dateUtil.vcode(new Date())+index+'.png',
+              path: picturePath,
               file: res.data
             },
             success(_res){
-
               console.log(_res)
-              wx.hideLoading()
-              //wx.hideLoading()
+              pictures.push('https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/' + picturePath);
+              index++;
+              if (index === len) {
+                // 保存一条动态
+                let post = {
+                  avatarUrl: that.data.userinfo.avatarUrl,
+                  nickName: that.data.userinfo.nickName,
+                  pictures: pictures,
+                  content: that.data.content,
+                  isDisable: false,
+                  createTime: dateUtil.getNowFormatDate(),
+                };
+                
+                
+                console.log("保存一条动态");
+                db.saveMeiyouPost(app, post);
+                wx.hideLoading();
+                wx.navigateTo({
+                  url: "/pages/circle-friends/circle-friends"
+                })
+              }
             },fail(_res){
               console.log(_res)
             }
           })
-          index++;
+          
         }
       })
     }

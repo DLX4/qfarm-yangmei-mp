@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/circle-friends/circle-friends",
-    "pages/question-ask/question-ask",
     "pages/home/index",
     "pages/ucenter/index-new/index",
     "pages/product-detail/index",
@@ -13,7 +11,9 @@
     "pages/order-details/index",
     "pages/wuliu/index",
     "pages/notice/show",
-    "pages/ucenter/location/location"
+    "pages/ucenter/location/location",
+    "pages/circle-friends/circle-friends",
+    "pages/question-ask/question-ask"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,6 +35,12 @@
         "iconPath": "images/nav/home-off.png",
         "selectedIconPath": "images/nav/home-on.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/circle-friends/circle-friends",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "梅友圈"
       },
       {
         "pagePath": "pages/shop-cart/index",

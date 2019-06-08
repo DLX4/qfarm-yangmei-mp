@@ -1,3 +1,37 @@
+// 保存朋友圈信息
+function saveMeiyouPost(app, post) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('post').add({
+    data: post,
+  }).then(res => {
+    console.log('[数据库] [新增记录] [保存朋友圈信息] 成功，记录 _id: ', res._id);
+    resolve(res);
+  }, err => {
+    console.error('[数据库] [新增记录] [保存朋友圈信息] 失败：', err)
+    reject({ code: "FAIL", data: null });
+  }));
+
+  return promise;
+}
+
+// 查询朋友圈信息
+function getMeiyouPost(app) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('post').where({
+    isDisable: false,
+  }).get().then(res => {
+    console.log('[数据库] [查询记录] 成功: ', res)
+    resolve(res.data);
+  }, err => {
+    console.error('[数据库] [查询记录] 失败：', err)
+    reject({ code: "FAIL", data: null });
+  }));
+
+  return promise;
+}
+
 // 保存用户信息
 function saveUserInfo(app, userInfo) {
   let db = app.globalData.db;
@@ -300,6 +334,8 @@ function saveUserPraise(app, praise) {
 }
 
 module.exports = {
+  saveMeiyouPost: saveMeiyouPost,
+  getMeiyouPost: getMeiyouPost,
   saveUserInfo: saveUserInfo,
   getUserInfo: getUserInfo,
   getUserAddress: getUserAddress,

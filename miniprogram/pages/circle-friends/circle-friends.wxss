@@ -21,11 +21,12 @@ page{
 }
 
 .left-view{
-  width: 150rpx;
+  width: 120rpx;
   /* background: rebeccapurple; */
 }
 
 .right-view{
+  width: 600rpx;
   /* background: red; */
 }
 
@@ -107,6 +108,7 @@ page{
   width: 50rpx;
   height: 40rpx;
   margin-right: 20rpx;
+  float: right
 }
 
 /* 点赞 */
