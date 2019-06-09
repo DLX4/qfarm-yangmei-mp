@@ -1,11 +1,16 @@
 /* pages/CircleFriends/CircleFriends.wxss */
 page{
-  background: whitesmoke;
+  background: #eeeeee;
 }
 
 .page{
   width: 100%;
   /* overflow-x: hidden */
+}
+
+.loadingMore {
+  width: 100%;
+  height: 100rpx;
 }
 
 /* 列表 */
@@ -33,8 +38,8 @@ page{
 /* 头像 */
 .user-icon{
   /* display: flex; */
-  width:100rpx;
-  height: 100rpx;
+  width:80rpx;
+  height: 80rpx;
   margin-left: 20rpx;
   margin-top: 30rpx;
   margin-right: 20rpx;
@@ -45,7 +50,8 @@ page{
   display: flex;
   height: 50rpx;
   line-height: 50rpx;
-  font-size: 18px;
+  font-size: 28rpx;
+  font-weight: bold;
   color: rgb(88, 103, 138);
   margin-top: 30rpx;
   margin-left: 10rpx;
@@ -54,8 +60,8 @@ page{
 /* 内容 */
 .user-content{
   display: flex;
-  font-size: 18px;
-  line-height: 50rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
   margin-left: 10rpx;
 }
 
@@ -95,13 +101,13 @@ page{
   font-size: 13px;
   margin-left: 10rpx;
 }
-.TDD-view button{
+.TDD-view .del-button{
   font-size: 13px;
   margin-left: 20rpx;
   color: black;
   background: white;
 }
-.TDD-view button::after{
+.TDD-view .del-button::after{
   border: white;
 }
 .TDD-view image{
@@ -109,6 +115,21 @@ page{
   height: 40rpx;
   margin-right: 20rpx;
   float: right
+}
+.TDD-view .icon {
+  width: 50rpx;
+  height: 40rpx;
+  margin-bottom: 14rpx;
+  margin-right: 20rpx;
+  float: right
+}
+
+.userinfo-button {
+  display:inline-block;
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 40rpx;
 }
 
 /* 点赞 */

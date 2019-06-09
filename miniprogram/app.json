@@ -37,16 +37,16 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/circle-friends/circle-friends",
-        "iconPath": "images/nav/home-off.png",
-        "selectedIconPath": "images/nav/home-on.png",
-        "text": "梅友圈"
-      },
-      {
         "pagePath": "pages/shop-cart/index",
         "iconPath": "images/nav/shop-car-off.png",
         "selectedIconPath": "images/nav/shop-car-on.png",
         "text": " 购物车"
+      },
+      {
+        "pagePath": "pages/circle-friends/circle-friends",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "梅友圈"
       },
       {
         "pagePath": "pages/ucenter/index-new/index",

@@ -1,3 +1,8 @@
+<!-- <view class='loadingMore' wx:if="{{loadingMore}}">
+  
+</view> -->
+<wxc-loadmore wx:if="{{loadingMore}}" color="#eeeeee" text="正在努力加载中..."  icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
+
 <!-- 仿微信朋友圈 -->
 <scroll-view class='page'>
   <!-- 列表 -->
@@ -31,20 +36,34 @@
         <!-- 时间、删除按钮、点赞评论按钮 -->
         <view class='TDD-view'>
           <label>{{item.createTime}}</label>
-          <button wx:if="{{item._openid===myOpenId}}" bindtap='delete'>删除</button>
-          <image data-isShow='{{isShow}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'></image>
+          <button wx:if="{{item._openid===myOpenId}}" bindtap='delete' style="color: rgb(88, 103, 138);" class='del-button'>删除</button>
+          <button wx:else class='del-button'>   </button>
+          <!-- <image data-isShow='{{isShow}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'></image> -->
+          
+          <block wx:if="{{userinfo}}">
+            <wxc-icon wx:if="{{item.zanFlag === true}}" class="icon" type="star-active" size="30" bindtap='zan' data-postid='{{item._id}}'> </wxc-icon>
+            <wxc-icon wx:else class="icon" type="star" size="30" bindtap='zan' data-postid='{{item._id}}'> </wxc-icon>
+            <wxc-icon class="icon" type="comment" size="30"> </wxc-icon>
+          </block>
+          <block wx:else>
+            <wxc-icon wx:if="{{item.zanFlag === true}}" class="icon" type="star-active" size="30" bindtap='zan' data-postid='{{item._id}}'> </wxc-icon>
+            <wxc-icon wx:else class="icon" type="star" size="30" bindtap='zan' data-postid='{{item._id}}'> </wxc-icon>
+            <wxc-icon class="icon" type="comment" size="30"> </wxc-icon>
+            <button open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='userinfo-button'>
+            </button>
+          </block>
         </view>
 
         <!-- 点赞 -->
         <view class='zan-view'>
-          <view wx:if="{{item.zans}}" class='trigon-view'>
+          <view wx:if="{{item.zans.length > 0}}" class='trigon-view'>
             <image mode='aspectFill' class='trigon' src='/images/trigon.png'></image>
           </view>
 
           <!-- 点赞 -->
           <view class='zan-bg-view'>
             <view class='zan-user-view' wx:for='{{item.zans}}'>
-              <label bindtap='TouchZanUser' data-name='{{item}}' class='zan-user'>{{item}},</label>
+              <label bindtap='TouchZanUser' data-name='{{item.nickName}}' class='zan-user'>{{item}},</label>
             </view>
           </view>
           <view class='line'></view>

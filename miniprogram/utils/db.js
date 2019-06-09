@@ -1,3 +1,46 @@
+
+// 获取梅友圈点赞信息
+function getMeiyouZan(app, postid) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('post_zan').where({
+    postid: postid,
+  }).get().then(res => {
+    console.log('[数据库] [查询记录] 成功: ', res)
+    resolve(res.data);
+  }, err => {
+    console.error('[数据库] [查询记录] 失败：', err)
+    reject({ code: "FAIL", data: null });
+  }));
+
+  return promise;
+}
+// 保存梅友圈点赞信息
+function saveMeiyouZan(app, postid) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => getUserInfo(app).then(resUser => {
+    getMeiyouZan(app, postid).then(res => {
+      if (res.length == 0) {
+        db.collection('post_zan').add({
+          data: {
+            nickName: resUser[0].nickName,
+            postid: postid
+          },
+        }).then(res => {
+          console.log('[数据库] [新增记录] [保存梅友圈点赞信息] 成功，记录 _id: ', res._id);
+          resolve(res);
+        }, err => {
+          console.error('[数据库] [新增记录] [保存梅友圈点赞信息] 失败：', err)
+          reject({ code: "FAIL", data: null });
+        });
+      }
+    })
+  }));
+
+  return promise;
+}
+
 // 保存朋友圈信息
 function saveMeiyouPost(app, post) {
   let db = app.globalData.db;
@@ -334,6 +377,8 @@ function saveUserPraise(app, praise) {
 }
 
 module.exports = {
+  getMeiyouZan: getMeiyouZan,
+  saveMeiyouZan: saveMeiyouZan,
   saveMeiyouPost: saveMeiyouPost,
   getMeiyouPost: getMeiyouPost,
   saveUserInfo: saveUserInfo,

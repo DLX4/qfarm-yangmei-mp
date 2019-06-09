@@ -161,7 +161,6 @@ Page({
     var that = this
     that.setData({
       loadingMore: true,
-      isEnd: false
     })
     wx.showNavigationBarLoading()
     that.onLoad()
@@ -171,7 +170,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: app.globalData.mallName + '——' + app.globalData.shareProfile,
-      path: '/pages/finder/index',
+      path: '/pages/home/index',
       success: function (res) {
         // 转发成功
       },

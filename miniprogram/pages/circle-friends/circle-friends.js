@@ -10,7 +10,10 @@ Page({
    */
   data: {
     myOpenId: app.globalData.openid,
+    userinfo: null,
     posts: [],
+    postsMap: [],
+    loadingMore: false,
     // DataSource: [1, 1, 1, 1, 1],
     // icon: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3175633703,3855171020&fm=27&gp=0.jpg',
     // content: '我大学毕业到一家集团公司的办公室当文员。办公室主任有一特长，即文章写得好，很有思想，公司董事长很器重他，董事长的讲话稿和企业的年终总结等一系列重大文章都是出自他的手笔。',
@@ -49,19 +52,72 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    that = this;
-    
-    db.getMeiyouPost(app).then(res => {
+    let that = this;
+    that.setData({
+      loadingMore: true
+    })
+
+    db.getUserInfo(app).then(res => {
       if (res.length > 0) {
+        console.log("获取用户头像，昵称信息==>" + JSON.stringify(res[0]));
         that.setData({
-          posts: res,
-          myOpenId: app.globalData.openid
+          userinfo: res[0]
         });
       }
+    })
+
+    db.getMeiyouPost(app).then(res => {
+      if (res.length > 0) {
+        // 初始化梅友圈动态 map
+        for (let i = 0; i < res.length; i++) {
+          that.data.postsMap[res[i]._id] = res[i];
+          that.data.postsMap[res[i]._id].zans = [];
+        }
+
+        that.setData({
+          posts: res,
+          myOpenId: app.globalData.openid,
+          loadingMore: false
+        });
+
+        // 初始化梅友圈点赞信息 (昵称列表)
+        let count = 0;
+        for (let i = 0; i < res.length; i++) {
+          db.getMeiyouZan(app, res[i]._id).then(zanRes => {
+            if (zanRes.length > 0) {
+              for (let j = 0; j < zanRes.length; j++) {
+                console.log("push:" + zanRes[j].nickName);
+                that.data.postsMap[zanRes[j].postid].zans.push(zanRes[j].nickName);
+              }
+            } 
+            count++;
+            if (count === res.length) {
+              // 点赞信息已经全部获取
+              that.setData({
+                posts: that.data.posts,
+              });
+
+            }
+          })
+        }
+      }
+      
     });
   },
 
   onShow: function() {
+  },
+
+  // 获取用户头像昵称相关信息
+  onGotUserInfo: function (e) {
+    var that = this;
+
+    // console.log(e.detail.userInfo);
+    // console.log("nickname=" + e.detail.userInfo.nickName);
+    db.saveUserInfo(app, e.detail.userInfo);
+    that.setData({
+      userinfo: e.detail.userInfo
+    })
   },
 
   // 点击图片进行大图查看
@@ -86,13 +142,42 @@ Page({
       title: '删除成功',
     })
   },
+  // 点赞
+  zan: function(e) {
+    let that = this;
+    let postid = e.currentTarget.dataset.postid;
+    that.data.postsMap[postid].zanFlag = true;
+
+    db.saveMeiyouZan(app, postid).then(res => {
+      console.log("保存成功" + JSON.stringify(res));
+      // 更新点赞用户
+      db.getMeiyouZan(app, postid).then(zanRes => {
+        console.log("zanRes:" + JSON.stringify(zanRes));
+        if (zanRes.length > 0) {
+          that.data.postsMap[postid].zans = [];
+          for (let j = 0; j < zanRes.length; j++) {
+            console.log("push:" + zanRes[j].nickName);
+            that.data.postsMap[postid].zans.push(zanRes[j].nickName);
+          }
+        }
+
+        that.setData({
+          posts: that.data.posts,
+        });
+      })
+    });
+    // 更新点赞状态
+    that.setData({
+      posts: that.data.posts
+    });
+  },
 
   // 点击了点赞评论
   TouchDiscuss: function(e) {
     // this.data.isShow = !this.data.isShow
     // 动画
     var animation = wx.createAnimation({
-      duration: 300,
+      duration: 200,
       timingFunction: 'linear',
       delay: 0,
     })
@@ -133,5 +218,16 @@ Page({
     wx.navigateTo({
       url: "/pages/question-ask/question-ask"
     })
+  },
+
+  onPullDownRefresh: function () {
+    var that = this
+    that.setData({
+      loadingMore: true,
+    })
+    wx.showNavigationBarLoading()
+    that.onLoad()
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
   }
 })

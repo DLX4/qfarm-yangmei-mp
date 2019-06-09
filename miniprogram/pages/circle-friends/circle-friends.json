@@ -1,6 +1,9 @@
 {
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "分享你和杨梅的故事",
+  "backgroundColor": "#eeeeee",
   "usingComponents": {
-    "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index"
+    "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
+    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index"
   }
 }

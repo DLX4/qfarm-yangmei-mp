@@ -31,11 +31,12 @@ Page({
     })
   },
 
+  // 获取用户头像昵称相关信息
   onGotUserInfo: function (e) {
     var that = this;
 
-    console.log(e.detail.userInfo);
-    console.log("nickname=" + e.detail.userInfo.nickName);
+    // console.log(e.detail.userInfo);
+    // console.log("nickname=" + e.detail.userInfo.nickName);
     db.saveUserInfo(app, e.detail.userInfo);
     that.setData({
       userinfo: e.detail.userInfo
@@ -125,11 +126,13 @@ Page({
                 
                 
                 console.log("保存一条动态");
-                db.saveMeiyouPost(app, post);
-                wx.hideLoading();
-                wx.navigateTo({
-                  url: "/pages/circle-friends/circle-friends"
-                })
+                db.saveMeiyouPost(app, post).then(res => {
+                  wx.hideLoading();
+                  wx.navigateTo({
+                    url: "/pages/circle-friends/circle-friends"
+                  })
+                });
+                
               }
             },fail(_res){
               console.log(_res)
