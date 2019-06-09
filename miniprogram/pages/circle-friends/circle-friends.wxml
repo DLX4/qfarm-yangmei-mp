@@ -80,7 +80,7 @@
     </view>
   </view>
 </scroll-view>
-<wxc-loadmore wx:if="{{!isEnd}}" bindtap="tapLoadNextPage" text="点击加载更多..." icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
+<wxc-loadmore wx:if="{{!isEnd && !loadingMore}}" bindtap="tapLoadNextPage" text="点击加载更多..." icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
 <wxc-loadmore wx:if="{{isEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
 
 <!-- 评论按钮弹出框 -->

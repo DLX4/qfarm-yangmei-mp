@@ -23,9 +23,10 @@
           <image class="icon" src="/images/order-details/icon-wuliu.png"></image>
         </view>
         <view class="right-text" bindtap="expressDetailsTap" data-id="{{order._id}}">
-          <view class="order-number">快递单号：{{111455555555}}</view>
+          <view wx:if="{{express.num}}" class="order-number">快递单号：{{express.num}}</view>
+          <view wx:else class="order-number">快递单号：暂无</view>
           <block wx:if="{{true}}">
-            <view class="express-text">{{7856456454561611}}</view>
+            <view class="express-text">{{express.name}}</view>
             <!--<view class="express-date">{{order.payTime}}</view>-->
           </block>
         </view>

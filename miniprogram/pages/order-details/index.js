@@ -4,7 +4,8 @@ var app = getApp();
 Page({
   data: {
     order: 0,
-    statusSteps:[]
+    statusSteps:[],
+    express:{}
   },
   onLoad: function (e) {
     let that = this;
