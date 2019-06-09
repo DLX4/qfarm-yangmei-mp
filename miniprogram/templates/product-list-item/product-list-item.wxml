@@ -13,7 +13,11 @@
       <view style="width: 430rpx;height: 40rpx;display: flex;flex-direction: row;">
         <view class="product-price-box">
           <wxc-price class='product-sale-price' value='{{item.salePrice}}'></wxc-price>
-          <wxc-price class="product-origin-price" wx:if='{{item.originPrice != 0}}' value='{{item.originPrice}}' status='del'></wxc-price>
+          <view style="display: flex;flex-direction: row;">
+            <wxc-price class="product-origin-price" wx:if='{{item.originPrice != 0}}' value='{{item.originPrice}}' status='del'></wxc-price>
+            <label style="font-size: 26rpx;color: gray">（某东价）</label>
+          </view>
+
         </view>
 
         <view class="product-numb">

@@ -62,9 +62,27 @@ function saveMeiyouPost(app, post) {
 function getMeiyouPost(app) {
   let db = app.globalData.db;
 
-  let promise = new Promise((resolve, reject) => db.collection('post').where({
+  let promise = new Promise((resolve, reject) => db.collection('post').orderBy('createTime', 'desc').where({
     isDisable: false,
   }).get().then(res => {
+    console.log('[数据库] [查询记录] 成功: ', res)
+    resolve(res.data);
+  }, err => {
+    console.error('[数据库] [查询记录] 失败：', err)
+    reject({ code: "FAIL", data: null });
+  }));
+
+  return promise;
+}
+// 分页查询梅友圈信息，默认一页5条记录
+function getMeiyouPostByPage(app, pageNum) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('post').orderBy('createTime', 'desc').where({
+    isDisable: false,
+  }).skip(pageNum * 5)
+    .limit(5)
+    .get().then(res => {
     console.log('[数据库] [查询记录] 成功: ', res)
     resolve(res.data);
   }, err => {
@@ -381,6 +399,7 @@ module.exports = {
   saveMeiyouZan: saveMeiyouZan,
   saveMeiyouPost: saveMeiyouPost,
   getMeiyouPost: getMeiyouPost,
+  getMeiyouPostByPage: getMeiyouPostByPage,
   saveUserInfo: saveUserInfo,
   getUserInfo: getUserInfo,
   getUserAddress: getUserAddress,

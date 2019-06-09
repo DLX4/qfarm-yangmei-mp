@@ -14,6 +14,8 @@ Page({
     posts: [],
     postsMap: [],
     loadingMore: false,
+    currentPage: 0,
+    isEnd: false,
     // DataSource: [1, 1, 1, 1, 1],
     // icon: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3175633703,3855171020&fm=27&gp=0.jpg',
     // content: '我大学毕业到一家集团公司的办公室当文员。办公室主任有一特长，即文章写得好，很有思想，公司董事长很器重他，董事长的讲话稿和企业的年终总结等一系列重大文章都是出自他的手笔。',
@@ -66,7 +68,7 @@ Page({
       }
     })
 
-    db.getMeiyouPost(app).then(res => {
+    db.getMeiyouPostByPage(app, 0).then(res => {
       if (res.length > 0) {
         // 初始化梅友圈动态 map
         for (let i = 0; i < res.length; i++) {
@@ -106,6 +108,55 @@ Page({
   },
 
   onShow: function() {
+  },
+
+  // 加载下一页朋友圈信息
+  tapLoadNextPage: function() {
+    let that = this;
+    console.log("tapLoadNextPage");
+    that.data.currentPage++;
+
+    db.getMeiyouPostByPage(app, that.data.currentPage).then(res => {
+      if (res.length > 0) {
+        // push新的一页的朋友圈信息
+        for (let i = 0; i < res.length; i++) {
+          that.data.postsMap[res[i]._id] = res[i];
+          that.data.postsMap[res[i]._id].zans = [];
+          that.data.posts.push(res[i]);
+        }
+
+        that.setData({
+          posts: that.data.posts,
+        });
+
+        // 初始化梅友圈点赞信息 (昵称列表)
+        let count = 0;
+        for (let i = 0; i < res.length; i++) {
+          db.getMeiyouZan(app, res[i]._id).then(zanRes => {
+            if (zanRes.length > 0) {
+              for (let j = 0; j < zanRes.length; j++) {
+                console.log("push:" + zanRes[j].nickName);
+                that.data.postsMap[zanRes[j].postid].zans.push(zanRes[j].nickName);
+              }
+            }
+            count++;
+            if (count === res.length) {
+              // 点赞信息已经全部获取
+              that.setData({
+                posts: that.data.posts,
+              });
+
+            }
+          })
+        }
+      } else {
+        // 已经加载完了
+        that.setData({
+          isEnd: true
+        })
+      }
+
+    });
   },
 
   // 获取用户头像昵称相关信息

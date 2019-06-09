@@ -40,17 +40,13 @@ Page({
         {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-03.PNG"}
       ],
       noticeList: [
-        {id:1, title:"欢迎新老顾客光临！"},
-        {id:1, title:"不好吃不要钱：）"},
-        {id:1, title:"不新鲜不要钱：）"},
-        {id:1, title:"寄坏包赔：）"},
-        {id:2, title:"仙居勤富农场精品杨梅",}
+        {id:1, title:"农场直接发货无中间商赚差价"},
+        {id:2, title:"仙居勤富农场杨梅品质保证",},
       ]
     });
 
     // 获取产品数据
     this.getProductsFromDB();
-    // 获取统计数据
 
   },
   onShow: function () {
@@ -63,6 +59,9 @@ Page({
       if (data.length === 0) {
         return;
       }
+
+      // 先清除本地的产品数据
+      local.clearProductLocal();
 
       for (let i = 0; i < data.length; i++) {
         let temp = data[i];
