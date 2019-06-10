@@ -1,10 +1,10 @@
 <template name="no-goods">
   <view class='text-highlight'>
-    ◉次日凌晨采摘发货  ◉冰块+真空+分篮包装  ◉顺丰空运包邮
+    ◉仙居杨梅自产自销  ◉无与伦比的价格优势  ◉包邮
   </view>
 
   <view class="shop-cart-empty">
-    <wxc-abnor type="CART" title='每日限量发售，欲购从速~' bind:abnortap="toIndexPage"></wxc-abnor>
+    <wxc-abnor type="CART" title='这几天是果子品质巅峰期，欲购从速~' bind:abnortap="toIndexPage"></wxc-abnor>
   </view>
 </template>
 

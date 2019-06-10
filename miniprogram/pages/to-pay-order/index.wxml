@@ -33,8 +33,8 @@
     <view class="delivery-way">
       <view class="row-box">
         <view class="row-label">配送方式</view>
-        <view class="right-text" wx:if="{{expressFee > 0}}">顺丰包邮</view>
-        <view class="right-text" wx:if="{{expressFee == 0}}">顺丰包邮</view>
+        <view class="right-text" wx:if="{{expressFee > 0}}">包邮</view>
+        <view class="right-text" wx:if="{{expressFee == 0}}">包邮</view>
       </view>
       <view class="row-box">
         <view class="row-label">备注</view>

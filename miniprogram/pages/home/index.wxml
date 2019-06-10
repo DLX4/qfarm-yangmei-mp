@@ -18,8 +18,8 @@
 
     <view wx:if="{{noticeList}}" class="notice-container">
 
-      <wxc-icon size='40' type="notice" color="#FF0077" style='margin-right:10rpx;'> </wxc-icon>
-      <wxc-elip style='width: 150rpx; color:#FF0077;text-align: center;'>小店动态</wxc-elip>
+      <wxc-icon size='40' type="notice" color="#FF0077" style='margin-left:20rpx;'> </wxc-icon>
+      <wxc-elip style='width: 60rpx; color:#FF0077;text-align: center;margin-left:10rpx;'>公告</wxc-elip>
       <wxc-icon size='40' type="{{'minus'}}" style='transform:rotate(90deg); margin-right:10rpx;'> </wxc-icon>
 
       <swiper wx:if="{{noticeList}}" class="notice-swiper" vertical="true" autoplay="true" circular="true" interval="3000">
@@ -31,7 +31,7 @@
         </navigator>
       </swiper>
 
-      <wxc-icon size="40" type="arrow-right"></wxc-icon>
+      <!--<wxc-icon size="40" type="arrow-right"></wxc-icon>-->
     </view>
 
     <view class="products-container">

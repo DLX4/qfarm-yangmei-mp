@@ -107,7 +107,7 @@
   <view class="delivery-way" hidden="true">
     <view class="row-box">
       <view class="row-label">配送方式</view>
-      <view class="right-text">顺丰快递</view>
+      <view class="right-text">快递</view>
     </view>
     <view class="row-box">
       <view class="row-label">留言</view>

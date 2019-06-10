@@ -26,7 +26,7 @@ Page({
   /*------------------------------------业务数据---------------------------------------*/
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '仙居杨梅',
+      title: '仙居杨梅自产自销',
     });
 
     var that = this;
@@ -36,11 +36,11 @@ Page({
       isEnd: true,
       banners: [
         {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-01.PNG"},
-        {bannerId:'XIpZm3kPDdDCJ7Hy', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-02.PNG"},
+        {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-02.PNG"},
         {bannerId:'XIpZm3kPDdDCJ7Hx', picUrl:"https://7166-qfarm-mp-test-8ef757-1258810866.tcb.qcloud.la/product01/ym-03.PNG"}
       ],
       noticeList: [
-        {id:1, title:"农场直接发货无中间商赚差价"},
+        {id:1, title:"自产自销，做回头客生意，无中间商赚差价"},
         {id:2, title:"仙居勤富农场杨梅品质保证",},
       ]
     });

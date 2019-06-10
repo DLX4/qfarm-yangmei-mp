@@ -20,7 +20,7 @@
       </view>
 
       <view class="product-brief-part2">
-        <view class="product-brief-font">{{product.praiseCnt}}人觉得很赞</view>
+        <view class="product-brief-font">已有{{product.praiseCnt}}人好评</view>
       </view>
 
       <view class="product-brief-part3">
