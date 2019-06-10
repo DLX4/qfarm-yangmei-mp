@@ -60,20 +60,30 @@ Page({
         return;
       }
 
-      // 先清除本地的产品数据
-      local.clearProductLocal();
+      // merge本地的产品数据
+      let productsLocal = local.getProductsLocal().products;
 
       for (let i = 0; i < data.length; i++) {
         let temp = data[i];
         temp.salePrice = temp.salePrice.toFixed(2);
         temp.originPrice = temp.originPrice.toFixed(2);
-        // 已经添加的件数
         temp.numb = 0;
-        //console.log('[插入更新产品数据]',temp);
-        that.insdateProductsLocal(temp);
+        // 累计已经添加的件数
+        if (productsLocal !== undefined
+          && productsLocal.length !== undefined
+          && productsLocal.length > 0) {
 
+          for (let j = 0; j < productsLocal.length; j++) {
+            if (data[i]._id === productsLocal[j]._id) {
+              data[i].numb += productsLocal[j].numb;
+            }
+          }
+        }
       }
-      app.globalData.products = local.getProductsLocal().products;
+      // 保存
+      local.saveProductsLocal({products:data});
+
+      app.globalData.products = data;
       console.log('[load页]获取所有产品信息merge', app.globalData.products);
 
       that.setData({
@@ -87,32 +97,6 @@ Page({
 
     });
   },
-
-  // 保存更新本地产品数据
-  insdateProductsLocal: function (product) {
-    let productsData = local.getProductsLocal();
-    //console.log('[product信息]>> 从storage读取', productsData);
-    if (productsData === "") {
-      productsData = {products: [product]};
-      local.saveProductsLocal(productsData);
-      return;
-    }
-
-    // 更新一条产品数据
-    for (let i = 0; i < productsData.products.length; i++) {
-      if (productsData.products[i]._id === product._id) {
-        product.numb += productsData.products[i].numb;
-        productsData.products[i] = product;
-        local.saveProductsLocal(productsData);
-        return;
-      }
-    }
-    // 插入一条新的产品
-    productsData.products[productsData.products.length] = product;
-    local.saveProductsLocal(productsData);
-    //console.log('[product信息]>> 新增并写入到storage', productsData);
-  },
-
 
   // 获取本地产品数据
   getProductsLocal: function (productId) {

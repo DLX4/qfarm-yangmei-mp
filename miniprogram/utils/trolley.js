@@ -2,31 +2,32 @@ let local = require('../utils/local.js');
 
 // 购物车++
 function addToTrolley(app, productId) {
-  let numb = 0;
-  for (let i = 0; i < app.globalData.products.length; i++) {
-    if (app.globalData.products[i]._id === productId) {
-      app.globalData.products[i].numb++;
-      // 添加到购物车之后默认是选中的状态
-      app.globalData.products[i].active = true;
-    }
-    if (numb + app.globalData.products[i].numb <= 99) {
-      numb += app.globalData.products[i].numb;
-    } else {
-      console.info("购物车商品件数最大为99件");
-      return;
-    }
+  let numb = 0;// 购物车各类商品总件数
 
+  for (let i = 0; i < app.globalData.products.length; i++) {
+    numb += app.globalData.products[i].numb;
   }
 
-  // 更新购物车红点提示
-  wx.setTabBarBadge( {
-      index: 1,
-      text: numb + '',
+  if (numb < 99) {
+    for (let i = 0; i < app.globalData.products.length; i++) {
+      if (app.globalData.products[i]._id === productId) {
+        app.globalData.products[i].numb++;
+        // 添加到购物车之后默认是选中的状态
+        app.globalData.products[i].active = true;
+        numb ++;
+      }
     }
-  );
-  // 保存到本地
-  local.saveProductsLocal({products: app.globalData.products});
 
+    // 更新购物车红点提示
+    wx.setTabBarBadge( {
+        index: 1,
+        text: numb + '',
+      }
+    );
+    // 保存到本地
+    local.saveProductsLocal({products: app.globalData.products});
+
+  }
   return app.globalData.products;
 }
 

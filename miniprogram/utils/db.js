@@ -21,7 +21,15 @@ function saveMeiyouZan(app, postid) {
 
   let promise = new Promise((resolve, reject) => getUserInfo(app).then(resUser => {
     getMeiyouZan(app, postid).then(res => {
-      if (res.length == 0) {
+
+      let zaned = false;// 已经点赞过了
+      for (let i = 0; i < res.length; i++) {
+        if (res[i]._openid === app.globalData.openid) {
+          zaned = true;
+        }
+      }
+
+      if (zaned === false) {
         db.collection('post_zan').add({
           data: {
             nickName: resUser[0].nickName,

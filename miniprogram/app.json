@@ -44,8 +44,8 @@
       },
       {
         "pagePath": "pages/circle-friends/circle-friends",
-        "iconPath": "images/nav/home-off.png",
-        "selectedIconPath": "images/nav/home-on.png",
+        "iconPath": "images/nav/pyq-off.png",
+        "selectedIconPath": "images/nav/pyq-on.png",
         "text": "梅友圈"
       },
       {

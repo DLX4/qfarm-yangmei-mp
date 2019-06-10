@@ -31,6 +31,7 @@ Page({
 
     that.setData({
       shopCarProducts: trolley.addToTrolley(app, productId),
+      shopCarSelectAccount: trolley.sumSelectTrolley(app)
     });
 
   },
