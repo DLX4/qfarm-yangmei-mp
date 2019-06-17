@@ -34,26 +34,7 @@
           <image class="arrow" src="/images/order-details/arrow-right.png"></image>
         </view>
       </view>
-      <!--<view wx:else class="express-box">-->
-        <!--<view class="icon-box">-->
-          <!--<image class="icon" src="/images/order-details/icon-wuliu.png"></image>-->
-        <!--</view>-->
-        <!--<view class="right-text">-->
-          <!--<view class="order-number">快递单号：{{24444441}}</view>-->
-          <!--<view class="express-text">暂无物流信息</view>-->
-        <!--</view>-->
-      <!--</view>-->
-      <!--<view class="address-sec">-->
-        <!--<view class="icon-box">-->
-          <!--<image class="icon" src="/images/order-details/icon-address.png"></image>-->
-        <!--</view>-->
-        <!--<view class="right-box">-->
-          <!--<view class="name-tel">{{orderDetail.logistics.linkMan}} {{orderDetail.logistics.mobile}}</view>-->
-          <!--<view class="text">-->
-            <!--{{orderDetail.logistics.address}}-->
-          <!--</view>-->
-        <!--</view>-->
-      <!--</view>-->
+
     </block>
   </view>
   <view class="goods-list">

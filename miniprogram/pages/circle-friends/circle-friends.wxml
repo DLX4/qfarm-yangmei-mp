@@ -55,8 +55,8 @@
         </view>
 
         <!-- 点赞 -->
-        <view class='zan-view'>
-          <view wx:if="{{item.zans.length > 0}}" class='trigon-view'>
+        <view class='zan-view' wx:if="{{item.zans.length > 0}}">
+          <view  class='trigon-view'>
             <image mode='aspectFill' class='trigon' src='/images/trigon.png'></image>
           </view>
 

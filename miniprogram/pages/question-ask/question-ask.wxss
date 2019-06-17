@@ -47,7 +47,7 @@ page {
 .question-images {
   display: flex;
   align-items: center;
-  margin-top: 40rpx;
+  /*margin-top: 40rpx;*/
 }
 
 .q-image-wrap {
@@ -62,5 +62,6 @@ page {
 }
 
 .q-image-remover {
+  display:  ;
   text-align: center;
 }

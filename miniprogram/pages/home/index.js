@@ -50,6 +50,10 @@ Page({
 
   },
   onShow: function () {
+    let that = this;
+    that.setData({
+      shopCarProducts: app.globalData.products
+    });
   },
 
   // 从数据库获取产品数据，并和本地的数据merge

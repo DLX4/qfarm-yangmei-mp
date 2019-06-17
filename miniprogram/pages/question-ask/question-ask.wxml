@@ -22,8 +22,6 @@
 
   <view class="question-images-area">
 
-    
-
     <!-- 图片缩略图  -->
     <view class="question-images">
       <block wx:for="{{images}}" wx:key="*this">
