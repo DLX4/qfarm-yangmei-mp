@@ -402,6 +402,23 @@ function saveUserPraise(app, praise) {
   return promise;
 }
 
+// 根据订单号获取快递信息
+function getExpressByOrderId(app, orderid) {
+  let db = app.globalData.db;
+
+  let promise = new Promise((resolve, reject) => db.collection('express').where({
+    orderid: orderid
+  }).get().then(res => {
+    console.log('[数据库] [查询记录] [快递信息] 成功: ', res)
+    resolve(res.data);
+  }, err => {
+    console.error('[数据库] [查询记录] [快递信息]失败：', err)
+    reject({code: "FAIL", data: null});
+  }));
+
+  return promise;
+}
+
 module.exports = {
   getMeiyouZan: getMeiyouZan,
   saveMeiyouZan: saveMeiyouZan,
@@ -423,5 +440,6 @@ module.exports = {
   saveUserAddress: saveUserAddress,
   getUserOrderList: getUserOrderList,
   getProducts: getProducts,
-  saveUserPraise: saveUserPraise
+  saveUserPraise: saveUserPraise,
+  getExpressByOrderId: getExpressByOrderId
 };

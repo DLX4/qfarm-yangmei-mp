@@ -28,7 +28,7 @@ function wxpay(app, money, orderId, db, redirectUrl) {
     data: {
       openid: wx.getStorageSync('openid'),
       total_fee: money * 100,
-      //total_fee: 1,
+      // total_fee: 1,
       order_id: orderId,
       body: "新鲜杨梅"
     },

@@ -22,6 +22,16 @@ Page({
     }, error => {
       that.data.order = {};
     });
+
+    db.getExpressByOrderId(app, orderId).then(result => {
+      if (result !== undefined && result.length > 0) {
+        that.data.express = result[0];
+      }
+      that.setData({
+        express: that.data.express
+      })
+    });
+
   },
   onShow: function (orderId) {
     let that = this;
@@ -40,10 +50,10 @@ Page({
     }
   },
   expressDetailsTap: function (e) {
-    var orderId = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: "/pages/wuliu/index?id=" + orderId
-    })
+    // var orderId = e.currentTarget.dataset.id;
+    // wx.navigateTo({
+    //   url: "/pages/wuliu/index?id=" + orderId
+    // })
   },
   // 确认收货
   confirmBtnTap: function (e) {
